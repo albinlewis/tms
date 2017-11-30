@@ -53,6 +53,7 @@ Nach der Installation sind folgende commands im Terminal möglich:
 - wöchentliche Sprints (Retrospektive + neue Planung Mittwochs in der Veranstaltung)
 - VoIP-Meetings und Screen-Casts mittels Discord + Blizz
 - Sonstige Projekt Kommunikation per WA-Gruppe
+- Repository auf GitLab, Branch-Management nach [GitHub-flow](https://guides.github.com/introduction/flow/)
 
 ## Verlauf der Entwicklung
 - 30.11.17 Sprint-Planning + Beginn der Backend-Entwicklung, Initiale Dokumentation

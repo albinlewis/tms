@@ -15,15 +15,22 @@ Nach der Installation sind folgende commands im Terminal möglich:
 
 |Command|Action|Info|
 |-------|------|----|
-|npm run dev|installs node dependencies and runs the app in dev mode|app on localhost:4200 (hot-reload) [development-mode]|
+|npm run dev-frontend|runs the angular app in dev mode|on localhost:4200 (hot-reload) [development-mode]|
+|npm run dev-backend|runs the node backend in dev mode|(restarts on changes - powered by nodemon)|
 |npm start|builds and runs the electron app|production mode|
 |npm test|runs the Karma test-suite|frontend tests|
 |npm run mocha|runs the Mocha-Chai test-suite|backend tests|
 |~~npm run e2e~~|~~runs end-to-end tests~~|currently not used|
 
 #### development-mode
-- hot-reload aus praktischen Gründen für das Entwicklen der app
-- benutzt die test environment (inkl. test datenbank)
+
+```shell
+> npm run dev-backend
+> npm run dev-frontend
+```
+
+Trennt Frontend und Backend in eigene Prozesse, und ermöglicht development mit hot-reload im Frontend und restart-on-change im Backend. 
+Backend code der den Server, und nicht seine API betrifft (Änderungen in server.js müssen für electron-build in main.js umgezogen werden). 
 
 #### production-mode
 - electron wrappt die gebaute app, mLab token in Sprint 1 hardcoded, später vom Nutzer einzutragen

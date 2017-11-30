@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ng build --prod && electron .",
     "test": "ng test",  
+    "mocha": "echo no mocha tests to execute",
     "dev": "npm install && ng serve",
     "e2e": "ng e2e"
   },

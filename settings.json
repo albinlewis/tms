@@ -1,6 +1,12 @@
 {
+    "app": {
+        "port": 3333
+    },
     "window": {
         "width": 600, 
         "height": 800
+    }, 
+    "user": {
+        "mLab": "mongodb://fwe_tms_test:fwe_tms_test@ds157500.mlab.com:57500/fwe_tms_test"
     }
 }

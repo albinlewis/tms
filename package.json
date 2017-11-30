@@ -5,9 +5,10 @@
   "main": "main.js",
   "scripts": {
     "start": "ng build --prod && electron .",
-    "test": "ng test",  
+    "test": "ng test",
     "mocha": "echo no mocha tests to execute",
-    "dev": "npm install && ng serve",
+    "dev-frontend": "ng serve",
+    "dev-backend": "nodemon src/server.js",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -21,7 +22,11 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.5",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
@@ -42,6 +47,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "nodemon": "^1.12.1",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",

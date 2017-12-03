@@ -2,10 +2,17 @@ const settings = require('../../settings');
 const Task = require('./models/task');
 
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise
-mongoose.connect(settings.user.mLab, {
-    useMongoClient: true
-});
+mongoose.Promise = global.Promise;
+
+if (settings.user.mLab !== null) {
+    mongoose.connect(settings.user.mLab, {
+        useMongoClient: true
+    });
+} else {
+    mongoose.connect(settings.testDB, {
+        useMongoClient: true
+    });
+}
 
 exports.create = (req, res) => {
     let task = new Task(req.body);

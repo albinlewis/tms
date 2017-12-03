@@ -1,3 +1,4 @@
+const settings = require('../../../settings');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -33,9 +34,11 @@ const taskSchema = new Schema({
         default: { hasInterval: false, value: 0, unit: null }
     },
     time: {
-        type: Number, 
+        type: Number,
         default: 0
     }
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+let collectionName = 'tests';
+if (settings.user.name !== null) collectionName = settings.user.name;
+module.exports = mongoose.model('Task', taskSchema, collectionName);

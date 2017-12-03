@@ -1,37 +1,47 @@
+const settings = require('../../../settings');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Task Model
-const taskSchema = mongoose.Schema({
-    title:{
+const taskSchema = new Schema({
+    title: {
         type: String,
         required: true
     },
-    description: String,
-    created_at: {
+    description: {
+        type: String,
+        default: "no description provided"
+    },
+    interval: {
+        type: JSON,
+        default: { hasInterval: false, value: 0, unit: null }
+    },
+    createdAt: {
         type: Date,
         default: new Date()
     },
-    updated_at: {
+    updatedAt: {
         type: Date,
         default: new Date()
     },
-    active:{
-        type: Boolean,
-        default: false
-    },
-    visible:{
+    visible: {
         type: Boolean,
         default: true
     },
-    done:{
+    active: {
         type: Boolean,
         default: false
     },
-    interval:{
-        type: JSON,
-        default: {hasInterval: false, value: 0, unit: null}
+    done: {
+        type: Boolean,
+        default: false
+    },
+    time: {
+        type: Number,
+        default: 0
     }
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+let collectionName = 'tests';
+if (settings.user.name !== null) collectionName = settings.user.name;
+module.exports = mongoose.model('Task', taskSchema, collectionName);

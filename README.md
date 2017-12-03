@@ -32,11 +32,38 @@ Nach der Installation sind folgende commands im Terminal möglich:
 Trennt Frontend und Backend in eigene Prozesse, und ermöglicht development mit hot-reload im Frontend und restart-on-change im Backend. 
 Backend code der den Server, und nicht seine API betrifft (Änderungen in server.js müssen für electron-build in main.js umgezogen werden). 
 
-#### production-mode
-- electron wrappt die gebaute app, mLab token in Sprint 1 hardcoded, später vom Nutzer einzutragen
+
+## Tests
+
+#### Backend Tests
+
+Die beiliegende Mocha Test-Suite kann mit dem command 
+
+```shell
+> npm run mocha
+```
+
+ausgeführt werden. 
+Sie umfasst das Erstellen, Anzeigen, Modifizieren und Löschen von Tasks.
+
+#### Frontend Tests
+
+Die beiliegende Karma Test-Suite kann mit dem command
+
+```shell
+> npm test
+```
+
+ausgeführt werden. 
+Aktuell umfasst diese nur die vordefinierten Standard-Tests.
+-> TODO
 
 ## Verwendete Frameworks
-// TODO
+![alt text](https://cdn.auth0.com/blog/angular2-electron/angular2-electron-logo.png "Angular + Electron")
+![alt text](https://raw.githubusercontent.com/daton89-topperblues/mongoose-transactions/master/docs/img/mongoose-transactions.png "Node Express Mongoose")
+<br>Wir haben uns für eine Kombination von Angular und Electron entschieden, 
+um das Projekt als Desktop Anwendung zu realisieren. Unser Backend umfasst eine
+Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zugreift. 
 
 ## Frontend
 // TODO
@@ -64,3 +91,4 @@ Backend code der den Server, und nicht seine API betrifft (Änderungen in server
 
 ## Verlauf der Entwicklung
 - 30.11.17 Sprint-Planning + Beginn der Backend-Entwicklung, Initiale Dokumentation
+- 02/03.12.17 Abschluss der Backend-Entwicklung für Sprint 1, Paper-Prototyping, Beginn der Frontend-Entwicklung, Dokumentation

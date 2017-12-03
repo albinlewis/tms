@@ -92,7 +92,7 @@ exports.findId = (req, res) => {
  * - statuscode:400 and an error object
  */
 exports.update = (req, res) => {
-    Task.update({ _id: req.params.id }, { $set: req.body }, (err, task) => {
+    Task.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }, (err, task) => {
         if (!err) {
             res.status(200).send(task);
         } else {

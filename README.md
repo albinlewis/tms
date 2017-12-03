@@ -60,7 +60,7 @@ Aktuell umfasst diese nur die vordefinierten Standard-Tests.
 
 ## Verwendete Frameworks
 ![alt text](https://cdn.auth0.com/blog/angular2-electron/angular2-electron-logo.png "Angular + Electron")
-![alt text](https://raw.githubusercontent.com/daton89-topperblues/mongoose-transactions/master/docs/img/mongoose-transactions.png "Node Express Mongoose")
+![alt text](https://coursework.vschool.io/content/images/2015/11/mongoosejs.png "Mongoose")
 <br>Wir haben uns für eine Kombination von Angular und Electron entschieden, 
 um das Projekt als Desktop Anwendung zu realisieren. Unser Backend umfasst eine
 Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zugreift. 

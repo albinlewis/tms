@@ -8,30 +8,33 @@ const taskSchema = new Schema({
         type: String,
         required: true
     },
-    description: String,
-    created_at: {
+    description: {
+        type: String,
+        default: "no description provided"
+    },
+    interval: {
+        type: JSON,
+        default: { hasInterval: false, value: 0, unit: null }
+    },
+    createdAt: {
         type: Date,
         default: new Date()
     },
-    updated_at: {
+    updatedAt: {
         type: Date,
         default: new Date()
-    },
-    active: {
-        type: Boolean,
-        default: false
     },
     visible: {
         type: Boolean,
         default: true
     },
-    done: {
+    active: {
         type: Boolean,
         default: false
     },
-    interval: {
-        type: JSON,
-        default: { hasInterval: false, value: 0, unit: null }
+    done: {
+        type: Boolean,
+        default: false
     },
     time: {
         type: Number,

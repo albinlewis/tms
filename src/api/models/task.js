@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Task Model
-const taskSchema = mongoose.Schema({
-    title:{
+const taskSchema = new Schema({
+    title: {
         type: String,
         required: true
     },
@@ -16,21 +16,25 @@ const taskSchema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    active:{
+    active: {
         type: Boolean,
         default: false
     },
-    visible:{
+    visible: {
         type: Boolean,
         default: true
     },
-    done:{
+    done: {
         type: Boolean,
         default: false
     },
-    interval:{
+    interval: {
         type: JSON,
-        default: {hasInterval: false, value: 0, unit: null}
+        default: { hasInterval: false, value: 0, unit: null }
+    },
+    time: {
+        type: Number, 
+        default: 0
     }
 });
 

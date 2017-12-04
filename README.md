@@ -60,7 +60,6 @@ Aktuell umfasst diese nur die vordefinierten Standard-Tests.
 
 ## Verwendete Frameworks
 ![alt text](https://cdn.auth0.com/blog/angular2-electron/angular2-electron-logo.png "Angular + Electron")
-![alt text](https://coursework.vschool.io/content/images/2015/11/mongoosejs.png "Mongoose")
 <br>Wir haben uns für eine Kombination von Angular und Electron entschieden, 
 um das Projekt als Desktop Anwendung zu realisieren. Unser Backend umfasst eine
 Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zugreift. 
@@ -69,10 +68,11 @@ Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zug
 // TODO
 
 ## Backend
-// TODO [API-documentation guideline](https://gist.github.com/iros/3426278)
+Die Dokumentation der Task-API kann im repository unter [/src/api/readme.md](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/src/api/readme.md) eingesehen werden. 
+Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstellt.
 
 ## License
-// TODO
+// TODO - aktuell nicht open source, ggf. später MIT License o.ä.
 
 # Team / Organisation
 

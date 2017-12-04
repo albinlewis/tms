@@ -1,0 +1,213 @@
+# Task-API
+
+**Create a Task**
+----
+This route is used to create a new Task in the database.
+
+*   **URL**
+
+    /api/tasks/create
+
+*   **Method:**
+
+    `POST`
+  
+*   **URL Params**
+
+    **Required:**
+ 
+    None
+
+*   **Data Params**
+
+    *   **Required:**
+        
+        a JSON object containting at least a title for the new Task. Other fields can be omitted. 
+
+        ```json
+        {
+            "title": "Task-title",
+            "description": "a Task"
+        }
+        ```
+
+*   **Success Response:**
+
+    *   **Code:** 200 <br>
+        **Content:** `{ TODO insert response here }`
+ 
+*   **Error Response:**
+
+    *   **Code:** 400 <br>
+        **Content:** `{ TODO insert response here }`
+
+*   **Sample Call:**
+
+    ```javascript
+    //TODO insert sample call here
+    ```
+
+**Get all Tasks**
+----
+This route is used to get all Task objects from the database.
+
+*   **URL**
+
+    /api/tasks/find/all
+
+*   **Method:**
+
+    `GET`
+  
+*   **URL Params**
+
+    *   **Required:**
+ 
+        None
+
+*   **Data Params**
+
+    *   **Required:**
+        
+        None
+
+*   **Success Response:**
+
+    *   **Code:** 200 <br>
+        **Content:** `{ TODO insert response here }`
+ 
+*   **Error Response:**
+
+    *   **Code:** 400 <br>
+        **Content:** `{ TODO insert response here }`
+
+*   **Sample Call:**
+
+    ```javascript
+    //TODO insert sample call here
+    ```
+
+**Get a Task by _id**
+----
+This route is used to get a single Task object from the database.
+
+*   **URL**
+
+    /api/tasks/find/:id
+
+*   **Method:**
+
+    `GET`
+  
+*   **URL Params**
+
+    *   **Required:**
+ 
+        `:id - the _id of the requested Task`
+
+*   **Data Params**
+
+    *   **Required:**
+        
+        None
+
+*   **Success Response:**
+
+    *   **Code:** 200 <br>
+        **Content:** `{ TODO insert response here }`
+ 
+*   **Error Response:**
+
+    *   **Code:** 400 <br>
+        **Content:** `{ TODO insert response here }`
+
+*   **Sample Call:**
+
+    ```javascript
+    //TODO insert sample call here
+    ```
+
+**Update a Task**
+----
+This route is used to update Task objects. 
+
+*   **URL**
+
+    /api/tasks/update/:id
+
+*   **Method:**
+
+    `PUT`
+  
+*   **URL Params**
+
+    *   **Required:**
+ 
+        `:id - the _id of the requested Task`
+
+*   **Data Params**
+
+    *   **Required:**
+        
+        a json object containing all fields that should be updated
+        ```json
+        {
+            "description": "the new description"
+        }
+        ```
+
+*   **Success Response:**
+
+    *   **Code:** 200 <br>
+        **Content:** `{ TODO insert response here }`
+ 
+*   **Error Response:**
+
+    *   **Code:** 400 <br>
+        **Content:** `{ TODO insert response here }`
+
+*   **Sample Call:**
+
+    ```javascript
+    //TODO insert sample call here
+    ```
+
+**Delete a Task**
+----
+This route is used to delete Task objects from the database.
+
+*   **URL**
+
+    /api/tasks/delete/:id
+
+*   **Method:**
+
+    `DELETE`
+  
+*   **URL Params**
+
+    *   **Required:**
+ 
+        `:id - the _id of the requested Task`
+
+*   **Data Params**
+
+    *   **Required:**
+        
+        None
+
+*   **Success Response:**
+
+    *   **Code:** 200 <br>
+        **Content:** `{ TODO insert response here }`
+ 
+*   **Error Response:**
+
+    *   **Code:** 400 <br>
+        **Content:** `{ TODO insert response here }`
+
+*   **Sample Call:**
+
+    ```javascript
+    //TODO insert sample call here
+    ```

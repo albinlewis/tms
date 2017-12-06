@@ -6,13 +6,15 @@ import {MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModu
 import { TaskComponent } from './components/task/task.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskComponent,
     ProgressbarComponent,
-    MenuComponent
+    MenuComponent,
+    TaskgridComponent,
   ],
   imports: [
     BrowserModule,

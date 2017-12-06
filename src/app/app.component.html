@@ -1,19 +1,36 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>
-    {{title}}
-  </h1>
-</div>
 
-<progressbar></progressbar>
-
-<div class="tasklist">
-  <task></task>
-  <task></task>
-  <task></task>
-  <task></task>
-  <task></task>
-  <task></task>
-</div>
-
-<menu></menu>
+<mat-horizontal-stepper> 
+  <!-- Step 1 -->
+    <mat-step stepControl="firstFormGroup">  
+        <ng-template matStepLabel>Setup</ng-template>
+        <progressbar></progressbar>
+        <div class="tasklist">
+          <task></task>
+          <task></task>
+          <task></task>
+          <task></task>
+          <task></task>
+          <task></task>
+        </div>
+        <menu></menu>
+    </mat-step>
+  
+    <!-- Step 2 -->
+    <mat-step stepControl="secondFormGroup">
+        <ng-template matStepLabel>Management</ng-template>
+        <progressbar></progressbar>
+        <menu></menu>
+    </mat-step>
+  
+    <!-- Step 3 -->
+    <mat-step stepControl="thirdFormGroup">
+    <ng-template matStepLabel>Tracking</ng-template>
+      Test
+    </mat-step>
+  
+    <!-- Step 4 -->
+    <mat-step stepControl="fourthFormGroup">
+        <ng-template matStepLabel>Statistics</ng-template>
+    </mat-step>
+  </mat-horizontal-stepper>

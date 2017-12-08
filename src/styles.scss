@@ -1,16 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
-@import url('//fonts.googleapis.com/icon?family=Material+Icons');
-
+@import './app/themes/tms-theme';
 @include mat-core();
 
-$primary: mat-palette($mat-lime, 500);
+$primary: mat-palette($mat-indigo, 500, A100);
 $accent:  mat-palette($mat-lime, 500, A200, A400);
 $warn:    mat-palette($mat-red, 500);
 
-$theme: mat-light-theme($primary, $accent, $warn);
+$tms-theme-primary: mat-palette($tms-petrol, 300, 100);
+$tms-theme-accent: mat-palette($mat-red, 100, 50);
+$tms-theme-warn: mat-palette($mat-red);
 
-@include angular-material-theme($theme);
+$theme: mat-light-theme($primary, $accent, $warn);
+$tms-theme: mat-light-theme($tms-theme-primary, $tms-theme-accent, $tms-theme-warn);
+
+@include angular-material-theme($tms-theme);
 
 body {
     font-family: $mat-font-family;

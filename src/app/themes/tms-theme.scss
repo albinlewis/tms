@@ -1,0 +1,35 @@
+@import  '../node_modules/@angular/material/theming';
+@include mat-core();
+
+$tms-petrol:(
+    50 : #e2efef,
+    100 : #b7d8d7,
+    200 : #87bebd,
+    300 : #56a3a3,
+    400 : #32908f,
+    500 : #0e7c7b,
+    600 : #0c7473,
+    700 : #0a6968,
+    800 : #085f5e,
+    900 : #044c4b,
+    A100 : #80fffd,
+    A200 : #4dfffc,
+    A400 : #1afffb,
+    A700 : #00fffb,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);

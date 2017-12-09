@@ -3,6 +3,23 @@ mat-grid-list{
     float:left;
 }
 
-mat-grid-tile{
+.selected{
+    border-width: 5px;
+    background-color: lightgrey;
+}
+
+.default-tile{
+    height: 95%;
+    width: 95%;
+    text-decoration: none;
+    color: black;
+    display: table;
     border-style: solid;
+}
+
+.taskname{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 2em;
 }

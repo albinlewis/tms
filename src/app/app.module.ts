@@ -7,6 +7,7 @@ import { TaskComponent } from './components/task/task.component';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
+import { NotetrackerComponent } from './components/notetracker/notetracker.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
     ProgressbarComponent,
     MenuComponent,
     TaskgridComponent,
+    NotetrackerComponent,
   ],
   imports: [
     BrowserModule,

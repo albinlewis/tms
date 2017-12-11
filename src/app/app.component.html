@@ -3,7 +3,7 @@
 <mat-horizontal-stepper> 
   <!-- Step 1 -->
     <mat-step stepControl="firstFormGroup">  
-        <ng-template matStepLabel>Setup</ng-template>
+        <ng-template matStepLabel>Management</ng-template>
         <progressbar></progressbar>
         <div class="tasklist">
           <task></task>
@@ -18,7 +18,7 @@
   
     <!-- Step 2 -->
     <mat-step stepControl="secondFormGroup">
-        <ng-template matStepLabel>Management</ng-template>
+        <ng-template matStepLabel>Tracking</ng-template>
         <progressbar></progressbar>
         <taskgrid></taskgrid>
         <notetracker id="taskNotes"></notetracker>
@@ -26,12 +26,8 @@
   
     <!-- Step 3 -->
     <mat-step stepControl="thirdFormGroup">
-    <ng-template matStepLabel>Tracking</ng-template>
+    <ng-template matStepLabel>Statistics</ng-template>
       Test
     </mat-step>
-  
-    <!-- Step 4 -->
-    <mat-step stepControl="fourthFormGroup">
-        <ng-template matStepLabel>Statistics</ng-template>
-    </mat-step>
+
   </mat-horizontal-stepper>

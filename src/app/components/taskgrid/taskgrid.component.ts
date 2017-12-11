@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'taskgrid',
@@ -11,7 +12,7 @@ export class TaskgridComponent implements OnInit {
   tasklist: [{id: Number, name: String, tracking: Boolean}];
 
   constructor() {
-    this.cols = 4;
+    this.cols = 2;
 
     for (let i = 1; i < 21; i++) {
       if(i === 1){this.tasklist = [{ id: i, name: ("Task " + i), tracking: false }]}

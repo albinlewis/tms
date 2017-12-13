@@ -1,7 +1,7 @@
-const settings = require('../../settings');
-const apiPort = settings.app.port;
+//const settings = require('../../settings.json');
+//const apiPort = settings.app.port;
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:" + apiPort
+  apiUrl: "http://localhost:3333"
 };

@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-progressbar',
+  selector: 'progressbar',
   templateUrl: './progressbar.component.html',
-  styleUrls: ['./progressbar.component.css']
+  styleUrls: ['./progressbar.component.scss']
 })
 export class ProgressbarComponent implements OnInit {
 
-  constructor() { }
+  value: Number;
+
+  constructor() {
+    this.value = 50;
+   }
 
   ngOnInit() {
   }

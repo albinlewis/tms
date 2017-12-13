@@ -12,9 +12,9 @@ export class Task {
     done: boolean;          // für exporte
     interval:
     {
-        hasInterval,
-        value,
-        unit
+        hasInterval: boolean,
+        value: number,
+        unit: string 
     };                      // automatisch task neu-generierung
 
     constructor(values: Object = {}) {

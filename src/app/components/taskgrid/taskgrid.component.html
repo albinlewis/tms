@@ -1,6 +1,6 @@
 <mat-grid-list [cols]="cols" gutterSize="1em" rowHeight="10em">
   <mat-grid-tile *ngFor="let task of tasks;">
-    <a href="javascript:void(0)" (click)="toggleTracking()" class="default-tile" [ngClass]="{'default-tile':true}">
+    <a href="javascript:void(0)" (click)="toggleTracking(task)" class="default-tile" [ngClass]="{'default-tile':true, 'selected':task.active}">
       <span class="taskname">{{task.title}}</span>
     </a>
   </mat-grid-tile>

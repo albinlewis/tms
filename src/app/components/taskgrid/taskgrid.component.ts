@@ -15,15 +15,28 @@ export class TaskgridComponent implements OnInit {
 
   selected: boolean;
   cols: number;
+  oldTask: Task = null;
 
   constructor(private taskService: TaskDataService) {
     this.cols = 2;
   }
 
   ngOnInit() {
+    this.oldTask = this.findActiveTask(); 
   }
 
-  private toggleTracking() {
+  private toggleTracking(newTask) {
+    this.taskService.timerHelper(this.oldTask, newTask, 100);
+    this.oldTask = newTask;
+  }
+
+  private findActiveTask(){
+    for(var i = 0; i < this.tasks.length; i++){
+      if(this.tasks[i].active){
+        return this.tasks[i];
+      }
+    }
+    return null;
   }
 }
 

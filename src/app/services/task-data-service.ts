@@ -54,19 +54,27 @@ export class TaskDataService {
     }
 
     // TODO - add more functions to handle data manipulation
-    timerHelper(oldTask: Task, newTask: Task, timerState: Number){
-        
-        let oldT_update: Task = oldTask;
-        oldT_update.active = false;
-        oldT_update.time = Number(oldTask.time) + Number(timerState);
+    timerHelper(oldTask: Task, newTask: Task, timerState: Number) {
 
-        let newT_update: Task = newTask;
-        newT_update.active = true;
+        if (oldTask != null) {
+            let oldT_update: Task = oldTask;
+            oldT_update.active = false;
+            oldT_update.time = Number(oldTask.time) + Number(timerState);
 
-        this.timerState.next(0);
-        this.activeTask.next(newT_update);
-        this.taskApi.updateTaskById(oldT_update);
-        this.taskApi.updateTaskById(newT_update);
+            let newT_update: Task = newTask;
+            newT_update.active = true;
 
+            this.timerState.next(0);
+            this.activeTask.next(newT_update);
+            this.taskApi.updateTaskById(oldT_update).subscribe((task) => { });
+            this.taskApi.updateTaskById(newT_update).subscribe((task) => { });
+        }
+        else {
+            let newT_update: Task = newTask;
+            newT_update.active = true;
+
+            this.activeTask.next(newTask);
+            this.taskApi.updateTaskById(newT_update).subscribe((task) => { });
+        }
     }
 }

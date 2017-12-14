@@ -20,10 +20,12 @@ export class TimerComponent implements OnInit {
     constructor(private taskService: TaskDataService) { }
 
     ngOnInit() {
-        // this.taskService.isSelected.subscribe((isSelected: boolean) => {
-        //     if(isSelected)(this.startTimer())
-        //     else{this.reset()}
-        // });
+        this.taskService.activeTask.subscribe((activeTask: Task) => {
+            if(activeTask){
+                //console.log(activeTask)
+            }
+            else{console.log("No active task")}
+        });
     }
 
     private startTimer() {

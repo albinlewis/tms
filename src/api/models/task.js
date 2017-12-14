@@ -2,7 +2,6 @@ const settings = require('../../../settings');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Task Model
 const taskSchema = new Schema({
     title: {
         type: String,
@@ -12,9 +11,17 @@ const taskSchema = new Schema({
         type: String,
         default: "no description provided"
     },
+    notes: {
+        type: Array,
+        default: []
+    },
     interval: {
         type: JSON,
-        default: { hasInterval: false, value: 0, unit: null }
+        default: {
+            hasInterval: false,
+            value: 0,
+            unit: null
+        }
     },
     createdAt: {
         type: Date,

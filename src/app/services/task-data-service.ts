@@ -50,5 +50,7 @@ export class TaskDataService {
     }
 
     // TODO - add more functions to handle data manipulation
-
+    timerHelper(oldTask: Task, newTask: Task, timerState: Number){
+        return this.taskApi.updateTaskById();
+    }
 }

@@ -12,6 +12,7 @@ import { TimerComponent } from './components/timer/timer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ApiService } from './services/api-service';
+import { InteractionService } from './services/interaction-service'
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ApiService } from './services/api-service';
     MatGridListModule,
     MatStepperModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, InteractionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

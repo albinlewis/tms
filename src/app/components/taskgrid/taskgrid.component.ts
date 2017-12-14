@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import { Task } from '../../models/task'
+import { InteractionService } from '../../services/interaction-service'
 
 @Component({
   selector: 'taskgrid',
@@ -11,29 +12,20 @@ export class TaskgridComponent implements OnInit {
   @Input()
   tasks: Task[];
 
-  @Output()
-  runtimer: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+  selected: boolean;
+  cols: number;
 
-  cols: Number;
-  selected: Boolean = false;
-  
-  constructor() {
+  constructor(private interactionService: InteractionService) {
     this.cols = 2;
+    this.selected = false;
   }
 
   ngOnInit() {
   }
 
-  toggleTracking() {
-    // var selectedTask = this.tasks.find(function (item) {
-    //   return item._id === id;
-    // });
-    // for(let i = 0; this.tasks.length > i; i++){
-    //   if(this.tasks[i] === selectedTask){continue;}
-    //   // this.tasks[i].active = false;
-    // }
-    // //selectedTask.active = !selectedTask.active;
+  private toggleTracking(id) {
     this.selected = !this.selected;
-    this.runtimer.emit(this.selected);
+    this.interactionService.isSelected.next(this.selected);
+    this.interactionService.activeTask.next(id);
   }
 }

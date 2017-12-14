@@ -34,18 +34,55 @@ This route is used to create a new Task in the database.
 *   **Success Response:**
 
     *   **Code:** 200 <br>
-        **Content:** `{ TODO insert response here }`
+        **Content:** 
+        
+        ```json
+        {
+            "__v": 0,
+            "title": "Implement a cool Feature",
+            "_id": "5a3254dafbe56821a4d3957e",
+            "time": 0,
+            "done": false,
+            "active": false,
+            "visible": true,
+            "updatedAt": "2017-12-14T10:39:21.264Z",
+            "createdAt": "2017-12-14T10:39:21.264Z",
+            "interval": {
+                "unit": null,
+                "value": 0,
+                "hasInterval": false
+            },
+            "notes": [],
+            "description": "a Task"
+        }
+        ```
  
 *   **Error Response:**
 
     *   **Code:** 400 <br>
-        **Content:** `{ TODO insert response here }`
-
-*   **Sample Call:**
-
-    ```javascript
-    //TODO insert sample call here
-    ```
+        **Content:**
+        
+        ```json
+        {
+            "errors": {
+                "title": {
+                    "message": "Path `title` is required.",
+                    "name": "ValidatorError",
+                    "properties": {
+                        "type": "required",
+                        "message": "Path `{PATH}` is required.",
+                        "path": "title"
+                    },
+                    "kind": "required",
+                    "path": "title",
+                    "$isValidatorError": true
+                }
+            },
+            "_message": "Task validation failed",
+            "message": "Task validation failed: title: Path `title` is required.",
+            "name": "ValidationError"
+        }
+        ```
 
 **Get all Tasks**
 ----

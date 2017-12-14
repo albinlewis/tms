@@ -12,7 +12,7 @@ export class TaskgridComponent implements OnInit {
   tasks: Task[];
 
   @Output()
-  runtimer: EventEmitter<Boolean> = new EventEmitter<Boolean>;
+  runtimer: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
   cols: Number;
   selected: Boolean = false;

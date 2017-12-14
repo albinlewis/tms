@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/Rx';
 import { isNull } from 'util';
 
 import { ApiService } from './api-service';
@@ -7,6 +8,9 @@ import { Task } from '../models/task';
 
 @Injectable()
 export class TaskDataService {
+
+    activeTask: BehaviorSubject<Task> = new BehaviorSubject(null);
+    timerState: BehaviorSubject<Number> = new BehaviorSubject(null);
 
     constructor(private taskApi: ApiService) { }
 
@@ -51,6 +55,18 @@ export class TaskDataService {
 
     // TODO - add more functions to handle data manipulation
     timerHelper(oldTask: Task, newTask: Task, timerState: Number){
-        return this.taskApi.updateTaskById();
+        
+        let oldT_update: Task = oldTask;
+        oldT_update.active = false;
+        oldT_update.time = Number(oldTask.time) + Number(timerState);
+
+        let newT_update: Task = newTask;
+        newT_update.active = true;
+
+        this.timerState.next(0);
+        this.activeTask.next(newT_update);
+        this.taskApi.updateTaskById(oldT_update);
+        this.taskApi.updateTaskById(newT_update);
+
     }
 }

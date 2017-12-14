@@ -1,3 +1,5 @@
+import { TasksViewComponent } from './components/tasks-view/tasks-view.component';
+import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { RoutesModule } from './components/routes/routes.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,6 +13,7 @@ import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 import { NotetrackerComponent } from './components/notetracker/notetracker.component';
 import { TimerComponent } from './components/timer/timer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +23,8 @@ import { TimerComponent } from './components/timer/timer.component';
     TaskgridComponent,
     NotetrackerComponent,
     TimerComponent,
+    TasksViewComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,

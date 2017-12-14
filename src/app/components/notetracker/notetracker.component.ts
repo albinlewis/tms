@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from '../../services/interaction-service'
+import { TaskDataService } from '../../services/task-data-service';
+import { Task } from '../../models/task';
 
 @Component({
   selector: 'notetracker',
@@ -8,12 +9,12 @@ import { InteractionService } from '../../services/interaction-service'
 })
 export class NotetrackerComponent implements OnInit {
 
-  constructor(private interactionService: InteractionService) { }
+  constructor(private taskService: TaskDataService) { }
 
   ngOnInit() {
-    this.interactionService.activeTask.subscribe((activeTask: String) => {
-      console.log(activeTask);
-  });
+  //   this.interactionService.activeTask.subscribe((activeTask: String) => {
+  //     console.log(activeTask);
+  // });
   }
 
 }

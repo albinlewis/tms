@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { Task } from '../../models/task'
-import { InteractionService } from '../../services/interaction-service'
+import { Task } from '../../models/task';
+import { TaskDataService } from '../../services/task-data-service';
 
 @Component({
   selector: 'taskgrid',
@@ -16,7 +16,7 @@ export class TaskgridComponent implements OnInit {
   selected: boolean;
   cols: number;
 
-  constructor(private interactionService: InteractionService) {
+  constructor(private taskService: TaskDataService) {
     this.cols = 2;
   }
 

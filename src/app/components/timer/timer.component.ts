@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
-import { InteractionService } from '../../services/interaction-service'
+import { TaskDataService } from '../../services/task-data-service';
+import { Task } from '../../models/task';
 
 @Component({
     selector: 'timer',
@@ -16,13 +17,13 @@ export class TimerComponent implements OnInit {
     secondsDisplay: number = 0;
     sub: Subscription = new Subscription();
 
-    constructor(private interactionService: InteractionService) { }
+    constructor(private taskService: TaskDataService) { }
 
     ngOnInit() {
-        this.interactionService.isSelected.subscribe((isSelected: boolean) => {
-            if(isSelected)(this.startTimer())
-            else{this.reset()}
-        });
+        // this.taskService.isSelected.subscribe((isSelected: boolean) => {
+        //     if(isSelected)(this.startTimer())
+        //     else{this.reset()}
+        // });
     }
 
     private startTimer() {

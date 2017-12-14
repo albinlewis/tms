@@ -1,5 +1,4 @@
 import { Task } from './../../models/task';
-import { AppDataService } from './../../services/app-data.service';
 import { TaskComponent } from './../task/task.component';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,10 +16,9 @@ export class TasksViewComponent implements OnInit {
   task: Task = new Task();
   selectedTask: Task;
 
-  constructor(private dataService: AppDataService ) { }
+  constructor( ) { }
 
   ngOnInit() {
-    this.dataService.getAllTasks();
     /*this.dataService.getAllTask()
     .subscribe(t => {
       console.log(t);
@@ -36,7 +34,7 @@ export class TasksViewComponent implements OnInit {
     console.log(task);
 
     this.tasklist.push(task);
-    this.dataService.addTask(task);
+    // this.dataService.addTask(task);
     this.task = new Task();
    // this.tasklist.push(task);
     /*this.dataService.addTask(task)
@@ -64,8 +62,8 @@ export class TasksViewComponent implements OnInit {
   }
 
   getTasks() {
-    this.dataService.getAllTasks();
-    console.log();
+    // this.dataService.getAllTasks();
+    // console.log();
   }
 
 }

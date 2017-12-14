@@ -5,22 +5,14 @@
     <mat-step stepControl="firstFormGroup">  
         <ng-template matStepLabel>Management</ng-template>
         <progressbar></progressbar>
-        <div class="tasklist">
-          <task></task>
-          <task></task>
-          <task></task>
-          <task></task>
-          <task></task>
-          <task></task>
-        </div>
-        <menu></menu>
+        <app-tasks-view></app-tasks-view>
     </mat-step>
   
     <!-- Step 2 -->
     <mat-step stepControl="secondFormGroup">
         <ng-template matStepLabel>Tracking</ng-template>
         <progressbar></progressbar>
-        <taskgrid></taskgrid>
+        <taskgrid [tasks]="tasks"></taskgrid>
         <notetracker id="taskNotes"></notetracker>
     </mat-step>
   

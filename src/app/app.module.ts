@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule } from '@angular/material';
+import { MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatButtonModule } from '@angular/material';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
@@ -27,6 +27,7 @@ import { ApiService } from './services/api-service';
     HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatExpansionModule,
     MatProgressBarModule,
     MatCardModule,

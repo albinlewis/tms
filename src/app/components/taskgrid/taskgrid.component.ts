@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
+import { Task } from '../../models/task'
 
 @Component({
   selector: 'taskgrid',
@@ -7,30 +8,32 @@ import {Observable} from 'rxjs/Rx';
   styleUrls: ['./taskgrid.component.scss']
 })
 export class TaskgridComponent implements OnInit {
+  @Input()
+  tasks: Task[];
+
+  @Output()
+  runtimer: EventEmitter<Boolean> = new EventEmitter<Boolean>;
 
   cols: Number;
-  tasklist: [{id: Number, name: String, tracking: Boolean}];
-
+  selected: Boolean = false;
+  
   constructor() {
     this.cols = 2;
-
-    for (let i = 1; i < 21; i++) {
-      if(i === 1){this.tasklist = [{ id: i, name: ("Task " + i), tracking: false }]}
-      else{this.tasklist.push({ id: i, name: ("Task " + i), tracking: false })};
-    }
   }
 
   ngOnInit() {
   }
 
-  toggleTracking(id) {
-    var selectedTask = this.tasklist.find(function (item) {
-      return item.id === id;
-    });
-    for(let i = 0; this.tasklist.length > i; i++){
-      if(this.tasklist[i] === selectedTask){continue;}
-      this.tasklist[i].tracking = false;
-    }
-    selectedTask.tracking = !selectedTask.tracking;
+  toggleTracking() {
+    // var selectedTask = this.tasks.find(function (item) {
+    //   return item._id === id;
+    // });
+    // for(let i = 0; this.tasks.length > i; i++){
+    //   if(this.tasks[i] === selectedTask){continue;}
+    //   // this.tasks[i].active = false;
+    // }
+    // //selectedTask.active = !selectedTask.active;
+    this.selected = !this.selected;
+    this.runtimer.emit(this.selected);
   }
 }

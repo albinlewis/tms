@@ -10,7 +10,7 @@ import { Task } from '../models/task';
 export class TaskDataService {
 
     activeTask: BehaviorSubject<Task> = new BehaviorSubject(null);
-    timerState: BehaviorSubject<Number> = new BehaviorSubject(null);
+    timerState: BehaviorSubject<Number> = new BehaviorSubject(0);
 
     constructor(private taskApi: ApiService) { }
 

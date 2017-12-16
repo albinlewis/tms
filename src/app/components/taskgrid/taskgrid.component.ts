@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Task } from '../../models/task';
 import { TaskDataService } from '../../services/task-data-service';
@@ -9,9 +9,7 @@ import { TaskDataService } from '../../services/task-data-service';
   styleUrls: ['./taskgrid.component.scss']
 })
 export class TaskgridComponent implements OnInit {
-  @Input()
-  tasks: Task[];
-
+  @Input() tasks: Task[];
 
   selected: boolean;
   cols: number;
@@ -22,18 +20,18 @@ export class TaskgridComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.oldTask = this.findActiveTask(); 
+    this.oldTask = this.findActiveTask();
   }
 
   private toggleTracking(newTask) {
-    this.taskService.timerHelper(this.oldTask, newTask, 100);
+    this.taskService.timerHelper(this.oldTask, newTask, 10);
     this.oldTask = newTask;
     this.taskService.activeTask.next(newTask);
   }
 
-  private findActiveTask(){
-    for(var i = 0; i < this.tasks.length; i++){
-      if(this.tasks[i].active){
+  private findActiveTask() {
+    for (var i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].active) {
         return this.tasks[i];
       }
     }

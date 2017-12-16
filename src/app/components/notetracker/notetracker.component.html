@@ -8,7 +8,7 @@
     <div class="noteWindow">
       <p *ngFor="let note of notes;">- {{note}}</p>
     </div>
-    <input (keydown.enter)="addNote(noteInput.value); noteInput.value = '';" class="noteInput" type="text" placeholder="Type a note here" #noteInput>
+    <input #noteInput (keydown.enter)="addNote(noteInput.value); noteInput.value = '';" class="noteInput" type="text" placeholder="Type a note here">
   </mat-card-content>
   <mat-card-actions>
     <div class="buttons">

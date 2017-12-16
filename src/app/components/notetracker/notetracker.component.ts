@@ -10,7 +10,7 @@ import { isEmpty } from 'rxjs/operators/isEmpty';
 })
 export class NotetrackerComponent implements OnInit {
 
-  notes: String[] = ["Clean Window", "Empty bin", "Clear Whiteboard"];
+  notes: String[];
   tasktitle: String;
   show: Boolean;
 
@@ -19,12 +19,12 @@ export class NotetrackerComponent implements OnInit {
   ngOnInit() {
     this.taskService.activeTask.subscribe((activeTask: Task) => {
       if (activeTask) {
-        //this.notes = activeTask.notes;
+        this.notes = activeTask.notes;
         this.show = true;
         this.tasktitle = activeTask.title;
       }
       else {
-        //this.notes = [];
+        this.notes = [];
         this.show = false;
       }
     });

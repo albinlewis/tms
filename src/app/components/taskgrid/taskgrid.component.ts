@@ -37,5 +37,10 @@ export class TaskgridComponent implements OnInit {
     }
     return null;
   }
+
+  private filterDoneTasks(tasklist) {
+    return this.tasks.filter(task => task.done == false);
+  }
 }
+
 

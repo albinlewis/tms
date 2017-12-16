@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskDataService } from '../../services/task-data-service';
 import { Task } from '../../models/task';
-import { isEmpty } from 'rxjs/operators/isEmpty';
 
 @Component({
   selector: 'notetracker',
@@ -13,11 +12,13 @@ export class NotetrackerComponent implements OnInit {
   notes: String[];
   tasktitle: String;
   show: Boolean;
+  activeTask: Task;
 
   constructor(private taskService: TaskDataService) { }
 
   ngOnInit() {
     this.taskService.activeTask.subscribe((activeTask: Task) => {
+      this.activeTask = activeTask;
       if (activeTask) {
         this.notes = activeTask.notes;
         this.show = true;
@@ -35,5 +36,12 @@ export class NotetrackerComponent implements OnInit {
       console.log(note);
       // Add Note to Database
     }
+  }
+
+  taskCompleted() {
+    var completedTask = this.activeTask;
+    completedTask.done = true;
+    this.taskService.updateTask(completedTask).subscribe(() => {});
+    this.show = false;
   }
 }

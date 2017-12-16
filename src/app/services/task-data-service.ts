@@ -66,15 +66,21 @@ export class TaskDataService {
 
             this.timerState.next(0);
             this.activeTask.next(newT_update);
-            this.taskApi.updateTaskById(oldT_update).subscribe((task) => { });
-            this.taskApi.updateTaskById(newT_update).subscribe((task) => { });
+            this.taskApi.updateTaskById(oldT_update).subscribe(() => { });
+            this.taskApi.updateTaskById(newT_update).subscribe(() => { });
         }
         else {
             let newT_update: Task = newTask;
             newT_update.active = true;
 
             this.activeTask.next(newTask);
-            this.taskApi.updateTaskById(newT_update).subscribe((task) => { });
+            this.taskApi.updateTaskById(newT_update).subscribe(() => { });
         }
+    }
+
+    addNote(activeTask: Task, note: String) {
+        var T_update = activeTask;
+        T_update.notes.push(note);
+        this.updateTask(T_update).subscribe(() => { });
     }
 }

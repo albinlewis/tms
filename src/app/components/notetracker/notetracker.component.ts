@@ -33,15 +33,14 @@ export class NotetrackerComponent implements OnInit {
 
   addNote(note) {
     if (note) {
-      console.log(note);
-      // Add Note to Database
+      this.taskService.addNote(this.activeTask, note);
     }
   }
 
   taskCompleted() {
     var completedTask = this.activeTask;
     completedTask.done = true;
-    this.taskService.updateTask(completedTask).subscribe(() => {});
+    this.taskService.updateTask(completedTask).subscribe(() => { });
     this.show = false;
   }
 }

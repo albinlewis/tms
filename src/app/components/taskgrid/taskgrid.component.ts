@@ -24,9 +24,9 @@ export class TaskgridComponent implements OnInit {
   }
 
   private toggleTracking(newTask) {
-    this.taskService.timerHelper(this.oldTask, newTask, 10);
-    this.oldTask = newTask;
     this.taskService.activeTask.next(newTask);
+    this.taskService.timerHelper(this.oldTask, newTask, this.taskService.timerState.getValue());
+    this.oldTask = newTask;
   }
 
   private findActiveTask() {

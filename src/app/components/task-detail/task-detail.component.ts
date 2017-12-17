@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../models/task';
 
 @Component({
@@ -13,10 +13,18 @@ export class TaskDetailComponent implements OnInit {
 
   @Input()
   task: Task;
+  panelOpenState: boolean;
+
+  @Output()
+  updateTask: EventEmitter<Task> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updatefullTask(task: Task) {
+    this.updateTask.emit(task);
   }
 
 }

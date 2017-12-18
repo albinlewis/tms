@@ -29,6 +29,10 @@ export class TimerComponent implements OnInit {
                 this.startTimer();
                 this.oldTask = activeTask;
             }
+            else{
+                this.taskService.timerState.next(this.ticks);
+                this.oldTask = null;
+            }
         });
     }
 

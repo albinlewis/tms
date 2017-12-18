@@ -39,7 +39,11 @@ export class NotetrackerComponent implements OnInit {
 
   taskCompleted() {
     var completedTask = this.activeTask;
-    completedTask.done = true;
+    completedTask.active = false;
+    completedTask.done = true; 
+    this.taskService.activeTask.next(null);
+    completedTask.time = this.taskService.timerState.getValue();
+
     this.taskService.updateTask(completedTask).subscribe(() => { });
     this.show = false;
   }

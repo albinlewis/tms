@@ -56,7 +56,7 @@ export class TaskDataService {
     // TODO - add more functions to handle data manipulation
     timerHelper(oldTask: Task, newTask: Task, timerState: Number) {
 
-        if (oldTask != null) {
+        if (oldTask) {
             let oldT_update: Task = oldTask;
             oldT_update.active = false;
             oldT_update.time = Number(timerState);

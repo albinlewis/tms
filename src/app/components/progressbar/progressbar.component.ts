@@ -8,10 +8,11 @@ import { Task } from '../../models/task';
   styleUrls: ['./progressbar.component.scss']
 })
 export class ProgressbarComponent implements OnInit {
+  @Input() tasks: Task[];
+
   value: Number;
 
   constructor(private taskService: TaskDataService) {
-    this.taskService.getTasks().subscribe((tasks) => { this.setProgress(tasks) })
   }
 
   ngOnInit() {
@@ -23,6 +24,6 @@ export class ProgressbarComponent implements OnInit {
       return task.done == true;
     });
 
-    this.value = donetasks.length * 100 / alltasks.length;
+    return donetasks.length * 100 / alltasks.length;
   }
 }

@@ -3,19 +3,19 @@
   <!-- Step 1 -->
   <mat-step stepControl="firstFormGroup">
     <ng-template matStepLabel>Management</ng-template>
-    <progressbar></progressbar>
+    <progressbar [tasks]="tasks"></progressbar>
     <menu></menu>
   </mat-step>
 
   <!-- Step 2 -->
   <mat-step stepControl="secondFormGroup">
     <ng-template matStepLabel>Tracking</ng-template>
-    <div *ngIf="tasks.length > 0">
-      <progressbar></progressbar>
+    <div *ngIf="filterDoneTasks(tasks).length > 0">
+      <progressbar [tasks]="tasks"></progressbar>
       <taskgrid [tasks]="tasks"></taskgrid>
       <notetracker id="taskNotes"></notetracker>
     </div>
-    <div *ngIf="tasks.length == 0" id="noTasksTemplate">
+    <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
       <h1 class="noTasksHeading">
         Bamboozled!
       </h1>
@@ -32,7 +32,7 @@
   <!-- Step 3 -->
   <mat-step stepControl="thirdFormGroup">
     <ng-template matStepLabel>Statistics</ng-template>
-    <div *ngIf="tasks.length == 0" id="noTasksTemplate">
+    <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
       <h1 class="noTasksHeading">
         Bamboozled!
       </h1>
@@ -44,7 +44,7 @@
       </p>
       <button mat-raised-button color="accent" matStepperPrevious class="noTasksButton">Take me there!</button>
     </div>
-    <div *ngIf="tasks.length > 0">
+    <div *ngIf="filterDoneTasks(tasks).length > 0">
       <h1 class="noTasksHeader">This feature will be implemented in an upcoming release, we promise!</h1>
     </div>
   </mat-step>

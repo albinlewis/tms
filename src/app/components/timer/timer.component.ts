@@ -25,7 +25,7 @@ export class TimerComponent implements OnInit {
             // Old Task is not the same as the new task -> reset timer, start timer and store activeTask
             if (activeTask !== this.oldTask && activeTask !== null) {
                 this.taskService.timerState.next(this.ticks);
-                this.reset();
+                this.ticks = activeTask.time.valueOf();
                 this.startTimer();
                 this.oldTask = activeTask;
             }

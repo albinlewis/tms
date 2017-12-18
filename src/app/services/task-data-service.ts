@@ -59,12 +59,12 @@ export class TaskDataService {
         if (oldTask != null) {
             let oldT_update: Task = oldTask;
             oldT_update.active = false;
-            oldT_update.time = Number(oldTask.time) + Number(timerState);
+            oldT_update.time = Number(timerState);
 
             let newT_update: Task = newTask;
             newT_update.active = true;
 
-            this.timerState.next(0);
+            this.timerState.next(newTask.time);
             this.activeTask.next(newT_update);
             this.taskApi.updateTaskById(oldT_update).subscribe(() => { });
             this.taskApi.updateTaskById(newT_update).subscribe(() => { });
@@ -73,6 +73,7 @@ export class TaskDataService {
             let newT_update: Task = newTask;
             newT_update.active = true;
 
+            this.timerState.next(newTask.time);
             this.activeTask.next(newTask);
             this.taskApi.updateTaskById(newT_update).subscribe(() => { });
         }

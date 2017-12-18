@@ -22,20 +22,12 @@ export class TimerComponent implements OnInit {
 
     ngOnInit() {
         this.taskService.activeTask.subscribe((activeTask: Task) => {
-            // Old Task is not the same as the new task -> reset timer, start timer and store activeTask
+            // OldTask unequal to the clicked Task 
             if (activeTask !== this.oldTask && activeTask !== null) {
                 this.taskService.timerState.next(this.ticks);
                 this.ticks = activeTask.time.valueOf();
                 this.startTimer();
                 this.oldTask = activeTask;
-            }
-            else if (this.oldTask === activeTask && activeTask !== null) {
-                // Old Task is the same as the new clicked task -> Keep Timer running
-                // Possible: Pause Timer or stop tracking
-            }
-            else {
-                // No activeTask (null) -> Timer 00:00:00 and not running
-                this.reset();
             }
         });
     }

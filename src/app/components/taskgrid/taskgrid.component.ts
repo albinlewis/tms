@@ -20,7 +20,12 @@ export class TaskgridComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.oldTask = this.findActiveTask();
+    var oldactivetask = this.findActiveTask();
+    
+    if(oldactivetask){
+    oldactivetask.active = false;
+    this.taskService.updateTask(oldactivetask).subscribe(() => {});
+    }
   }
 
   private toggleTracking(newTask) {

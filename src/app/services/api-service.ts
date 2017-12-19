@@ -33,7 +33,7 @@ export class ApiService {
      * returns a single task object for detail views
      * @param _id 
      */
-    public getTaskById(_id: String): Observable<Task> {
+    public getTaskById(_id: String){
         return this.http
             .get(API_URL + '/api/tasks/find/' + _id)
             .map(response => {

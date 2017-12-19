@@ -25,5 +25,9 @@ export class AppComponent implements OnInit {
     });
   }
 
+  private filterDoneTasks(tasklist) {
+    return this.tasks.filter(task => task.done == false);
+  }
+
   // ToDo: Event Handler (onAddTask, onDeleteTask, ...)
 }

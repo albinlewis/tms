@@ -16,14 +16,15 @@
       </mat-input-container>  
         <br> 
       <mat-input-container matTooltip="Can't be edited!" [matTooltipPosition]="position">
-          <input matInput disabled type="text"  placeholder="Created at:" value="{{task.createdAt | date}}">         
+          <input matInput disabled type="text"  placeholder="Created at:" value="{{task.createdAt | date: 'medium'}}">         
       </mat-input-container>  
       <mat-input-container matTooltip="Can't be edited!" [matTooltipPosition]="position">
-          <input matInput disabled  type="text"  placeholder="Updated at:" value="{{task.updatedAt | date}}">    
+          <input matInput disabled  type="text"  placeholder="Updated at:" value="{{task.updatedAt | date: 'medium'}}">    
       </mat-input-container>
       <br>
       <mat-input-container matTooltip="Can't be edited!" [matTooltipPosition]="position">
-          <input matInput disabled type="text"  placeholder="Status:" value="{{task.done}}">          
+          <input matInput disabled type="text"  placeholder="Status:" *ngIf="task.done === false" value="{{task.done}}">  
+          <input matInput disabled type="text"  placeholder="Status:" *ngIf="task.done === true" value="Done">        
       </mat-input-container>
         
       <br>

@@ -32,7 +32,7 @@
 
      <!-- <mat-grid-tile class="details" flex>   -->
         <div class="colTwo" *ngIf="selectedTask" >
-          <app-task-detail [task]="selectedTask" *ngIf="openCollapse === true " (updateTask)="onupdateTask($event) && openSnackbar()"></app-task-detail>
+          <app-task-detail [task]="selectedTask" *ngIf="openCollapse === true " (updateTask)="onupdateTask($event) "></app-task-detail>
         </div>
       </div>
     <!-- </mat-grid-tile> -->

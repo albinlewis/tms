@@ -61,6 +61,7 @@ export class TasksViewComponent implements OnInit {
     this.taskDataService.updateTask(task)
     .subscribe(t => {
       task = t;
+      //task.updatedAt = Date.now();
     });
   }
 

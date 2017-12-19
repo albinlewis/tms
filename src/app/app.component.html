@@ -1,5 +1,6 @@
-<mat-horizontal-stepper>
+<!--The content below is only a placeholder and can be replaced.-->
 
+<mat-horizontal-stepper> 
   <!-- Step 1 -->
   <mat-step stepControl="firstFormGroup">
     <ng-template matStepLabel>Management</ng-template>
@@ -32,21 +33,7 @@
   <!-- Step 3 -->
   <mat-step stepControl="thirdFormGroup">
     <ng-template matStepLabel>Statistics</ng-template>
-    <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <h1 class="noTasksHeading">
-        Bamboozled!
-      </h1>
-      <p class="noTasksMessage">
-        It looks like there are no Tasks on your ToDo-list.
-      </p>
-      <p class="noTasksMessage">
-        Make sure you are connected to the database, or create some Tasks on the previous frame!
-      </p>
-      <button mat-raised-button color="accent" matStepperPrevious class="noTasksButton">Take me there!</button>
-    </div>
-    <div *ngIf="filterDoneTasks(tasks).length > 0">
-      <h1 class="noTasksHeader">This feature will be implemented in an upcoming release, we promise!</h1>
-    </div>
-  </mat-step>
+      Test
+    </mat-step>
 
-</mat-horizontal-stepper>
+  </mat-horizontal-stepper>

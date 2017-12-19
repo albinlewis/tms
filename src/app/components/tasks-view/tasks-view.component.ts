@@ -1,4 +1,3 @@
-import { TaskDataService } from './../../services/task-data-service';
 import { Task } from './../../models/task';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
@@ -22,7 +21,11 @@ export class TasksViewComponent implements OnInit {
   constructor(private taskDataService: TaskDataService) {  }
   // , public snackBar: MatSnackBar
   ngOnInit() {
-    this.getTasks();
+    /*this.dataService.getAllTask()
+    .subscribe(t => {
+      console.log(t);
+      this.tasklist = t;
+    });*/
   }
 
   onselect(task: Task): void {
@@ -41,20 +44,24 @@ export class TasksViewComponent implements OnInit {
 
   onAddTask(task: Task) {
     console.log(task);
-    this.taskDataService.addTask(task)
-        .subscribe((t) => {
-          this.tasklist.push(t);
-        });
+
+    this.tasklist.push(task);
+    // this.dataService.addTask(task);
     this.task = new Task();
+   // this.tasklist.push(task);
+    /*this.dataService.addTask(task)
+      .subscribe((t) => {
+        this.tasklist.push(t);
+      });*/
   }
-  onDeleteTask(task: Task) {
+  onDeleteTask(task) {
     this.tasklist = this.tasklist.filter((t) => t.title !== task.title);
 
-    this.taskDataService.deleteTask(task._id)
-      .subscribe(t => {
-        this.tasklist = this.tasklist.filter(res => res._id !== task._id);
-      });
-
+    /*this.dataService.deleteTask(task)
+    .subscribe((res) => {
+      this.tasklist = this.tasklist
+        .filter((t) => t.id !== task.id);
+    });*/
   }
 
   onupdateTask(task: Task) {
@@ -66,10 +73,8 @@ export class TasksViewComponent implements OnInit {
   }
 
   getTasks() {
-    this.taskDataService.getTasks()
-      .subscribe(tasks => {
-        this.tasklist = tasks;
-      });
+    // this.dataService.getAllTasks();
+    // console.log();
   }
 
 }

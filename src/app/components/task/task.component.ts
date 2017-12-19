@@ -8,10 +8,13 @@ import { Task } from '../../models/task';
 })
 export class TaskComponent implements OnInit {
 
-  panelOpenState = false;
+  panelOpenState: boolean = false;
 
   @Input()
   task: Task;
+
+  @Output()
+  updateTask: EventEmitter<Task> = new EventEmitter();
 
   @Output()
   delete: EventEmitter<Task> = new EventEmitter();
@@ -24,6 +27,10 @@ export class TaskComponent implements OnInit {
 
   deleteTask(task: Task) {
     this.delete.emit(task);
+  }
+
+  updatefullTask(task: Task) {
+    this.updateTask.emit(task);
   }
 
 }

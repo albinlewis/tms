@@ -1,25 +1,19 @@
-<mat-card *ngIf="show">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<mat-card>
   <mat-card-header>
-    <mat-card-title>
-      <h1>{{tasktitle}}</h1>
-      <timer></timer>
-    </mat-card-title>
+    <mat-card-title><timer></timer></mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <h2>Task 1</h2>
     <div class="noteWindow">
-      <p *ngFor="let note of notes;">- {{note}}</p>
+      <p>- Note 1</p>
+      <p>- Note 2</p>
+      <p>- Note 3</p>
+      <p>- Note 4</p>
     </div>
-    <input #noteInput (keydown.enter)="addNote(noteInput.value); noteInput.value = '';" class="noteInput" type="text" placeholder="Type a note here">
+    <input class="noteInput" type="text" placeholder="Type a note here">
   </mat-card-content>
   <mat-card-actions>
-    <div class="buttons">
-      <button (click)="taskCompleted()" mat-raised-button color="primary">Done</button>
-    </div>
+    <!-- Here possible Action buttons at the buttom of the Card -->
   </mat-card-actions>
-</mat-card>
-
-<mat-card *ngIf="!show">
-  <div class="noSelect">
-    <h1>Start tracking by selecting a Task</h1>
-  </div>
 </mat-card>

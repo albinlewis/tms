@@ -40,6 +40,10 @@
 <!-- </mat-grid-list> -->
 
   
+  
+<div *ngIf="selectedTask" class="details">
+  <app-task-detail [task]="selectedTask" *ngIf="show" ></app-task-detail>
+</div>
 
   
 

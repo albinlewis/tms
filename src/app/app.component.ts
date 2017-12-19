@@ -12,9 +12,6 @@ export class AppComponent implements OnInit {
   title = 'Task Management System';
   tasks: Task[] = [];
 
-  selectedTask: Task;
-  openCollapse: boolean;
-
   constructor(private taskService: TaskDataService) {
 
   }
@@ -23,10 +20,6 @@ export class AppComponent implements OnInit {
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
     });
-  }
-
-  private filterDoneTasks(tasklist) {
-    return this.tasks.filter(task => task.done == false);
   }
 
   // ToDo: Event Handler (onAddTask, onDeleteTask, ...)

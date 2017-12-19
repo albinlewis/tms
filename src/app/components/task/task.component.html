@@ -1,0 +1,18 @@
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{task.title}}
+        </mat-panel-title>
+        <mat-panel-description >
+          {{task.description}}
+          
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <button (click)="deleteTask($event)">Delete</button>
+      <button (click)="updatefullTask($event)">test</button>
+      
+  </mat-expansion-panel>
+</mat-accordion>

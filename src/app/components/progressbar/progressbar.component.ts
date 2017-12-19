@@ -1,6 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { TaskDataService } from '../../services/task-data-service';
-import { Task } from '../../models/task';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'progressbar',
@@ -8,22 +6,14 @@ import { Task } from '../../models/task';
   styleUrls: ['./progressbar.component.scss']
 })
 export class ProgressbarComponent implements OnInit {
-  @Input() tasks: Task[];
 
   value: Number;
 
-  constructor(private taskService: TaskDataService) {
-  }
+  constructor() {
+    this.value = 50;
+   }
 
   ngOnInit() {
   }
 
-  setProgress(tasks: Task[]) {
-    var alltasks = tasks;
-    var donetasks = tasks.filter(function (task) {
-      return task.done == true;
-    });
-
-    return donetasks.length * 100 / alltasks.length;
-  }
 }

@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Task } from '../../models/task';
-import { TaskDataService } from '../../services/task-data-service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Observable} from 'rxjs/Rx';
+import { Task } from '../../models/task'
 
 @Component({
   selector: 'taskgrid',
@@ -9,43 +8,32 @@ import { TaskDataService } from '../../services/task-data-service';
   styleUrls: ['./taskgrid.component.scss']
 })
 export class TaskgridComponent implements OnInit {
-  @Input() tasks: Task[];
+  @Input()
+  tasks: Task[];
 
-  selected: boolean;
-  cols: number;
-  oldTask: Task = null;
+  @Output()
+  runtimer: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
-  constructor(private taskService: TaskDataService) {
+  cols: Number;
+  selected: Boolean = false;
+  
+  constructor() {
     this.cols = 2;
   }
 
   ngOnInit() {
-    var oldactivetask = this.findActiveTask();
-    
-    if(oldactivetask){
-    oldactivetask.active = false;
-    this.taskService.updateTask(oldactivetask).subscribe(() => {});
-    }
   }
 
-  private toggleTracking(newTask) {
-    this.taskService.activeTask.next(newTask);
-    this.taskService.timerHelper(this.oldTask, newTask, this.taskService.timerState.getValue());
-    this.oldTask = newTask;
-  }
-
-  private findActiveTask() {
-    for (var i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].active) {
-        return this.tasks[i];
-      }
-    }
-    return null;
-  }
-
-  private filterDoneTasks(tasklist) {
-    return this.tasks.filter(task => task.done == false);
+  toggleTracking() {
+    // var selectedTask = this.tasks.find(function (item) {
+    //   return item._id === id;
+    // });
+    // for(let i = 0; this.tasks.length > i; i++){
+    //   if(this.tasks[i] === selectedTask){continue;}
+    //   // this.tasks[i].active = false;
+    // }
+    // //selectedTask.active = !selectedTask.active;
+    this.selected = !this.selected;
+    this.runtimer.emit(this.selected);
   }
 }
-
-

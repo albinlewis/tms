@@ -13,28 +13,31 @@
         </mat-card-actions>
       </mat-card>
 </div>
+<br>
   
 
-  <mat-grid-list cols="2" class="container">
-    <mat-grid-tile class="tasklist" flex>
-        <div >
-            <div *ngFor="let task of tasklist" [class.selected]="task === selectedTask" >
+  <!-- <mat-grid-list cols="2" class="container"> -->
+    <!-- <mat-grid-tile class="tasklist" flex> -->
+      <div class="container">      
+        
+            <div class="colOne" *ngFor="let task of tasklist"  [class.selected]="task === selectedTask" >
                     
-              <task [task]= "task" (click)="openCollapse = true" (click)="onselect(task)"        
+              <task [task]= "task"  (click)="onselect(task)"        
                     (delete)="onDeleteTask(task)" >
               </task>              
             
             </div>
-          </div>
-    </mat-grid-tile>
+        
+    <!-- </mat-grid-tile> -->
 
-     <mat-grid-tile class="details" flex>  
-        <div *ngIf="selectedTask" >
-            <app-task-detail [task]="selectedTask" *ngIf="openCollapse == true " (updateTask)="onupdateTask($event)"></app-task-detail>
-          </div>
-    </mat-grid-tile>
+     <!-- <mat-grid-tile class="details" flex>   -->
+        <div class="colTwo" *ngIf="selectedTask" >
+          <app-task-detail [task]="selectedTask" *ngIf="openCollapse === true " (updateTask)="onupdateTask($event) && openSnackbar()"></app-task-detail>
+        </div>
+      </div>
+    <!-- </mat-grid-tile> -->
   
-</mat-grid-list>
+<!-- </mat-grid-list> -->
 
   
 

@@ -2,26 +2,32 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <h3>{{task.title}}</h3>
-        <mat-input-container>
-            <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title">         
-        </mat-input-container>
+        <h2>{{task.title}}</h2>        
       </mat-card-title>
       <mat-card-subtitle>
-
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>  
       <mat-input-container>
+          <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title">         
+      </mat-input-container>
+      <mat-input-container>
           <input matInput [(ngModel)]="task.description" type="text"  placeholder="Description">          
-      </mat-input-container>    
-          
-        <p>{{task.createdAt | date}}</p>
+      </mat-input-container>  
+        <br> 
+      <mat-input-container matTooltip="Can't be edited!" [matTooltipPosition]="position">
+          <input matInput disabled type="text"  placeholder="Created at:" value="{{task.createdAt | date}}">         
+      </mat-input-container>  
+      <mat-input-container matTooltip="Can't be edited!" [matTooltipPosition]="position">
+          <input matInput disabled  type="text"  placeholder="Updated at:" value="{{task.updatedAt | date}}">    
+      </mat-input-container>
+      <br>
+      <mat-input-container matTooltip="Can't be edited!" [matTooltipPosition]="position">
+          <input matInput disabled type="text"  placeholder="Status:" value="{{task.done}}">          
+      </mat-input-container>
         
-        <p>{{task.updatedAt}}</p>
-        <p>{{task.done}}</p>
-
-    <label>Presse Enter to update</label>
+      <br>
+      <label id="info">Press Enter to update</label>
     </mat-card-content>
     <mat-card-actions>
           

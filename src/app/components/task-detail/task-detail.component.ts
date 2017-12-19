@@ -10,6 +10,7 @@ export class TaskDetailComponent implements OnInit {
 
   today = Date.now();
   fixedTimezone = '2015-06-15T09:03:01+0900';
+  position = 'below';
 
   @Input()
   task: Task;

@@ -1,7 +1,7 @@
 import { TaskDataService } from './../../services/task-data-service';
 import { Task } from './../../models/task';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -11,26 +11,33 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 })
 export class TasksViewComponent implements OnInit {
 
-  @Input()
-  openCollapse: boolean;
+ 
 
   tasklist: Task[] = [];
   task: Task = new Task();
   selectedTask: Task;
-  // openCollapse: boolean = false;
+  openCollapse = false;
 
 
   constructor(private taskDataService: TaskDataService) {  }
-
+  // , public snackBar: MatSnackBar
   ngOnInit() {
     this.getTasks();
   }
 
-  onselect(task: Task, openCollapse: boolean): void {
+  onselect(task: Task): void {
     this.selectedTask = task;
-    openCollapse = true;
+    if (this.openCollapse === true) {
+      this.openCollapse = false;
+    }else {
+      this.openCollapse = true;
+    }
 
   }
+  // openSnackbar() {
+  //   this.snackBar.open('Task updated', '', {duration: 2000});
+  //   }
+
 
   onAddTask(task: Task) {
     console.log(task);

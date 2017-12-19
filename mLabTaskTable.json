@@ -1,0 +1,15 @@
+{
+    "Title": "title",
+    "ID": "_id",
+    "Time": "time",
+    "Done": "done",
+    "Active": "active",
+    "Visible": "visible",
+    "Updated": "updatedAt",
+    "Created": "createdAt",
+    "Interval": "interval.hasInterval",
+    "Length": "interval.value", 
+    "Unit": "interval.unit",
+    "Notes": "notes",
+    "Info": "description"
+}

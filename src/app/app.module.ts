@@ -17,6 +17,7 @@ import { TimerComponent } from './components/timer/timer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ApiService } from './services/api-service';
+import { TaskDataService } from './services/task-data-service';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ApiService } from './services/api-service';
     HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatExpansionModule,
     MatProgressBarModule,
     MatCardModule,
@@ -46,7 +48,7 @@ import { ApiService } from './services/api-service';
     MatButtonModule,
     MatStepperModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, TaskDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

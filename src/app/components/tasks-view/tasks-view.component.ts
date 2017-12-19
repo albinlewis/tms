@@ -1,6 +1,6 @@
+import { TaskDataService } from './../../services/task-data-service';
 import { Task } from './../../models/task';
-import { TaskComponent } from './../task/task.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 
 
@@ -11,59 +11,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksViewComponent implements OnInit {
 
+  @Input()
+  openCollapse: boolean;
 
   tasklist: Task[] = [];
   task: Task = new Task();
   selectedTask: Task;
+  // openCollapse: boolean = false;
 
-  constructor( ) { }
+
+  constructor(private taskDataService: TaskDataService) {  }
 
   ngOnInit() {
-    /*this.dataService.getAllTask()
-    .subscribe(t => {
-      console.log(t);
-      this.tasklist = t;
-    });*/
+    this.getTasks();
   }
 
-  onselect(task: Task): void {
+  onselect(task: Task, openCollapse: boolean): void {
     this.selectedTask = task;
+    openCollapse = true;
+
   }
 
   onAddTask(task: Task) {
     console.log(task);
-
-    this.tasklist.push(task);
-    // this.dataService.addTask(task);
+    this.taskDataService.addTask(task)
+        .subscribe((t) => {
+          this.tasklist.push(t);
+        });
     this.task = new Task();
-   // this.tasklist.push(task);
-    /*this.dataService.addTask(task)
-      .subscribe((t) => {
-        this.tasklist.push(t);
-      });*/
   }
-  onDeleteTask(task) {
+  onDeleteTask(task: Task) {
     this.tasklist = this.tasklist.filter((t) => t.title !== task.title);
 
-    /*this.dataService.deleteTask(task)
-    .subscribe((res) => {
-      this.tasklist = this.tasklist
-        .filter((t) => t.id !== task.id);
-    });*/
+    this.taskDataService.deleteTask(task._id)
+      .subscribe(t => {
+        this.tasklist = this.tasklist.filter(res => res._id !== task._id);
+      });
+
   }
 
-  onupdateTask(task) {
-
-
-    /*this.dataService.updateTaskById(task)
-    .subscribe(newtask => {
-      task = newtask;
-    });*/
+  onupdateTask(task: Task) {
+    this.taskDataService.updateTask(task)
+    .subscribe(t => {
+      task = t;
+    });
   }
 
   getTasks() {
-    // this.dataService.getAllTasks();
-    // console.log();
+    this.taskDataService.getTasks()
+      .subscribe(tasks => {
+        this.tasklist = tasks;
+      });
   }
 
 }

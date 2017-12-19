@@ -1,7 +1,6 @@
 
-<mat-accordion>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                      (closed)="panelOpenState = false">
+<mat-accordion >
+  <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{task.title}}
@@ -11,8 +10,7 @@
           
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <button (click)="deleteTask($event)">Delete</button>
-      <button (click)="updatefullTask($event)">test</button>
+      <button mat-raised-button (click)="deleteTask($event)">Delete</button>
       
   </mat-expansion-panel>
 </mat-accordion>

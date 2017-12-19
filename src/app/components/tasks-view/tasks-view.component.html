@@ -1,42 +1,32 @@
 
-  <div class="create">
-    <mat-card>
-        <mat-input-container>
-          <input type="text" matInput [(ngModel)]="task.title" placeholder="Title">
+
+<mat-card>
+  <mat-input-container>
+    Task Name : <input type="text" matInput [(ngModel)]="task.title" >
+  </mat-input-container>
+  <mat-input-container>
+      Description : <input type="text" matInput [(ngModel)]="task.description" >
+    </mat-input-container>
+  <mat-card-actions>
+      <button mat-button (click)="onAddTask(task)">add</button>
+      
+  </mat-card-actions>
+</mat-card>
+
+<div class="tasklist">
+  <div *ngFor="let task of tasklist" [class.selected]="task === selectedTask" >
           
-        </mat-input-container>
-        <mat-input-container>
-            <input type="text" matInput [(ngModel)]="task.description" placeholder="Description">
-          </mat-input-container>
-        <mat-card-actions>
-            <button mat-raised-button (click)="onAddTask(task)">add</button>              
-        </mat-card-actions>
-      </mat-card>
+    <task [task]= "task" (click)="show=!show" (click)="onselect(task)"        
+          (delete)="onDeleteTask(task)">
+    </task>              
+  
+  </div>
 </div>
   
-
-  <mat-grid-list cols="2" class="container">
-    <mat-grid-tile class="tasklist" flex>
-        <div >
-            <div *ngFor="let task of tasklist" [class.selected]="task === selectedTask" >
-                    
-              <task [task]= "task" (click)="openCollapse = true" (click)="onselect(task)"        
-                    (delete)="onDeleteTask(task)" >
-              </task>              
-            
-            </div>
-          </div>
-    </mat-grid-tile>
-
-     <mat-grid-tile class="details" flex>  
-        <div *ngIf="selectedTask" >
-            <app-task-detail [task]="selectedTask" *ngIf="openCollapse == true " (updateTask)="onupdateTask($event)"></app-task-detail>
-          </div>
-    </mat-grid-tile>
   
-</mat-grid-list>
-
-  
+<div *ngIf="selectedTask" class="details">
+  <app-task-detail [task]="selectedTask" *ngIf="show" ></app-task-detail>
+</div>
 
   
 

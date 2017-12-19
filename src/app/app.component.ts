@@ -12,9 +12,6 @@ export class AppComponent implements OnInit {
   title = 'Task Management System';
   tasks: Task[] = [];
 
-  selectedTask: Task;
-  openCollapse: boolean;
-
   constructor(private taskService: TaskDataService) {
 
   }

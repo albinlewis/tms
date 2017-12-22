@@ -4,12 +4,12 @@ const jsonParser = bodyParser.json()
 module.exports = function (server) {
 
     const task = require('./task');
-    const prfx = '/api/tasks';
+    const prefix = '/api/tasks';
 
-    server.post(prfx + '/create', jsonParser, task.create);
-    server.get(prfx + '/find/all', task.findAll);
-    server.get(prfx + '/find/:id', task.findId);
-    server.put(prfx + '/update/:id', jsonParser, task.update);
-    server.delete(prfx + '/delete/:id', task.delete);
+    server.post(prefix + '/create', jsonParser, task.create);
+    server.get(prefix + '/find/all', task.findAll);
+    server.get(prefix + '/find/:id', task.findId);
+    server.put(prefix + '/update/:id', jsonParser, task.update);
+    server.delete(prefix + '/delete/:id', task.delete);
 
 }

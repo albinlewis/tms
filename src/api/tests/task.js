@@ -14,8 +14,8 @@ describe('Task', () => {
             let newTask = {
                 title: "Creation Test",
                 interval: {
-                    hasInterval: true, 
-                    value: 24, 
+                    hasInterval: true,
+                    value: 24,
                     unit: "hour"
                 }
             };
@@ -49,7 +49,7 @@ describe('Task', () => {
                     id = res.body._id;
                 });
             let fail = {
-                time: 100, 
+                time: 100,
                 done: true
             };
             chai.request(server)

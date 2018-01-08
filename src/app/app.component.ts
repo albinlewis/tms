@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private filterDoneTasks(tasklist) {
+  public filterDoneTasks(tasklist) {
     return this.tasks.filter(task => task.done == false);
   }
 

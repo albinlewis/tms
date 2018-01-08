@@ -15,10 +15,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ApiService } from './services/api-service';
 import { TaskDataService } from './services/task-data-service';
+import { AddtaskComponent } from './components/addtask/addtask.component';
+import { TaskDetailPipe } from './components/task-detail/task-detail.pipe';
 
 
 @NgModule({
   declarations: [
+    AddtaskComponent,
     AppComponent,
     ProgressbarComponent,
     TaskgridComponent,
@@ -26,6 +29,7 @@ import { TaskDataService } from './services/task-data-service';
     TimerComponent,
     TasksViewComponent,
     TaskDetailComponent,
+    TaskDetailPipe,
     TaskComponent,
     TimerComponent
   ],

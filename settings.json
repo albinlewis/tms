@@ -7,7 +7,7 @@
         "height": 800
     },
     "user": {
-        "name": null,
+        "name": "Jem_Lab",
         "mLab": null
     },
     "testDB": "mongodb://fwe_tms_test:fwe_tms_test@ds157500.mlab.com:57500/fwe_tms_test"

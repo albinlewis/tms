@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   openCollapse: boolean;
 
   constructor(private taskService: TaskDataService) {
-
   }
 
   public ngOnInit() {

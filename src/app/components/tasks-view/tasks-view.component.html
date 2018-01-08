@@ -1,45 +1,51 @@
+<div class="create">
+  <mat-card>
+    <mat-input-container>
+      <input type="text" matInput [(ngModel)]="task.title" placeholder="Title">
 
-  <div class="create">
-    <mat-card>
-        <mat-input-container>
-          <input type="text" matInput [(ngModel)]="task.title" placeholder="Title">
-          
-        </mat-input-container>
-        <mat-input-container>
-            <input type="text" matInput [(ngModel)]="task.description" placeholder="Description">
-          </mat-input-container>
-        <mat-card-actions>
-            <button mat-raised-button (click)="onAddTask(task)">add</button>              
-        </mat-card-actions>
-      </mat-card>
+    </mat-input-container>
+    <mat-input-container>
+      <input type="text" matInput [(ngModel)]="task.description" placeholder="Description">
+    </mat-input-container>
+    <mat-card-actions>
+      <button mat-raised-button (click)="onAddTask(task)">add</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 <br>
-  
 
-  <!-- <mat-grid-list cols="2" class="container"> -->
-    <!-- <mat-grid-tile class="tasklist" flex> -->
-      <div class="container">      
-        
-            <div class="colOne" *ngFor="let task of tasklist"  [class.selected]="task === selectedTask" >
+
+<!-- <mat-grid-list cols="2" class="container"> -->
+<!-- <mat-grid-tile class="tasklist" flex> -->
+<div class="container">
+
+  <!-- <div class="colOne" *ngFor="let task of tasks"  [class.selected]="task === selectedTask" >
                     
-              <task [task]= "task"  (click)="onselect(task)"        
-                    (delete)="onDeleteTask(task)" >
-              </task>              
+              <task [task]= "task"  (click)="onselect(task)" (delete)="onDeleteTask(task)" ></task>              
             
-            </div>
-        
-    <!-- </mat-grid-tile> -->
+            </div> -->
 
-     <!-- <mat-grid-tile class="details" flex>   -->
-        <div class="colTwo" *ngIf="selectedTask" >
-          <app-task-detail [task]="selectedTask" *ngIf="openCollapse === true " (updateTask)="onupdateTask($event) "></app-task-detail>
-        </div>
-      </div>
-    <!-- </mat-grid-tile> -->
-  
+  <mat-accordion class="colOne">
+    <mat-expansion-panel *ngFor="let task of tasks">
+      <mat-expansion-panel-header (click)="onselect(task)">
+        <mat-panel-title>
+          {{task.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{task.description}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- </mat-grid-tile> -->
+
+  <!-- <mat-grid-tile class="details" flex>   -->
+  <div class="colTwo" *ngIf="selectedTask">
+    <app-task-detail [task]="selectedTask" *ngIf="openCollapse === true " (updateTask)="onupdateTask($event) "></app-task-detail>
+  </div>
+</div>
+<!-- </mat-grid-tile> -->
+
 <!-- </mat-grid-list> -->
-
-  
-
-  
-

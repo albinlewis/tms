@@ -4,7 +4,7 @@
   <mat-step stepControl="firstFormGroup">
     <ng-template matStepLabel>Management</ng-template>
     <progressbar [tasks]="tasks"></progressbar>
-    <app-tasks-view></app-tasks-view>
+    <app-tasks-view [tasks]="tasks"></app-tasks-view>
   </mat-step>
 
   <!-- Step 2 -->

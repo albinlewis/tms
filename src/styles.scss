@@ -7,7 +7,7 @@ $accent:  mat-palette($mat-lime, 500, A200, A400);
 $warn:    mat-palette($mat-red, 500);
 
 $tms-theme-primary: mat-palette($tms-bordeaux, 400, 100);
-$tms-theme-accent: mat-palette($mat-red, 100, 50);
+$tms-theme-accent: mat-palette($tms-bordeaux, 200, 100);
 $tms-theme-warn: mat-palette($mat-red);
 
 $theme: mat-light-theme($primary, $accent, $warn);
@@ -16,7 +16,8 @@ $tms-theme: mat-light-theme($tms-theme-primary, $tms-theme-accent, $tms-theme-wa
 @include angular-material-theme($tms-theme);
 
 body {
-    background-image: url("https://cdn-media-1.lifehack.org/wp-content/files/2015/06/productivity-hacks.jpg");
+    background-image: url("https://wallpaperscraft.com/image/room_office_desk_chair_shelves_39161_1920x1080.jpg");
+    background-size: cover;
     font-family: $mat-font-family;
     font-weight: normal;
 }
@@ -40,4 +41,36 @@ h1, h2, h3, h4 {
 }
 .noTasksButton {
     font-family: 'Lato', sans-serif;
+}
+
+#trackedTimeFooter{
+    background-color: mat-color($tms-theme-primary);
+}
+
+.default-tile:hover{
+    box-shadow: 0 4px 8px 0 mat-color($tms-theme-primary), 0 6px 20px 0 black;
+}
+
+.taskTitleWrapper{
+    padding-bottom: 2.5em;
+}
+
+#taskTimeWrapper{
+    text-align: center;
+    width: 100%;
+    border-radius: 1em;
+}
+
+.default-tile{
+    background-color: mat-color($tms-theme-accent);
+    color: white;
+    // border-style: solid;
+    // border-radius: 0.5em;
+    // border-width: 1px;
+    // border-color: mat-color($tms-theme-primary);
+    border-radius: 1em;
+}
+
+.selected{
+    background-color: mat-color($tms-theme-primary);
 }

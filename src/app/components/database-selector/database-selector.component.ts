@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef } from '@angular/material';
-import * as settings from '../../../../settings.json';
 
 @Component({
   selector: 'database-selector',
@@ -9,10 +8,7 @@ import * as settings from '../../../../settings.json';
 })
 export class DatabaseSelectorComponent {
 
-  constructor(public dialog: MatDialog) { 
-    this.username = (<any>settings).user.name;
-    this.dbtoken =  (<any>settings).user.mlab;
-  }
+  constructor(public dialog: MatDialog) { }
 
   dbtoken: string;
   username: string;

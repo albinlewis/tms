@@ -21,10 +21,10 @@ export class TaskgridComponent implements OnInit {
 
   ngOnInit() {
     var oldactivetask = this.findActiveTask();
-    
-    if(oldactivetask){
-    oldactivetask.active = false;
-    this.taskService.updateTask(oldactivetask).subscribe(() => {});
+
+    if (oldactivetask) {
+      oldactivetask.active = false;
+      this.taskService.updateTask(oldactivetask).subscribe(() => { });
     }
   }
 
@@ -45,6 +45,35 @@ export class TaskgridComponent implements OnInit {
 
   public filterDoneTasks(tasklist) {
     return this.tasks.filter(task => task.done == false);
+  }
+
+  private formatTime(time) {
+    var seconds = this.pad(time % 60);
+    var minutes = this.pad((Math.floor(time / 60)) % 60);
+    var hours = this.pad(Math.floor((time / 60) / 60));
+    var paddedtime = "";
+
+    if (hours != "00") {
+      paddedtime = hours + "h " + minutes + "m " + seconds + "s";
+    }
+
+    if (hours == "00" && minutes != "00") {
+      paddedtime = minutes + "m " + seconds + "s";
+    }
+
+    if (minutes == "00" && seconds != "00") {
+      paddedtime = seconds + "s";
+    }
+
+    if (hours == "00" && minutes == "00" && seconds == "00") {
+      paddedtime = "No time";
+    }
+
+    return paddedtime;
+  }
+
+  private pad(digit: any) {
+    return digit <= 9 ? '0' + digit : digit;
   }
 }
 

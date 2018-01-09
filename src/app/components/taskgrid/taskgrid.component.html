@@ -1,6 +1,6 @@
 <mat-grid-list [cols]="cols" gutterSize="2em" rowHeight="8em">
   <mat-grid-tile *ngFor="let task of filterDoneTasks(tasks);" (click)="toggleTracking(task)" class="default-tile" [ngClass]="{'default-tile':true, 'selected':task.active}">
      <div class="taskTitleWrapper">{{task.title}}</div>
-      <mat-grid-tile-footer id="trackedTimeFooter"><span id="taskTimeWrapper">Currently {{task.time > 0 ? (task.time/60).toFixed(2)+ " minutes" : "no time"}} spent on this task</span></mat-grid-tile-footer>
+      <mat-grid-tile-footer id="trackedTimeFooter"><span id="taskTimeWrapper">{{task.active ? "Currently tracking" : formatTime(task.time) + ' spent on this task'}}</span></mat-grid-tile-footer>
   </mat-grid-tile>
 </mat-grid-list>

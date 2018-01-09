@@ -248,3 +248,91 @@ This route is used to delete Task objects from the database.
     ```javascript
     //TODO insert sample call here
     ```
+
+# Mail-API
+
+**Send a Mail**
+----
+This route is used to send a mail via smtp.
+
+*   **URL**
+
+    /api/mails/send
+
+*   **Method:**
+
+    `POST`
+  
+*   **URL Params**
+
+    *   **Required:**
+ 
+        None
+
+*   **Data Params**
+
+    *   **Required:**
+        
+        `mailReceiver, mailSubject and mailContent`
+
+        ```json
+        {
+            "mailReceiver": "YOURMAILADDRESS@PROVIDER", 
+            "mailSubject": "Test",
+            "mailContent": "<p>Test <b style=\"color: green;\">successful</b> if you can read this in your mail app.</p>"
+        }
+        ```
+
+    *   **Optional:**
+
+        `cclist`: list of cc addresses delimited by `,` (no spaces)
+
+*   **Success Response:**
+
+    *   **Code:** 200 <br>
+        **Content:** 
+        
+        ```json
+        {
+            "status": "success",
+            "mail": {
+                "from": "mailservice.tms@gmail.com",
+                "to": "YOURMAILADDRESS@PROVIDER",
+                "subject": "Test",
+                "html": "<p>Test <b style=\"color: green;\">successful</b> if you can read this in your mail app.</p>"
+            }
+        }
+        ```
+ 
+*   **Error Response:**
+
+    *   **Code:** 400 <br>
+        **Content:** 
+        ```json
+        {
+            "status": "failure",
+            "mail": {
+                "from": "mailservice.tms@gmail.com",
+                "to": "YOURMAILADDRESS@PROVIDER",
+                "subject": "Test",
+                "html": "<p>Test <b style=\"color: green;\">successful</b> if you can read this in your mail app.</p>",
+                "cc": "CCMAIL1,CCMAIL2"
+            }
+        }
+        ```
+
+    OR
+
+    *   **Code:** 400 <br>
+        **Content:**
+        ```json
+        {
+            "status": "invalid request syntax"
+        }
+        ```
+
+*   **Sample Call:**
+
+    ```javascript
+    //TODO insert sample call here
+    ```

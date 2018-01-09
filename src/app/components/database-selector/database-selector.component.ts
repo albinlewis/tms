@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef } from '@angular/material';
-var settings = require("../../../../settings.json")
 
 @Component({
   selector: 'database-selector',
@@ -10,8 +9,8 @@ var settings = require("../../../../settings.json")
 export class DatabaseSelectorComponent {
 
   constructor(public dialog: MatDialog) { 
-    this.dbtoken = settings.user.mlab;
-    this.username  = settings.user.name;
+    this.dbtoken = null;
+    this.username  = null;
   }
 
   dbtoken: string;

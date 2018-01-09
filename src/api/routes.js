@@ -12,4 +12,7 @@ module.exports = function (server) {
     server.put(prefix + '/update/:id', jsonParser, task.update);
     server.delete(prefix + '/delete/:id', task.delete);
 
+    const mail = require('./mail');
+    server.post('/api/mails/send', jsonParser, mail.sendMail);
+
 }

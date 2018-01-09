@@ -1,15 +1,18 @@
-<h1 mat-dialog-title>Database Information</h1>
+<h1 mat-dialog-title>Settings</h1>
 <div mat-dialog-content>
-  <p>Do you want to change your Database Information?</p>
-    <mat-form-field>
-      <input matInput tabindex="1" [(ngModel)]="data.dbtoken" placeholder="Database Token">
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <input matInput tabindex="2" [(ngModel)]="data.username" placeholder="Database Username">
-     </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.dbtoken" placeholder="Database Token">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.username" placeholder="Username">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.email" placeholder="E-mail Address">
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="{'dbtoken': data.dbtoken, 'username':data.username}" cdkFocusInitial>Apply</button>
+  <button mat-button [mat-dialog-close]="{'dbtoken': data.dbtoken, 'username':data.username, 'email':data.email}" cdkFocusInitial>Apply</button>
   <button mat-button (click)="onNoClick()">Cancel</button>
 </div>

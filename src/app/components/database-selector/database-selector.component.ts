@@ -12,18 +12,20 @@ export class DatabaseSelectorComponent {
 
   dbtoken: string;
   username: string;
+  email: string;
 
   openDialog(): void {
     let dialogRef = this.dialog.open(DatabaseDialog, {
-      height: '320px',
-      width: '500px',
-      data: { dbtoken: this.dbtoken, username: this.username }
+      height: '340px',
+      width: '520px',
+      data: { dbtoken: this.dbtoken, username: this.username, email: this.email }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dbtoken = result.dbtoken;
         this.username = result.username;
+        this.email = result.email;
       }
     });
   }

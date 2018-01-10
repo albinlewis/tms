@@ -34,7 +34,7 @@
       <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length > 0">
-      <task-export [tasks]="tasks"></task-export>
+      <task-export class="export" [tasks]="tasks"></task-export>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

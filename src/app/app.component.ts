@@ -1,6 +1,7 @@
 import { OnInit, Component } from '@angular/core';
 import { TaskDataService } from './services/task-data-service';
 import { Task } from './models/task';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   selectedTask: Task;
   openCollapse: boolean;
 
-  constructor(private taskService: TaskDataService) {
+  constructor(private taskService: TaskDataService, private http: HttpClient) {
   }
 
   public ngOnInit() {

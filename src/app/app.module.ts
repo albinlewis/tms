@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule } from '@angular/material';
+import { MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule, MatOptionModule } from '@angular/material';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 import { NotetrackerComponent } from './components/notetracker/notetracker.component';
@@ -19,6 +19,7 @@ import { TaskDetailPipe } from './components/task-detail/task-detail.pipe';
 import { DatabaseSelectorComponent, DatabaseDialog } from './components/database-selector/database-selector.component';
 import { NoTaskComponent } from './components/notasks/notasks.component';
 import { TaskExportComponent } from './components/export/export.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TaskExportComponent } from './components/export/export.component';
   imports: [
     FormsModule,
     HttpModule,
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -52,7 +54,9 @@ import { TaskExportComponent } from './components/export/export.component';
     MatButtonModule,
     MatStepperModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule, 
+    MatOptionModule, 
+    MatSelectModule
   ],
   entryComponents: [DatabaseSelectorComponent, DatabaseDialog],
   providers: [ApiService, TaskDataService],

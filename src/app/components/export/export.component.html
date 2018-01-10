@@ -1,1 +1,45 @@
-<h1>Under Construction ... </h1>
+<div class="exportGrid">
+    <div class="mailWrapper">
+        <h1>
+            E-Mail Export
+        </h1>
+        <p>
+            You can have your ToDo-List (open tasks), your Timetracking (all things that you worked on, listed with the time spent),
+            or a Daily-Standup Journal (a summary of everything you took notes on while working on tasks) to your e-mail
+            address by chosing an option and clicking the send button.
+        </p>
+        <mat-form-field>
+            <mat-select placeholder="Content to be sent">
+                <mat-option *ngFor="let option of mailOptions" [value]="option.content">
+                    {{ option.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-button class="sendMailButton" (click)="processDataAndSendMail()">Send E-Mail</button>
+    </div>
+    <div class="downloadWrapper">
+        <h1>
+            Download
+        </h1>
+        <p>
+            You can have your ToDo-List (open tasks), your Timetracking (all things that you worked on, listed with the time spent),
+            or a Daily-Standup Journal (a summary of everything you took notes on while working on tasks) to your e-mail
+            address by chosing an option and clicking the send button.
+        </p>
+        <mat-form-field>
+            <mat-select placeholder="Content to download">
+                <mat-option *ngFor="let option of downloadOptions" [value]="option.content">
+                    {{ option.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+                <mat-select placeholder="Download format">
+                    <mat-option *ngFor="let option of formatOptions" [value]="option.content">
+                        {{ option.title }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        <button mat-button class="downloadButton" (click)="processDataAndDownload()">Download</button>
+    </div>
+</div>

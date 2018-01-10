@@ -1,4 +1,3 @@
-import { TaskComponent } from './components/task/task.component';
 import { Task } from './models/task';
 import { TasksViewComponent } from './components/tasks-view/tasks-view.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
@@ -18,7 +17,8 @@ import { TaskDataService } from './services/task-data-service';
 import { AddtaskComponent } from './components/addtask/addtask.component';
 import { TaskDetailPipe } from './components/task-detail/task-detail.pipe';
 import { DatabaseSelectorComponent, DatabaseDialog } from './components/database-selector/database-selector.component';
-
+import { NoTaskComponent } from './components/notasks/notasks.component';
+import { TaskExportComponent } from './components/export/export.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +31,11 @@ import { DatabaseSelectorComponent, DatabaseDialog } from './components/database
     TasksViewComponent,
     TaskDetailComponent,
     TaskDetailPipe,
-    TaskComponent,
     TimerComponent,
     DatabaseSelectorComponent,
-    DatabaseDialog
+    DatabaseDialog, 
+    NoTaskComponent, 
+    TaskExportComponent
   ],
   imports: [
     FormsModule,

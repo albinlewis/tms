@@ -1,12 +1,10 @@
 <mat-horizontal-stepper>
-
   <!-- Step 1 -->
   <mat-step stepControl="firstFormGroup">
     <ng-template matStepLabel>Management</ng-template>
     <progressbar [tasks]="tasks"></progressbar>
     <app-tasks-view [tasks]="tasks"></app-tasks-view>
   </mat-step>
-
   <!-- Step 2 -->
   <mat-step stepControl="secondFormGroup">
     <ng-template matStepLabel>Tracking</ng-template>
@@ -16,55 +14,27 @@
       <notetracker id="taskNotes"></notetracker>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <h1 class="noTasksHeading">
-        Bamboozled!
-      </h1>
-      <p class="noTasksMessage">
-        It looks like there are no Tasks on your ToDo-list.
-      </p>
-      <p class="noTasksMessage">
-        Make sure you are connected to the database, or create some Tasks on the previous frame!
-      </p>
-      <button mat-raised-button color="accent" matStepperPrevious class="noTasksButton">Take me there!</button>
+      <no-tasks></no-tasks>
     </div>
   </mat-step>
-
   <!-- Step 3 -->
   <mat-step stepControl="thirdFormGroup">
     <ng-template matStepLabel>Statistics</ng-template>
     <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <h1 class="noTasksHeading">
-        Bamboozled!
-      </h1>
-      <p class="noTasksMessage">
-        It looks like there are no Tasks on your ToDo-list.
-      </p>
-      <p class="noTasksMessage">
-        Make sure you are connected to the database, or create some Tasks on the previous frame!
-      </p>
-      <button mat-raised-button color="accent" matStepperPrevious class="noTasksButton">Take me there!</button>
+      <no-tasks></no-tasks>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length > 0">
-      <h1 class="noTasksHeader">This feature will be implemented in an upcoming release, we promise!</h1>
+      <h1 class="noTasksHeader">Statistics Component goes here</h1>
     </div>
   </mat-step>
-
+  <!-- step 4 -->
   <mat-step stepControl="fourthFormGroup">
     <ng-template matStepLabel>Export</ng-template>
     <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <h1 class="noTasksHeading">
-        Bamboozled!
-      </h1>
-      <p class="noTasksMessage">
-        It looks like there are no Tasks on your ToDo-list.
-      </p>
-      <p class="noTasksMessage">
-        Make sure you are connected to the database, or create some Tasks on the previous frame!
-      </p>
-      <button mat-raised-button color="accent" matStepperPrevious class="noTasksButton">Take me there!</button>
+      <no-tasks></no-tasks>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length > 0">
-      <h1 class="noTasksHeader">Export</h1>
+      <task-export [tasks]="tasks"></task-export>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

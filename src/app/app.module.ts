@@ -36,8 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
     DatabaseSelectorComponent,
     DatabaseDialog, 
     NoTaskComponent, 
-    TaskExportComponent,
-    MatSlideToggleModule
+    TaskExportComponent
   ],
   imports: [
     FormsModule,
@@ -57,7 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     MatIconModule, 
     MatOptionModule, 
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule
   ],
   entryComponents: [DatabaseSelectorComponent, DatabaseDialog],
   providers: [ApiService, TaskDataService],

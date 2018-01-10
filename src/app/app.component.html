@@ -1,4 +1,4 @@
-<mat-horizontal-stepper>
+<mat-horizontal-stepper #stepper>
   <!-- Step 1 -->
   <mat-step stepControl="firstFormGroup">
     <ng-template matStepLabel>Management</ng-template>
@@ -14,14 +14,14 @@
       <notetracker id="taskNotes"></notetracker>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <no-tasks></no-tasks>
+      <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
   </mat-step>
   <!-- Step 3 -->
   <mat-step stepControl="thirdFormGroup">
     <ng-template matStepLabel>Statistics</ng-template>
     <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <no-tasks></no-tasks>
+      <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length > 0">
       <h1 class="noTasksHeader">Statistics Component goes here</h1>
@@ -31,7 +31,7 @@
   <mat-step stepControl="fourthFormGroup">
     <ng-template matStepLabel>Export</ng-template>
     <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
-      <no-tasks></no-tasks>
+      <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length > 0">
       <task-export [tasks]="tasks"></task-export>

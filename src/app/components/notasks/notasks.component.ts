@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Task } from '../../models/task';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'no-tasks',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NoTaskComponent implements OnInit {
 
+    @Input()
+    stepper;
+    
+    @Input()
+    tasks: Task[];
+
     constructor() { }
 
     ngOnInit() { }
+
+    public goToFirstFrame(){
+        this.stepper.selectedIndex = 0;
+    }
 
 }

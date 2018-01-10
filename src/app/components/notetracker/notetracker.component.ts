@@ -10,6 +10,7 @@ import { Task } from '../../models/task';
 export class NotetrackerComponent implements OnInit {
 
   notes: String[];
+  editedNotes: String[];
   tasktitle: String;
   show: Boolean;
   activeTask: Task;
@@ -37,14 +38,33 @@ export class NotetrackerComponent implements OnInit {
     }
   }
 
+  saveEditedNotes(checked, editedNotes) {
+    if (checked) {
+
+      for (let note of editedNotes) {
+        if (note == "") {
+          editedNotes.splice(editedNotes.indexOf(note), 1);
+        }
+      }
+
+      var toEditTask = this.activeTask;
+      toEditTask.notes = editedNotes;
+      this.taskService.updateTask(toEditTask).subscribe(() => { });
+    }
+  }
+
   taskCompleted() {
     var completedTask = this.activeTask;
     completedTask.active = false;
-    completedTask.done = true; 
+    completedTask.done = true;
     this.taskService.activeTask.next(null);
     completedTask.time = this.taskService.timerState.getValue();
 
     this.taskService.updateTask(completedTask).subscribe(() => { });
     this.show = false;
   }
+
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 }

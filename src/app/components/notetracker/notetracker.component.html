@@ -1,21 +1,25 @@
 <mat-card *ngIf="show">
   <mat-card-header>
     <mat-card-title>
-      <h1>{{tasktitle}}</h1>
+      <h1 id="taskTitle">{{tasktitle}}</h1>
+      <div class="buttons">
+          <button (click)="taskCompleted()" mat-raised-button color="primary">Complete Task</button>
+      </div>
       <timer></timer>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="noteWindow">
-      <p *ngFor="let note of notes;">- {{note}}</p>
+    <ul *ngIf="!edit.checked" class="noteWindow">
+      <li *ngFor="let note of notes;">{{note}}</li>
+    </ul>
+    <ul *ngIf="edit.checked" class="noteWindow" #notesOnEdit>
+      <li *ngFor="let note of notes; let i = index; trackBy:trackByFn"><input class="editNote" value="{{note}}" [(ngModel)]="notes[i]" type="text"></li>
+    </ul>
+    <div id="inputWrapper">
+      <input #noteInput (keydown.enter)="addNote(noteInput.value); noteInput.value = '';" class="noteInput" type="text" placeholder="Type what is on your mind and press Enter to add Note">
+      <mat-slide-toggle (change)="saveEditedNotes(!edit.checked, notes);" #edit><label>{{!edit.checked ? "Edit Notes" : "Save Editing"}}</label></mat-slide-toggle>
     </div>
-    <input #noteInput (keydown.enter)="addNote(noteInput.value); noteInput.value = '';" class="noteInput" type="text" placeholder="Type a note here">
   </mat-card-content>
-  <mat-card-actions>
-    <div class="buttons">
-      <button (click)="taskCompleted()" mat-raised-button color="primary">Done</button>
-    </div>
-  </mat-card-actions>
 </mat-card>
 
 <mat-card *ngIf="!show">

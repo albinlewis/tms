@@ -19,6 +19,7 @@ import { TaskDetailPipe } from './components/task-detail/task-detail.pipe';
 import { DatabaseSelectorComponent, DatabaseDialog } from './components/database-selector/database-selector.component';
 import { NoTaskComponent } from './components/notasks/notasks.component';
 import { TaskExportComponent } from './components/export/export.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TaskExportComponent } from './components/export/export.component';
   imports: [
     FormsModule,
     HttpModule,
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,

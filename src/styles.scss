@@ -89,3 +89,25 @@ h1, h2, h3, h4 {
 .noTasksOnline {
     margin-top: 30px;
 }
+
+.sendMailButton {
+    font-family: 'Lato', sans-serif;
+    background-color: mat-color($tms-theme-accent);
+}
+.sendMailButton:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.downloadButton {
+    font-family: 'Lato', sans-serif;
+    background-color: mat-color($tms-theme-accent);
+}
+.downloadButton:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.exportGrid {
+    background-color: rgba(0, 0, 0, 0);
+    display: grid;
+    grid-template-columns: 49% 49%;
+    grid-template-rows: auto;
+    grid-column-gap: 2%;
+}

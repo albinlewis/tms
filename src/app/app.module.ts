@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule, MatOptionModule } from '@angular/material';
+import { MatSlideToggleModule, MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule, MatOptionModule } from '@angular/material';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 import { NotetrackerComponent } from './components/notetracker/notetracker.component';
@@ -36,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     DatabaseSelectorComponent,
     DatabaseDialog, 
     NoTaskComponent, 
-    TaskExportComponent
+    TaskExportComponent,
+    MatSlideToggleModule
   ],
   imports: [
     FormsModule,

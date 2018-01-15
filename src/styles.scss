@@ -2,18 +2,84 @@
 @import './app/themes/tms-theme';
 @include mat-core();
 
+// Angular Default theme
 $primary: mat-palette($mat-indigo, 500, A100);
 $accent:  mat-palette($mat-lime, 500, A200, A400);
 $warn:    mat-palette($mat-red, 500);
 
+// TMS Default theme
 $tms-theme-primary: mat-palette($tms-bordeaux, 400, 100);
 $tms-theme-accent: mat-palette($tms-bordeaux, 200, 100);
 $tms-theme-warn: mat-palette($mat-red);
 
+// TMS Petrol theme
+$tms-petrol-primary: mat-palette($tms-petrol, 700, 100);
+$tms-petrol-accent: mat-palette($tms-petrol, 300, 100);
+$tms-petrol-warn: mat-palette($tms-petrol, A700, 100);
+
+// TMS Amber theme
+$tms-amber-primary: mat-palette($tms-amber, 400, 100);
+$tms-amber-accent: mat-palette($tms-amber, 300, 100);
+$tms-amber-warn: mat-palette($tms-amber, A700, 100);
+
+// Themes
 $theme: mat-light-theme($primary, $accent, $warn);
 $tms-theme: mat-light-theme($tms-theme-primary, $tms-theme-accent, $tms-theme-warn);
+$tms-petrol-theme: mat-light-theme($tms-petrol-primary, $tms-petrol-accent, $tms-petrol-warn);
+$tms-amber-theme: mat-light-theme($tms-amber-primary, $tms-amber-accent, $tms-amber-warn);
 
-@include angular-material-theme($tms-theme);
+// Complete Scheme of our Angular App (Components which use our themes)
+@mixin main-tms-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+  
+    #trackedTimeFooter{
+        background-color: mat-color($primary);
+    }
+    .default-tile{
+        background-color: mat-color($accent);
+        color: white;
+        border-radius: 1em;
+    }
+    .default-tile:hover{
+        box-shadow: 0 4px 8px 0 mat-color($primary), 0 6px 20px 0 black;
+    }
+    .noTasksButton {
+        margin-top: 15px;
+        font-family: 'Lato', sans-serif;
+        background-color: mat-color($accent);
+    }
+
+    #noTasksTemplate {
+        padding: 6em;
+        margin: 3em;
+        background: linear-gradient(to right, mat-color($primary), mat-color($warn));
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .selected{
+        background-color: mat-color($primary);
+    }
+
+    .sendMailButton {
+        font-family: 'Lato', sans-serif;
+        background-color: mat-color($accent);
+    }
+
+    .downloadButton {
+        font-family: 'Lato', sans-serif;
+        background-color: mat-color($accent);
+    }
+
+    // Predefined/Default modules
+    @include angular-material-theme($theme);
+}
+
+// Main Include
+@include main-tms-theme($tms-theme);
+
 
 body {
     background-image: url("https://wallpaperscraft.com/image/room_office_desk_chair_shelves_39161_1920x1080.jpg");
@@ -28,34 +94,15 @@ h1, h2, h3, h4 {
     font-weight: normal;
 }
 
-#noTasksTemplate {
-    padding: 6em;
-    margin: 3em;
-    background: linear-gradient(to right, mat-color($tms-theme-primary), mat-color($tms-theme-warn));
-    vertical-align: middle;
-    text-align: center;
-}
 .noTasksHeading {
     font-family: 'Spectral SC', serif;
 }
 .noTasksMessage {
     font-family: 'Lato', sans-serif;
 }
-.noTasksButton {
-    margin-top: 15px;
-    font-family: 'Lato', sans-serif;
-    background-color: mat-color($tms-theme-accent);
-}
+
 .noTasksButton:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}
-
-#trackedTimeFooter{
-    background-color: mat-color($tms-theme-primary);
-}
-
-.default-tile:hover{
-    box-shadow: 0 4px 8px 0 mat-color($tms-theme-primary), 0 6px 20px 0 black;
 }
 
 .taskTitleWrapper{
@@ -68,20 +115,6 @@ h1, h2, h3, h4 {
     border-radius: 1em;
 }
 
-.default-tile{
-    background-color: mat-color($tms-theme-accent);
-    color: white;
-    // border-style: solid;
-    // border-radius: 0.5em;
-    // border-width: 1px;
-    // border-color: mat-color($tms-theme-primary);
-    border-radius: 1em;
-}
-
-.selected{
-    background-color: mat-color($tms-theme-primary);
-}
-
 .noTasksOffline {
     margin-top: 30px;
 }
@@ -90,17 +123,10 @@ h1, h2, h3, h4 {
     margin-top: 30px;
 }
 
-.sendMailButton {
-    font-family: 'Lato', sans-serif;
-    background-color: mat-color($tms-theme-accent);
-}
 .sendMailButton:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
-.downloadButton {
-    font-family: 'Lato', sans-serif;
-    background-color: mat-color($tms-theme-accent);
-}
+
 .downloadButton:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

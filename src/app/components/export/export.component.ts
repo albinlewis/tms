@@ -80,7 +80,7 @@ export class TaskExportComponent implements OnInit {
             if (t.done == true) {
                 journal += '<h3>' + t.title + '</h3>';
                 t.notes.forEach(n => {
-                    '<li style="list-style: none; margin: 10px;">' + n + '</li>';
+                    journal += '<li style="list-style: none; margin: 10px;">' + n + '</li>';
                 });
             }
         });

@@ -1,15 +1,20 @@
-<div class="create">
+<div class="create" (keyup.enter)="onAddTask(task)">    
   <mat-card>
-    <mat-input-container>
-      <input type="text" matInput [(ngModel)]="task.title" placeholder="Title">
-
-    </mat-input-container>
-    <mat-input-container>
-      <input type="text" matInput [(ngModel)]="task.description" placeholder="Description">
-    </mat-input-container>
-    <mat-card-actions>
-      <button mat-raised-button (click)="onAddTask(task)">add</button>
-    </mat-card-actions>
+      <form>      
+        <mat-form-field class="input-widht">
+          <input matInput [(ngModel)]="task.title" placeholder="Title" [formControl]="NameFormControl" required>
+          <mat-error *ngIf="NameFormControl.invalid">
+            Name is <strong>required</strong>
+          </mat-error>    
+        </mat-form-field> 
+      </form>         
+      <mat-input-container class="input-widht">
+        <input type="text" matInput [(ngModel)]="task.description" placeholder="Description" >
+      </mat-input-container>
+      <mat-card-actions>
+        <button mat-raised-button  (click)="onAddTask(task)">add</button>  
+        <mat-slide-toggle (click)="filterDoneTasks(tasks) && !status" #edit><label>{{!edit.checked ? "Show All Taks" : "Show not Done Tasks"}}</label></mat-slide-toggle>
+      </mat-card-actions>    
   </mat-card>
 </div>
 <br>
@@ -24,21 +29,23 @@
               <task [task]= "task"  (click)="onselect(task)" (delete)="onDeleteTask(task)" ></task>              
             
             </div> -->
-
-  <mat-accordion class="colOne">
-    <mat-expansion-panel *ngFor="let task of tasks">
-      <mat-expansion-panel-header (click)="onselect(task)">
-        <mat-panel-title>
-          {{task.title}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{task.description}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-    </mat-expansion-panel>
-  </mat-accordion>
-
+  <div>
+    <mat-accordion class="colOne" >
+      <mat-expansion-panel *ngFor="let task of tasks" >   
+        <mat-expansion-panel-header (click)="onselect(task)">
+          <mat-panel-title>
+            {{task.title}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <!-- {{task.description}} -->
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+        <input type="hidden" >
+      
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
   <!-- </mat-grid-tile> -->
 
   <!-- <mat-grid-tile class="details" flex>   -->

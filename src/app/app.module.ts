@@ -10,7 +10,7 @@ import { ProgressbarComponent } from './components/progressbar/progressbar.compo
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 import { NotetrackerComponent } from './components/notetracker/notetracker.component';
 import { TimerComponent } from './components/timer/timer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ApiService } from './services/api-service';
 import { TaskDataService } from './services/task-data-service';
@@ -20,6 +20,7 @@ import { DatabaseSelectorComponent, DatabaseDialog } from './components/database
 import { NoTaskComponent } from './components/notasks/notasks.component';
 import { TaskExportComponent } from './components/export/export.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     BrowserModule,
@@ -50,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatGridListModule,
     MatTooltipModule,
+    MatSnackBarModule,
     MatInputModule,
     MatButtonModule,
     MatStepperModule,

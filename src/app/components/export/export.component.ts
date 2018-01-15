@@ -108,7 +108,7 @@ export class TaskExportComponent implements OnInit {
      */
     public sendMail(data) {
         this.http.post('http://localhost:3333/api/mails/send', {
-            mailReceiver: "max-belling@web.de",
+            mailReceiver: "",
             mailSubject: "Your requested mail from TMS",
             mailContent: data
         }).subscribe(

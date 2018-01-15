@@ -42,6 +42,7 @@ export class TaskDataService {
      * @param _id 
      */
     deleteTask(_id: String): Observable<Task> {
+        this.activeTask.next(null);
         return this.taskApi.deleteTaskById(_id);
     }
 

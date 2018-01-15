@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { TaskDataService } from '../../services/task-data-service';
 import { Task } from '../../models/task';
 
@@ -8,6 +8,16 @@ import { Task } from '../../models/task';
   styleUrls: ['./notetracker.component.scss']
 })
 export class NotetrackerComponent implements OnInit {
+  @HostListener('window:beforeunload')
+  onClose(){
+    if(this.activeTask){
+      var currentTask = this.activeTask;
+      currentTask.active = false;
+      this.taskService.activeTask.next(null);
+      currentTask.time = this.taskService.timerState.getValue();
+      this.taskService.updateTask(currentTask).subscribe(() => { });
+    }
+  }
 
   notes: String[];
   editedNotes: String[];

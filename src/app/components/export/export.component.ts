@@ -43,8 +43,10 @@ export class TaskExportComponent implements OnInit {
         console.log('data processing started');
         switch (option) {
             case 'journal':
+                data = this.dailyJournalHTML();
                 break;
             case 'table':
+                data = this.timeTrackingHTML();
                 break;
             default:
                 data = this.todoListHTML();
@@ -63,11 +65,42 @@ export class TaskExportComponent implements OnInit {
      * todo list processing function
      */
     public todoListHTML() {
-        let todo = '<h2>ToDo-List</h2>'
+        let todo = '<h2>ToDo-List</h2>';
         this.tasks.forEach(t => {
-            todo += '<li style="list-style: none; margin: 10px;">' + t.title + '</li>'
+            if (t.done != true) {
+                todo += '<li style="list-style: none; margin: 10px;">' + t.title + '</li>'
+            }
         });
         return todo;
+    }
+
+    public dailyJournalHTML() {
+        let journal = '<h2>Stand-Up Journal</h2>';
+        this.tasks.forEach(t => {
+            if (t.done == true) {
+                journal += '<h3>' + t.title + '</h3>';
+                t.notes.forEach(n => {
+                    '<li style="list-style: none; margin: 10px;">' + n + '</li>';
+                });
+            }
+        });
+        return journal;
+    }
+
+    public timeTrackingHTML(){
+        let table = '<h2>Timetracking Table</h2>';
+        table += '<table><tr><th>Task</th><th>Time spent (min)</th><th>Status</th></tr>';
+        this.tasks.forEach(t => {
+            table += '<tr><td>' + t.title + '</td><td>' + (t.time.valueOf() / 60).toFixed(2) + '</td><td>';
+            if (t.done == true){
+                table += '<span style="color: green;">Done</span>';
+            }else{
+                table += '<span style="color: red;">ToDo</span>';
+            }
+            table += '</td></tr>';
+        });
+        table += '</table>';
+        return table;
     }
 
     /**
@@ -75,7 +108,7 @@ export class TaskExportComponent implements OnInit {
      */
     public sendMail(data) {
         this.http.post('http://localhost:3333/api/mails/send', {
-            mailReceiver: "",
+            mailReceiver: "max-belling@web.de",
             mailSubject: "Your requested mail from TMS",
             mailContent: data
         }).subscribe(

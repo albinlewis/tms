@@ -9,7 +9,10 @@ import { Task } from '../../models/task';
 })
 export class TaskExportComponent implements OnInit {
 
-    enableMailing = false;
+    enableMailing: Boolean = false;
+    selectedMailOption: String;
+    selectedDownloadOption: String;
+    selectedDownloadFormat: String;
 
     mailOptions = [
         { title: "ToDo-List", content: "list" },
@@ -87,14 +90,14 @@ export class TaskExportComponent implements OnInit {
         return journal;
     }
 
-    public timeTrackingHTML(){
+    public timeTrackingHTML() {
         let table = '<h2>Timetracking Table</h2>';
         table += '<table><tr><th>Task</th><th>Time spent (min)</th><th>Status</th></tr>';
         this.tasks.forEach(t => {
             table += '<tr><td>' + t.title + '</td><td>' + (t.time.valueOf() / 60).toFixed(2) + '</td><td>';
-            if (t.done == true){
+            if (t.done == true) {
                 table += '<span style="color: green;">Done</span>';
-            }else{
+            } else {
                 table += '<span style="color: red;">ToDo</span>';
             }
             table += '</td></tr>';
@@ -129,8 +132,8 @@ export class TaskExportComponent implements OnInit {
     /**
      * frontend call for download button
      */
-    public processDataAndDownload(option, format) {
-        let data = this.processDataDL(option, format);
+    public processDataAndDownload() {
+        let data = this.processDataDL(this.selectedDownloadOption, this.selectedDownloadFormat);
         this.downloadData(data);
         console.log('download started');
     }
@@ -138,8 +141,8 @@ export class TaskExportComponent implements OnInit {
     /**
      * frontend call for mail button
      */
-    public processDataAndSendMail(option) {
-        let data = this.processData(option);
+    public processDataAndSendMail() {
+        let data = this.processData(this.selectedMailOption);
         if (this.enableMailing == true) {
             this.sendMail(data);
             console.log('mail delivery started');
@@ -147,5 +150,4 @@ export class TaskExportComponent implements OnInit {
             console.log('mail delivery disabled.\ncontent that would have been sent:\n\n' + JSON.stringify(data));
         }
     }
-
 }

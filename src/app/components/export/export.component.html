@@ -9,13 +9,13 @@
             address by chosing an option and clicking the send button.
         </p>
         <mat-form-field>
-            <mat-select placeholder="Content to be sent" [(value)]="selectedMailOption">
+            <mat-select placeholder="Content to be sent" [(ngModel)]="selectedMailOption">
                 <mat-option *ngFor="let option of mailOptions" [value]="option.content">
                     {{ option.title }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-button class="sendMailButton" (click)="processDataAndSendMail(selectedMailOption)">Send E-Mail</button>
+        <button mat-button class="sendMailButton" (click)="processDataAndSendMail()">Send E-Mail</button>
     </div>
     <div class="downloadWrapper">
         <h1>
@@ -27,19 +27,19 @@
             address by chosing an option and clicking the send button.
         </p>
         <mat-form-field>
-            <mat-select placeholder="Content to download" [(value)]="selectedDLOption">
-                <mat-option *ngFor="let option of downloadOptions" [value]="option.content">
+            <mat-select placeholder="Content to download" [(ngModel)]="selectedDownloadOption">
+                <mat-option *ngFor="let option of downloadOptions"  [value]="option.content">
                     {{ option.title }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-                <mat-select placeholder="Download format" [(value)]="format">
+                <mat-select placeholder="Download format" [(ngModel)]="selectedDownloadFormat">
                     <mat-option *ngFor="let option of formatOptions" [value]="option.content">
                         {{ option.title }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-        <button mat-button class="downloadButton" (click)="processDataAndDownload(selectedDLOption, format)">Download</button>
+        <button mat-button class="downloadButton" (click)="processDataAndDownload()">Download</button>
     </div>
 </div>

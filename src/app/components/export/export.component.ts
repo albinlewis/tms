@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../../models/task';
 
+import * as MailHeader from '../../templates/mail-header.html';
+import * as MailFooter from '../../templates/mail-footer.html';
+
 @Component({
     selector: 'task-export',
     templateUrl: './export.component.html',
@@ -9,7 +12,8 @@ import { Task } from '../../models/task';
 })
 export class TaskExportComponent implements OnInit {
 
-    enableMailing: Boolean = false;
+    enableMailing: Boolean = true;
+
     selectedMailOption: String;
     selectedDownloadOption: String;
     selectedDownloadFormat: String;
@@ -34,7 +38,15 @@ export class TaskExportComponent implements OnInit {
     @Input()
     tasks: Task[];
 
-    constructor(private http: HttpClient) { }
+    mailHeader: String;
+    mailFooter: String;
+    mailReceiver: String;
+
+    constructor(private http: HttpClient) {
+        this.mailHeader = MailHeader.toString();
+        this.mailFooter = MailFooter.toString();
+        this.mailReceiver = '';
+    }
 
     ngOnInit() { }
 
@@ -62,6 +74,10 @@ export class TaskExportComponent implements OnInit {
      */
     public processDataDL(option, format) {
         console.log(option + ' : ' + format);
+    }
+
+    public addHeaderAndFooter(content){
+        return this.mailHeader + content + this.mailFooter;
     }
 
     /**
@@ -111,9 +127,9 @@ export class TaskExportComponent implements OnInit {
      */
     public sendMail(data) {
         this.http.post('http://localhost:3333/api/mails/send', {
-            mailReceiver: "",
-            mailSubject: "Your requested mail from TMS",
-            mailContent: data
+            mailReceiver: this.mailReceiver,
+            mailSubject: "TMS - Export",
+            mailContent: this.addHeaderAndFooter(data)
         }).subscribe(
             res => {
                 console.log(res);
@@ -147,7 +163,7 @@ export class TaskExportComponent implements OnInit {
             this.sendMail(data);
             console.log('mail delivery started');
         } else {
-            console.log('mail delivery disabled.\ncontent that would have been sent:\n\n' + JSON.stringify(data));
+            console.log('mail delivery disabled.\ncontent that would have been sent:\n\n' + JSON.stringify(this.addHeaderAndFooter(data)));
         }
     }
 }

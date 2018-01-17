@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../../models/task';
+import { TaskDataService } from '../../services/task-data-service'
 
-import * as MailHeader from '../../templates/mail-header.html';
-import * as MailFooter from '../../templates/mail-footer.html';
+// import * as MailHeader from '../../templates/mail-header.html';
+// import * as MailFooter from '../../templates/mail-footer.html';
 
 @Component({
     selector: 'task-export',
@@ -42,13 +43,18 @@ export class TaskExportComponent implements OnInit {
     mailFooter: String;
     mailReceiver: String;
 
-    constructor(private http: HttpClient) {
-        this.mailHeader = MailHeader.toString();
-        this.mailFooter = MailFooter.toString();
+    constructor(private http: HttpClient, private taskDataService: TaskDataService) {
+        this.mailHeader = '';
+        this.mailFooter = '';
         this.mailReceiver = '';
     }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.taskDataService.mailReceiver.subscribe((mr)=> {
+            this.mailReceiver = mr;
+            console.log(this.mailReceiver);
+        })
+    }
 
     /**
      * process task data to be sent as mail
@@ -76,7 +82,7 @@ export class TaskExportComponent implements OnInit {
         console.log(option + ' : ' + format);
     }
 
-    public addHeaderAndFooter(content){
+    public addHeaderAndFooter(content) {
         return this.mailHeader + content + this.mailFooter;
     }
 

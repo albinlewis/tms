@@ -11,6 +11,7 @@ export class TaskDataService {
 
     activeTask: BehaviorSubject<Task> = new BehaviorSubject(null);
     timerState: BehaviorSubject<Number> = new BehaviorSubject(0);
+    searchFilterString: BehaviorSubject<String> = new BehaviorSubject("");
 
     constructor(private taskApi: ApiService) { }
 

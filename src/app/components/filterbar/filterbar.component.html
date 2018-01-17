@@ -1,0 +1,7 @@
+<mat-form-field class="example-form-field" id="filterbar">
+    <mat-placeholder><mat-icon>search</mat-icon> <b> Filter Tasks</b></mat-placeholder>
+  <input matInput type="text" [(ngModel)]="value" (ngModelChange)="filterTasks($event)"/>
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; filterTasks('')">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>

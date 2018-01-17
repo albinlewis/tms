@@ -21,6 +21,7 @@ import { NoTaskComponent } from './components/notasks/notasks.component';
 import { TaskExportComponent } from './components/export/export.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { FilterbarComponent } from './components/filterbar/filterbar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     DatabaseSelectorComponent,
     DatabaseDialog, 
     NoTaskComponent, 
-    TaskExportComponent
+    TaskExportComponent, 
+    FilterbarComponent
   ],
   imports: [
     FormsModule,

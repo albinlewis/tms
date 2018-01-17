@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'Task Management System';
   tasks: Task[] = [];
+  alltasks: Task[] = [];
 
   selectedTask: Task;
   openCollapse: boolean;
@@ -22,11 +23,26 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
+      this.alltasks = tasks;
     });
+
+    this.taskService.searchFilterString.subscribe((title) => {
+        this.tasks = this.filterSearchTasks(title);
+    });
+
   }
 
   public filterDoneTasks(tasklist) {
     return this.tasks.filter(task => task.done == false);
+  }
+
+  public filterSearchTasks(title) {
+    if (title) {
+      return this.alltasks.filter(task => task.title.toUpperCase().includes(title.toUpperCase()));
+    }
+    else{
+      return this.alltasks;
+    }
   }
 
   // ToDo: Event Handler (onAddTask, onDeleteTask, ...)

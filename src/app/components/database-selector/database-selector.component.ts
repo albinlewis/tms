@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef } from '@angular/material';
+import {TaskDataService} from '../../services/task-data-service'
 
 @Component({
   selector: 'database-selector',
@@ -8,7 +9,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef } from '@angu
 })
 export class DatabaseSelectorComponent {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private taskDataService: TaskDataService) { }
 
   dbtoken: string;
   username: string;
@@ -26,6 +27,7 @@ export class DatabaseSelectorComponent {
         this.dbtoken = result.dbtoken;
         this.username = result.username;
         this.email = result.email;
+        this.taskDataService.mailReceiver.next(result.email);
       }
     });
   }

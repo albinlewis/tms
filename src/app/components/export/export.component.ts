@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../../models/task';
+import { TaskDataService } from '../../services/task-data-service'
+
+// import * as MailHeader from '../../templates/mail-header.html';
+// import * as MailFooter from '../../templates/mail-footer.html';
 
 @Component({
     selector: 'task-export',
@@ -9,7 +13,11 @@ import { Task } from '../../models/task';
 })
 export class TaskExportComponent implements OnInit {
 
-    enableMailing = false;
+    enableMailing: Boolean = true;
+
+    selectedMailOption: String;
+    selectedDownloadOption: String;
+    selectedDownloadFormat: String;
 
     mailOptions = [
         { title: "ToDo-List", content: "list" },
@@ -31,9 +39,22 @@ export class TaskExportComponent implements OnInit {
     @Input()
     tasks: Task[];
 
-    constructor(private http: HttpClient) { }
+    mailHeader: String;
+    mailFooter: String;
+    mailReceiver: String;
 
-    ngOnInit() { }
+    constructor(private http: HttpClient, private taskDataService: TaskDataService) {
+        this.mailHeader = '';
+        this.mailFooter = '';
+        this.mailReceiver = '';
+    }
+
+    ngOnInit() { 
+        this.taskDataService.mailReceiver.subscribe((mr)=> {
+            this.mailReceiver = mr;
+            console.log(this.mailReceiver);
+        })
+    }
 
     /**
      * process task data to be sent as mail
@@ -59,6 +80,10 @@ export class TaskExportComponent implements OnInit {
      */
     public processDataDL(option, format) {
         console.log(option + ' : ' + format);
+    }
+
+    public addHeaderAndFooter(content) {
+        return this.mailHeader + content + this.mailFooter;
     }
 
     /**
@@ -87,14 +112,14 @@ export class TaskExportComponent implements OnInit {
         return journal;
     }
 
-    public timeTrackingHTML(){
+    public timeTrackingHTML() {
         let table = '<h2>Timetracking Table</h2>';
         table += '<table><tr><th>Task</th><th>Time spent (min)</th><th>Status</th></tr>';
         this.tasks.forEach(t => {
             table += '<tr><td>' + t.title + '</td><td>' + (t.time.valueOf() / 60).toFixed(2) + '</td><td>';
-            if (t.done == true){
+            if (t.done == true) {
                 table += '<span style="color: green;">Done</span>';
-            }else{
+            } else {
                 table += '<span style="color: red;">ToDo</span>';
             }
             table += '</td></tr>';
@@ -108,9 +133,9 @@ export class TaskExportComponent implements OnInit {
      */
     public sendMail(data) {
         this.http.post('http://localhost:3333/api/mails/send', {
-            mailReceiver: "",
-            mailSubject: "Your requested mail from TMS",
-            mailContent: data
+            mailReceiver: this.mailReceiver,
+            mailSubject: "TMS - Export",
+            mailContent: this.addHeaderAndFooter(data)
         }).subscribe(
             res => {
                 console.log(res);
@@ -129,8 +154,8 @@ export class TaskExportComponent implements OnInit {
     /**
      * frontend call for download button
      */
-    public processDataAndDownload(option, format) {
-        let data = this.processDataDL(option, format);
+    public processDataAndDownload() {
+        let data = this.processDataDL(this.selectedDownloadOption, this.selectedDownloadFormat);
         this.downloadData(data);
         console.log('download started');
     }
@@ -138,14 +163,13 @@ export class TaskExportComponent implements OnInit {
     /**
      * frontend call for mail button
      */
-    public processDataAndSendMail(option) {
-        let data = this.processData(option);
+    public processDataAndSendMail() {
+        let data = this.processData(this.selectedMailOption);
         if (this.enableMailing == true) {
             this.sendMail(data);
             console.log('mail delivery started');
         } else {
-            console.log('mail delivery disabled.\ncontent that would have been sent:\n\n' + JSON.stringify(data));
+            console.log('mail delivery disabled.\ncontent that would have been sent:\n\n' + JSON.stringify(this.addHeaderAndFooter(data)));
         }
     }
-
 }

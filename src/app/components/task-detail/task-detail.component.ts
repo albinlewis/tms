@@ -26,7 +26,7 @@ export class TaskDetailComponent implements OnInit {
   }
 
   updatefullTask(task: Task, message: string) {
-    task.updatedAt = Date.now();
+    task.updatedAt = new Date();
     this.snackBar.open(message, 'Updated!!!', {
       duration: 4000,
     });

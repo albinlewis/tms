@@ -26,6 +26,7 @@ import { TaskExportComponent } from './components/export/export.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ChartsModule} from 'ng2-charts';
+import { FilterbarComponent } from './components/filterbar/filterbar.component';
 
 
 
@@ -51,7 +52,9 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     DatabaseSelectorComponent,
     DatabaseDialog,
     NoTaskComponent,
-    TaskExportComponent, PiechartComponent, BarchartComponent, TableComponent, StatisticsComponent
+    TaskExportComponent, 
+    PiechartComponent,
+    FilterbarComponent
   ],
   imports: [
     FormsModule,

@@ -24,7 +24,8 @@
       <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
     <div *ngIf="filterDoneTasks(tasks).length > 0">
-      <h1 class="noTasksHeader">Statistics Component goes here</h1>
+     <app-statistics></app-statistics>
+
     </div>
   </mat-step>
   <!-- step 4 -->

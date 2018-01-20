@@ -4,7 +4,7 @@ export class Task {
     description: String;
     notes: String[];
     createdAt: Date;
-    updatedAt: Date;
+    updatedAt: Number;
     time: Number;
     active: Boolean;
     visible: Boolean;

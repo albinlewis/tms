@@ -5,7 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MatSlideToggleModule, MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule, MatOptionModule } from '@angular/material';
+import {
+  MatSlideToggleModule, MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule,
+  MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule,
+  MatIconModule, MatTableDataSource, MatOptionModule, MatTable, MatTableModule
+} from '@angular/material';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 import { NotetrackerComponent } from './components/notetracker/notetracker.component';
@@ -21,8 +25,18 @@ import { NoTaskComponent } from './components/notasks/notasks.component';
 import { TaskExportComponent } from './components/export/export.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ChartsModule} from 'ng2-charts';
 
-@NgModule({
+
+
+
+
+import { PiechartComponent } from './components/statistics/piechart/piechart.component';
+import { BarchartComponent } from './components/statistics/barchart/barchart.component';
+import { TableComponent } from './components/statistics/table/table.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+
+@NgModule ({
   declarations: [
     AddtaskComponent,
     AppComponent,
@@ -35,9 +49,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     TaskDetailPipe,
     TimerComponent,
     DatabaseSelectorComponent,
-    DatabaseDialog, 
-    NoTaskComponent, 
-    TaskExportComponent
+    DatabaseDialog,
+    NoTaskComponent,
+    TaskExportComponent, PiechartComponent, BarchartComponent, TableComponent, StatisticsComponent
   ],
   imports: [
     FormsModule,
@@ -57,10 +71,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatStepperModule,
     MatDialogModule,
-    MatIconModule, 
-    MatOptionModule, 
+    MatIconModule,
+    MatOptionModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTableModule,
+    MatOptionModule,
+    ChartsModule
   ],
   entryComponents: [DatabaseSelectorComponent, DatabaseDialog],
   providers: [ApiService, TaskDataService],

@@ -9,7 +9,7 @@ import {AppComponent} from './app.component';
 import {
   MatSlideToggleModule, MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule,
   MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule,
-  MatIconModule, MatTableDataSource, MatOptionModule, MatTable, MatTableModule, MatFormFieldModule, MatMenuModule
+  MatIconModule, MatTableDataSource, MatOptionModule, MatTable, MatTableModule, MatFormFieldModule, MatMenuModule, MatListModule
 } from '@angular/material';
 import {ProgressbarComponent} from './components/progressbar/progressbar.component';
 import {TaskgridComponent} from './components/taskgrid/taskgrid.component';
@@ -74,6 +74,7 @@ import {StatisticsComponent} from './components/statistics/statistics.component'
     MatSnackBarModule,
     MatInputModule,
     MatMenuModule,
+    MatListModule,
     MatStepperModule,
     MatDialogModule,
     MatIconModule,

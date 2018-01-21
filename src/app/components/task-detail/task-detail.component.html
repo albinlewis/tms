@@ -46,12 +46,19 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="notes">
-          <!-- scrollable view -->
-          <ul>
-            <li *ngFor="let note of task.notes;">{{note}}</li>
-          </ul>
-        </div>
+        <mat-card-content >
+          <!-- <mat-list >
+            <mat-list-item *ngFor="let note of task.notes;">{{note}}</mat-list-item>
+
+          </mat-list> -->
+          <div class="scroll">
+            <!-- scrollable view -->
+            <ul>
+              <li *ngFor="let note of task.notes;">{{note}}</li>
+            </ul>
+          </div>
+        </mat-card-content>
+
 
         <div class="bottom-left">
           <mat-input-container>

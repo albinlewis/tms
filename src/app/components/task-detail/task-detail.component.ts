@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../models/task';
 import { MatSnackBar } from '@angular/material';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 
 
 @Component({

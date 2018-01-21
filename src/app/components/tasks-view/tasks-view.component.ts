@@ -132,11 +132,11 @@ export class TasksViewComponent implements OnInit {
       });
     // this.task = new Task();
   }
-  onDeleteTask(task: Task) {
+  onDeleteTask(task) {
     this.taskDataService.deleteTask(task._id).subscribe(() => { });
     this.openCollapse = false;
     this.tasks.splice(this.tasks.findIndex(function (element) { return element === task }), 1);
-    this.snackBar.open('Task', 'Deleted', {
+    this.snackBar.open(task.title, 'Deleted', {
       duration: 4000,
     });    
   }
@@ -148,6 +148,9 @@ export class TasksViewComponent implements OnInit {
       .subscribe(t => {
         task.time = 0;
       });
+      this.snackBar.open(task.title, 'Time Reset to 0', {
+          duration: 4000,
+        }); 
   }
 
   onupdateTask(task: Task) {

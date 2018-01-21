@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { Task } from '../../models/task';
 import { TaskDataService } from '../../services/task-data-service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'taskgrid',
@@ -15,7 +16,7 @@ export class TaskgridComponent implements OnInit {
   cols: number;
   oldTask: Task = null;
 
-  constructor(private taskService: TaskDataService) {
+  constructor(private taskService: TaskDataService, private toggleFeedback: MatSnackBar) {
     this.cols = 2;
   }
 
@@ -28,9 +29,12 @@ export class TaskgridComponent implements OnInit {
     }
   }
 
-  private toggleTracking(newTask) {
+  private toggleTracking(newTask: Task) {
     this.taskService.activeTask.next(newTask);
     this.taskService.timerHelper(this.oldTask, newTask, this.taskService.timerState.getValue());
+    if (this.oldTask !== newTask) {
+      this.openSnackBar(String('Tracking Task "' + newTask.title + '"'), "Active");
+    }
     this.oldTask = newTask;
   }
 
@@ -74,6 +78,12 @@ export class TaskgridComponent implements OnInit {
 
   private pad(digit: any) {
     return digit <= 9 ? '0' + digit : digit;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.toggleFeedback.open(message, action, {
+      duration: 3000,
+    });
   }
 }
 

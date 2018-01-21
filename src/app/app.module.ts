@@ -1,11 +1,11 @@
 import { Task } from './models/task';
-import { TasksViewComponent } from './components/tasks-view/tasks-view.component';
+import { TasksViewComponent, AddDialog } from './components/tasks-view/tasks-view.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { MatSlideToggleModule, MatSelectModule, MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule, MatOptionModule } from '@angular/material';
+import { MatSlideToggleModule,MatFormFieldModule, MatSelectModule,MatMenuModule,MatExpansionModule, MatProgressBarModule, MatCardModule, MatGridListModule, MatStepperModule, MatInputModule, MatButtonModule, MatTooltipModule, MatDialogModule, MatIconModule, MatOptionModule } from '@angular/material';
 import { ProgressbarComponent } from './components/progressbar/progressbar.component';
 import { TaskgridComponent } from './components/taskgrid/taskgrid.component';
 import { NotetrackerComponent } from './components/notetracker/notetracker.component';
@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FilterbarComponent } from './components/filterbar/filterbar.component';
 
+
 @NgModule({
   declarations: [
     AddtaskComponent,
@@ -30,6 +31,7 @@ import { FilterbarComponent } from './components/filterbar/filterbar.component';
     ProgressbarComponent,
     TaskgridComponent,
     NotetrackerComponent,
+    AddDialog,
     TimerComponent,
     TasksViewComponent,
     TaskDetailComponent,
@@ -50,13 +52,14 @@ import { FilterbarComponent } from './components/filterbar/filterbar.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatProgressBarModule,
     MatCardModule,
     MatGridListModule,
     MatTooltipModule,
     MatSnackBarModule,
     MatInputModule,
-    MatButtonModule,
+    MatMenuModule,
     MatStepperModule,
     MatDialogModule,
     MatIconModule, 
@@ -64,7 +67,7 @@ import { FilterbarComponent } from './components/filterbar/filterbar.component';
     MatSelectModule,
     MatSlideToggleModule
   ],
-  entryComponents: [DatabaseSelectorComponent, DatabaseDialog],
+  entryComponents: [DatabaseSelectorComponent, DatabaseDialog, AddDialog],
   providers: [ApiService, TaskDataService],
   bootstrap: [AppComponent]
 })

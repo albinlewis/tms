@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add Task</h1>
+<div mat-dialog-content>
+    <mat-form-field hintLabel="Max 40 characters" >
+        <input matInput [(ngModel)]="data.title" placeholder="Title" [formControl]="NameFormControl" required maxlength="40" #message>
+        <mat-hint align="end">{{message.value?.length || 0}}/40</mat-hint>
+        <mat-error *ngIf="NameFormControl.invalid">
+            Name is<strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 70 characters" class="description">
+            <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="8" maxlength="70" #description [(ngModel)]="data.description"
+              type="text" placeholder="Description"></textarea>
+            <mat-hint align="end">{{description.value?.length || 0}}/70</mat-hint>
+          </mat-form-field>
+    <br>
+    <mat-form-field class="category">
+        <mat-select placeholder="category" [(ngModel)]="data.category">
+            <mat-option>{{data.category}}</mat-option>
+            <mat-option *ngFor="let t of category" [value]="t.value">
+                {{t.view}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="{'title': data.title, 'description':data.description, 'category':data.category}" cdkFocusInitial>Apply</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+</div>

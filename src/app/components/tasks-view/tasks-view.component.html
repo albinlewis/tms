@@ -1,4 +1,4 @@
-<div class="create" (keyup.enter)="onAddTask(task)">    
+<!-- <div class="create" (keyup.enter)="onAddTask(task)">    
   <mat-card>
       <form>      
         <mat-form-field class="input-widht">
@@ -17,7 +17,7 @@
       </mat-card-actions>    
   </mat-card>
 </div>
-<br>
+<br> -->
 
 
 <!-- <mat-grid-list cols="2" class="container"> -->
@@ -29,24 +29,118 @@
               <task [task]= "task"  (click)="onselect(task)" (delete)="onDeleteTask(task)" ></task>              
             
             </div> -->
-  <div>
-    <mat-accordion class="colOne" >
-      <mat-expansion-panel *ngFor="let task of tasks" >   
-        <mat-expansion-panel-header (click)="onselect(task)">
-          <mat-panel-title>
-            {{task.title}}
-          </mat-panel-title>
-          <mat-panel-description>
-            <!-- {{task.description}} -->
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-        <input type="hidden" >
-      
-      </mat-expansion-panel>
-    </mat-accordion>
+  <div class="colOne">
+
+    <div>
+      <mat-card>
+        <button class="addButton" (click)="addDialogTask()" mat-raised-button> Add Task</button>
+        <!-- on click open tooltip and input that will be added to list -->
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="showToDo()">To-Do</button>
+          <button mat-menu-item (click)="showDone()">Done</button>
+          <button mat-menu-item (click)="showDaily()">Daily</button>
+          <button mat-menu-item (click)="showFavorite()">Favorite</button>
+          <button mat-menu-item (click)="showNotAssigned()">Not Assigned</button>
+          <button mat-menu-item (click)="showTAll()">All</button>
+        </mat-menu>
+      </mat-card>
+    </div>
+    <div *ngIf="showT === true">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of tasksToDo">
+          <mat-expansion-panel-header (click)="onselect(task)">
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-action-row>
+              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="showD === true">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of tasksDone">
+          <mat-expansion-panel-header (click)="onselect(task)">
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-action-row>
+              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="showDa === true">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of tasksDaily">
+          <mat-expansion-panel-header (click)="onselect(task)">
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-action-row>
+              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="showF === true">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of tasksFavorite">
+          <mat-expansion-panel-header (click)="onselect(task)">
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-action-row>
+              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="showA === true">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of tasksNotAssigned">
+          <mat-expansion-panel-header (click)="onselect(task)">
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-action-row>
+              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="showAll === true">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of tasksAll">
+          <mat-expansion-panel-header (click)="onselect(task)">
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-action-row>
+              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+
   </div>
   <!-- </mat-grid-tile> -->
+
 
   <!-- <mat-grid-tile class="details" flex>   -->
   <div class="colTwo" *ngIf="selectedTask">

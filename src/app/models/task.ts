@@ -14,6 +14,7 @@ export class Task {
         value: Number,
         unit: String
     };
+    category: string;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

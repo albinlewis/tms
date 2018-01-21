@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { TaskDataService } from '../../services/task-data-service';
 import { Task } from '../../models/task';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'notetracker',
@@ -9,8 +10,8 @@ import { Task } from '../../models/task';
 })
 export class NotetrackerComponent implements OnInit {
   @HostListener('window:beforeunload')
-  onClose(){
-    if(this.activeTask){
+  onClose() {
+    if (this.activeTask) {
       var currentTask = this.activeTask;
       currentTask.active = false;
       this.taskService.activeTask.next(null);
@@ -25,7 +26,7 @@ export class NotetrackerComponent implements OnInit {
   show: Boolean;
   activeTask: Task;
 
-  constructor(private taskService: TaskDataService) { }
+  constructor(private taskService: TaskDataService, private editFeedback: MatSnackBar) { }
 
   ngOnInit() {
     this.taskService.activeTask.subscribe((activeTask: Task) => {
@@ -60,6 +61,7 @@ export class NotetrackerComponent implements OnInit {
       var toEditTask = this.activeTask;
       toEditTask.notes = editedNotes;
       this.taskService.updateTask(toEditTask).subscribe(() => { });
+      this.openSnackBar('Saved Notes for Task "' + toEditTask.title + '"', "Saved");
     }
   }
 
@@ -72,9 +74,17 @@ export class NotetrackerComponent implements OnInit {
 
     this.taskService.updateTask(completedTask).subscribe(() => { });
     this.show = false;
+    this.openSnackBar('Task "' + completedTask.title + '" completed', "Done");
   }
 
   trackByFn(index: any, item: any) {
     return index;
- }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.editFeedback.open(message, action, {
+      duration: 2000,
+    });
+  }
+
 }

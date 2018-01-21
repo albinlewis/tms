@@ -136,6 +136,9 @@ export class TasksViewComponent implements OnInit {
     this.taskDataService.deleteTask(task._id).subscribe(() => { });
     this.openCollapse = false;
     this.tasks.splice(this.tasks.findIndex(function (element) { return element === task }), 1);
+    this.snackBar.open('Task', 'Deleted', {
+      duration: 4000,
+    });    
   }
 
 

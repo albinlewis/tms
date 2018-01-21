@@ -1,20 +1,21 @@
+
 <!-- <div class="create" (keyup.enter)="onAddTask(task)">    
   <mat-card>
-      <form>      
+      <form>
         <mat-form-field class="input-widht">
           <input matInput [(ngModel)]="task.title" placeholder="Title" [formControl]="NameFormControl" required>
           <mat-error *ngIf="NameFormControl.invalid">
             Name is <strong>required</strong>
-          </mat-error>    
-        </mat-form-field> 
-      </form>         
+          </mat-error>
+        </mat-form-field>
+      </form>
       <mat-input-container class="input-widht">
         <input type="text" matInput [(ngModel)]="task.description" placeholder="Description" >
       </mat-input-container>
       <mat-card-actions>
-        <button mat-raised-button  (click)="onAddTask(task)">add</button>  
+        <button mat-raised-button  (click)="onAddTask(task)">add</button>
         <mat-slide-toggle (click)="filterDoneTasks(tasks) && !status" #edit><label>{{!edit.checked ? "Show All Taks" : "Show not Done Tasks"}}</label></mat-slide-toggle>
-      </mat-card-actions>    
+      </mat-card-actions>
   </mat-card>
 </div>
 <br> -->
@@ -25,9 +26,9 @@
 <div class="container">
 
   <!-- <div class="colOne" *ngFor="let task of tasks"  [class.selected]="task === selectedTask" >
-                    
-              <task [task]= "task"  (click)="onselect(task)" (delete)="onDeleteTask(task)" ></task>              
-            
+
+              <task [task]= "task"  (click)="onselect(task)" (delete)="onDeleteTask(task)" ></task>
+
             </div> -->
   <div class="colOne">
 
@@ -136,7 +137,6 @@
         </mat-expansion-panel>
       </mat-accordion>
     </div>
-
 
   </div>
   <!-- </mat-grid-tile> -->

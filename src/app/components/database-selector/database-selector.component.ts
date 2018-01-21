@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef } from '@angular/material';
-import {TaskDataService} from '../../services/task-data-service'
+import { MatDialog, MAT_DIALOG_DATA, MatDialogConfig, MatDialogRef, MatSnackBar } from '@angular/material';
+import { TaskDataService } from '../../services/task-data-service'
 
 @Component({
   selector: 'database-selector',
@@ -9,7 +9,7 @@ import {TaskDataService} from '../../services/task-data-service'
 })
 export class DatabaseSelectorComponent {
 
-  constructor(public dialog: MatDialog, private taskDataService: TaskDataService) { }
+  constructor(public dialog: MatDialog, private taskDataService: TaskDataService, private closeFeedback: MatSnackBar) { }
 
   dbtoken: string;
   username: string;
@@ -28,7 +28,13 @@ export class DatabaseSelectorComponent {
         this.username = result.username;
         this.email = result.email;
         this.taskDataService.mailReceiver.next(result.email);
+        this.openSnackBar("Edited Settings", "Saved");
       }
+    });
+  }
+  openSnackBar(message: string, action: string) {
+    this.closeFeedback.open(message, action, {
+      duration: 2000,
     });
   }
 }

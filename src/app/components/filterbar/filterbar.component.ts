@@ -8,12 +8,14 @@ import { TaskDataService } from '../../services/task-data-service'
 })
 export class FilterbarComponent implements OnInit {
 
+  value: String;
+
   constructor(private taskService: TaskDataService) { }
 
   ngOnInit() {
   }
 
-  private filterTasks(title){
+  filterTasks(title){
       this.taskService.searchFilterString.next(title)
   }
 

@@ -1,4 +1,4 @@
-<div (keyup.enter)="updatefullTask(task)" (blur)="updatefullTask(task)">
+<div (keyup.enter)="updatefullTask(task)" (blur)="updatefullTask(task)" >
   <mat-card>
     <!-- <mat-card-header> -->
     <mat-card-content>
@@ -7,7 +7,7 @@
         <div class="left">
           <div class="title">
             <mat-form-field hintLabel="Max 40 characters" class="title">
-              <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title" maxlength="40" #message>
+              <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title" maxlength="40" #message (blur)="updatefullTask(task)">
               <mat-hint align="end">{{message.value?.length || 0}}/40</mat-hint>
             </mat-form-field>
           </div>
@@ -18,17 +18,16 @@
             <!-- <mat-card-content> -->
             <mat-form-field hintLabel="Max 70 characters" class="description">
               <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="8" maxlength="70" #description [(ngModel)]="task.description"
-                type="text" placeholder="Description"></textarea>
+                type="text" placeholder="Description" (blur)="updatefullTask(task)"></textarea>
               <mat-hint align="end">{{description.value?.length || 0}}/70</mat-hint>
             </mat-form-field>
           </div>
           <br>
           <div class="status">
             <mat-form-field class="status">
-              <mat-select placeholder="Status">
+              <mat-select placeholder="{{task.done}}" (blur)="updatefullTask(task)" [(ngModel)]="task.done">
                 <mat-option *ngIf="task.done === true" value="Done"></mat-option>
                 <mat-option *ngIf="task.done === false" value="ToDo"></mat-option>
-                <!-- [(ngModel)]="task.done" -->
                 <mat-option *ngFor="let s of status" [value]="s.value">
                   {{s.view}}
                 </mat-option>
@@ -37,7 +36,7 @@
           </div>
           <div class="category">
             <mat-form-field class="category">
-              <mat-select placeholder="category" [(ngModel)]="task.category">
+              <mat-select placeholder="{{task.category}}" [(ngModel)]="task.category" (blur)="updatefullTask(task)">
                 <mat-option>{{task.category}}</mat-option>
                 <mat-option *ngFor="let t of category" [value]="t.value">
                   {{t.view}}
@@ -75,16 +74,12 @@
           <span>{{formatTime(task.time)+ ' spent on this task'}}</span>
 
         </div>
-        <!-- <mat-input-container>
-        <input matInput disabled type="text" placeholder="Status:" *ngIf="task.done === false" value="{{task.done}}">
-        <input matInput disabled type="text" placeholder="Status:" *ngIf="task.done === true" value="Done">
-      </mat-input-container> -->
       </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="updatefullTask(task, message.value)">update</button>
       <!-- update on enter or not focuse -->
-      <!-- <label id="info">or press Enter to update</label> -->
+      <label id="info">or press Enter to update to DB  ..still there for testing</label>
     </mat-card-actions>
 
   </mat-card>

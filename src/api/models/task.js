@@ -11,6 +11,9 @@ const taskSchema = new Schema({
         type: String,
         default: "no description provided"
     },
+    category: {
+        type: String
+    },
     notes: {
         type: Array,
         default: []

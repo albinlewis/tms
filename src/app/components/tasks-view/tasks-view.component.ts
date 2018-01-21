@@ -106,7 +106,7 @@ export class TasksViewComponent implements OnInit {
           duration: 4000,
         });
       } if(newtask.title !== '') {
-        this.snackBar.open(newtask.title, 'created!!!', {
+        this.snackBar.open(String(newtask.title), 'created!!!', {
           duration: 4000,
         });
       }

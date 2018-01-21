@@ -45,7 +45,7 @@ export class TaskDetailComponent implements OnInit {
   }
 
   
-  private formatTime(time) {
+  public formatTime(time) {
     var seconds = this.pad(time % 60);
     var minutes = this.pad((Math.floor(time / 60)) % 60);
     var hours = this.pad(Math.floor((time / 60) / 60));

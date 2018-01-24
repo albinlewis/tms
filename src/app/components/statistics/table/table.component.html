@@ -14,12 +14,12 @@
       <!-- Name Column -->
       <ng-container matColumnDef="time">
         <mat-header-cell *matHeaderCellDef> Duration</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.time}}s</mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.time | secondsToTime}}  </mat-cell>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="done">
-        <mat-header-cell *matHeaderCellDef> Status</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Done</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.done}}</mat-cell>
       </ng-container>
 

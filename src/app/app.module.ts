@@ -32,6 +32,8 @@ import {PiechartComponent} from './components/statistics/piechart/piechart.compo
 import {BarchartComponent} from './components/statistics/barchart/barchart.component';
 import {TableComponent} from './components/statistics/table/table.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
+import {secondsToTimePipe} from "./components/statistics/Timepipe";
+
 
 
 @NgModule({
@@ -55,7 +57,8 @@ import {StatisticsComponent} from './components/statistics/statistics.component'
     FilterbarComponent,
     StatisticsComponent,
     BarchartComponent,
-    TableComponent
+    TableComponent,
+    secondsToTimePipe
   ],
   imports: [
     FormsModule,

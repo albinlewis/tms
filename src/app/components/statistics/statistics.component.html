@@ -17,7 +17,7 @@
 
   <div class="colTwo">
     <app-piechart *ngIf="pieselect()"></app-piechart>
-    <app-barchart *ngIf="barselect()"></app-barchart>
+    <app-barchart *ngIf="barselect()" [task]="task"></app-barchart>
     <app-table *ngIf="tableselect()"></app-table>
 
   </div>

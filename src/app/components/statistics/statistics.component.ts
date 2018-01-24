@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Task} from '../../models/task';
+import {TaskDataService} from '../../services/task-data-service';
+
+
 
 @Component({
   selector: 'app-statistics',
@@ -9,36 +13,49 @@ export class StatisticsComponent implements OnInit {
 
   list: String[];
   selectedItem: String;
+  @Input() task: Task[];
 
-  constructor() {
+
+  constructor(private taskService: TaskDataService) {
     this.list = ['Pie chart', 'Bar chart', 'Table view'];
     this.selectedItem = 'Pie chart';
+    console.log('i am called');
+
   }
 
   ngOnInit() {
+    this.taskService.getTasks()
+      .subscribe((tasks) => {
+
+
+        this.task = tasks;
+
+
+      });
   }
 
-  onselect (item: String) {
-  this.selectedItem = item;
+  onselect(item: String) {
+    this.selectedItem = item;
 
   }
-  pieselect () {
+
+  pieselect() {
     if (this.selectedItem === 'Pie chart') {
       return true;
     }
   }
-  barselect () {
+
+  barselect() {
     if (this.selectedItem === 'Bar chart') {
       return true;
     }
   }
 
-  tableselect () {
+  tableselect() {
     if (this.selectedItem === 'Table view') {
       return true;
     }
   }
-
 
 
 }

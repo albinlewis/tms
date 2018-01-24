@@ -4,6 +4,7 @@ import {TaskDataService} from '../../../services/task-data-service';
 import {Task} from '../../../models/task';
 
 
+
 @Component({
   selector: 'app-barchart',
   templateUrl: './barchart.component.html',
@@ -11,8 +12,8 @@ import {Task} from '../../../models/task';
 })
 export class BarchartComponent implements OnInit {
 
-  task: Task[];
-  test: any = 'test';
+  @Input()  task: Task[];
+
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true

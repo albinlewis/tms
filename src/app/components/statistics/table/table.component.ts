@@ -54,11 +54,17 @@ export class TableComponent {
   display() {
     const tablelabels: any[] = [];
     console.log(this.element);
+    let status: String;
 
     for (const eachObj of this.tasks) {
+      if (eachObj.done === true) {
+        status = 'yes';
+      } else {
+        status = 'no';
+      }
 
       tablelabels.push(
-        {title: eachObj.title, time: eachObj.time, done: eachObj.done}
+        {title: eachObj.title, time: eachObj.time, done: status}
       );
 
 

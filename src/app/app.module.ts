@@ -32,7 +32,8 @@ import {PiechartComponent} from './components/statistics/piechart/piechart.compo
 import {BarchartComponent} from './components/statistics/barchart/barchart.component';
 import {TableComponent} from './components/statistics/table/table.component';
 import {StatisticsComponent} from './components/statistics/statistics.component';
-import {secondsToTimePipe} from "./components/statistics/Timepipe";
+import {secondsToTimePipe} from './components/statistics/Timepipe';
+import {UpdateService} from './services/UpdateService';
 
 
 
@@ -89,7 +90,7 @@ import {secondsToTimePipe} from "./components/statistics/Timepipe";
     ChartsModule
   ],
   entryComponents: [DatabaseSelectorComponent, DatabaseDialog, AddDialog],
-  providers: [ApiService, TaskDataService],
+  providers: [ApiService, TaskDataService, UpdateService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

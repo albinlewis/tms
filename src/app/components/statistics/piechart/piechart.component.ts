@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TaskDataService} from '../../../services/task-data-service';
 import {Task} from '../../../models/task';
+import {UpdateService} from '../../../services/UpdateService';
 
 
 @Component({
@@ -17,12 +18,20 @@ export class PiechartComponent {
   public pieChartData: Number[] = [];
   public pieChartType: String = 'pie';
 
-  constructor(private taskService: TaskDataService) {
+  constructor(private taskService: TaskDataService, private u: UpdateService) {
 
     this.taskService.getTasks()
       .subscribe((tasks) => {
         this.tasks = tasks;
+        console.log(this.tasks);
 
+        this.display();
+
+      });
+    this.u.tasksUpdated
+      .subscribe((task) => {
+      this.pieChartData = [];
+        this.tasks = task;
         this.display();
 
       });

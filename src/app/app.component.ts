@@ -1,7 +1,7 @@
-import { OnInit, Component } from '@angular/core';
-import { TaskDataService } from './services/task-data-service';
-import { Task } from './models/task';
-import { HttpClient } from '@angular/common/http';
+import {OnInit, Component} from '@angular/core';
+import {TaskDataService} from './services/task-data-service';
+import {Task} from './models/task';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     });
 
     this.taskService.searchFilterString.subscribe((title) => {
-        this.tasks = this.filterSearchTasks(title);
+      this.tasks = this.filterSearchTasks(title);
     });
 
   }
@@ -40,10 +40,13 @@ export class AppComponent implements OnInit {
     if (title) {
       return this.alltasks.filter(task => task.title.toUpperCase().includes(title.toUpperCase()));
     }
-    else{
+    else {
       return this.alltasks;
     }
   }
+
+
+
 
   // ToDo: Event Handler (onAddTask, onDeleteTask, ...)
 }

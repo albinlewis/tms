@@ -13,7 +13,7 @@ export class StatisticsComponent implements OnInit {
 
   list: String[];
   selectedItem: String;
-  @Input() task: Task[];
+   task: Task[];
 
 
   constructor(private taskService: TaskDataService) {

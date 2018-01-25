@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api-service';
 import {TaskDataService} from '../../../services/task-data-service';
 import {Task} from '../../../models/task';
+import {UpdateService} from '../../../services/UpdateService';
 
 
 
@@ -12,7 +13,7 @@ import {Task} from '../../../models/task';
 })
 export class BarchartComponent implements OnInit {
 
-  @Input()  task: Task[];
+   task: Task[];
 
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -27,24 +28,31 @@ export class BarchartComponent implements OnInit {
 
   public barChartData: any[] = [{data: [], label: 'Tasks in Sekunden'}];
 
-  constructor(private taskService: TaskDataService) {
-
-
-  }
-
-  ngOnInit() {
-
+  constructor(private taskService: TaskDataService, private u: UpdateService) {
+    console.log('barchart created');
     console.log(this.barChartData[0].data);
     this.taskService.getTasks()
       .subscribe((tasks) => {
 
         this.task = tasks;
+        console.log(this.task);
 
 
         this.display();
 
 
       });
+    this.u.tasksUpdated
+      .subscribe((task) => {
+     this.task = task;
+     this.display();
+    });
+
+
+  }
+
+  ngOnInit() {
+
 
   }
 

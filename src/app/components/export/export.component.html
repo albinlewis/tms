@@ -1,13 +1,10 @@
 <div class="exportGrid">
     <div class="mailWrapper">
-        <h1>
+        <h2 id="emailExportHeading">
             E-Mail Export
-        </h1>
-        <p>
-            You can have your ToDo-List (open tasks), your Timetracking (all things that you worked on, listed with the time spent),
-            or a Daily-Standup Journal (a summary of everything you took notes on while working on tasks) to your e-mail
-            address by chosing an option and clicking the send button.
-        </p>
+        </h2>
+        <p>Get your document emailed to your mail address.
+            <br> To change the mail address check the bottom right settings button.</p>
         <mat-form-field>
             <mat-select placeholder="Content to be sent" [(ngModel)]="selectedMailOption">
                 <mat-option *ngFor="let option of mailOptions" [value]="option.content">
@@ -18,28 +15,23 @@
         <button mat-button class="sendMailButton" (click)="processDataAndSendMail()">Send E-Mail</button>
     </div>
     <div class="downloadWrapper">
-        <h1>
+        <h2 id="downloadExportHeading">
             Download
-        </h1>
-        <p>
-            You can have your ToDo-List (open tasks), your Timetracking (all things that you worked on, listed with the time spent),
-            or a Daily-Standup Journal (a summary of everything you took notes on while working on tasks) to your e-mail
-            address by chosing an option and clicking the send button.
-        </p>
+        </h2>
         <mat-form-field>
             <mat-select placeholder="Content to download" [(ngModel)]="selectedDownloadOption">
-                <mat-option *ngFor="let option of downloadOptions"  [value]="option.content">
+                <mat-option *ngFor="let option of downloadOptions" [value]="option.content">
                     {{ option.title }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-                <mat-select placeholder="Download format" [(ngModel)]="selectedDownloadFormat">
-                    <mat-option *ngFor="let option of formatOptions" [value]="option.content">
-                        {{ option.title }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+            <mat-select placeholder="Download format" [(ngModel)]="selectedDownloadFormat">
+                <mat-option *ngFor="let option of formatOptions" [value]="option.content">
+                    {{ option.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <button mat-button class="downloadButton" (click)="processDataAndDownload()">Download</button>
     </div>
 </div>

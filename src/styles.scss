@@ -45,12 +45,6 @@ $tms-amber-theme: mat-light-theme($tms-amber-primary, $tms-amber-accent, $tms-am
     .default-tile:hover{
         box-shadow: 0 4px 8px 0 mat-color($primary), 0 6px 20px 0 black;
     }
-    .noTasksButton {
-        margin-top: 15px;
-        font-family: 'Lato', sans-serif;
-        background-color: mat-color($accent);
-    }
-
     #noTasksTemplate {
         padding: 6em;
         margin: 3em;
@@ -58,19 +52,18 @@ $tms-amber-theme: mat-light-theme($tms-amber-primary, $tms-amber-accent, $tms-am
         vertical-align: middle;
         text-align: center;
     }
-
     .selected{
         background-color: mat-color($primary);
     }
-
-    .sendMailButton {
-        font-family: 'Lato', sans-serif;
-        background-color: mat-color($accent);
+    .mailWrapper {
+        background-color: #cccccc;
+        border-radius: 15px;
+        padding: 20px;
     }
-
-    .downloadButton {
-        font-family: 'Lato', sans-serif;
-        background-color: mat-color($accent);
+    .downloadWrapper {
+        background-color: #cccccc;
+        border-radius: 15px;  
+        padding: 20px;
     }
 
     // Predefined/Default modules
@@ -131,9 +124,34 @@ h1, h2, h3, h4 {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .exportGrid {
-    background-color: rgba(0, 0, 0, 0);
     display: grid;
-    grid-template-columns: 49% 49%;
+    grid-template-columns: 48% 48%;
     grid-template-rows: auto;
-    grid-column-gap: 2%;
+    grid-column-gap: 4%;
+    grid-row-gap: 4%;
+}
+
+.sendMailButton {
+    font-family: 'Lato', sans-serif;
+    background-color: mat-color($tms-theme-primary);
+    margin-left: 15px;
+    width: 120px;
+}
+.downloadButton {
+    font-family: 'Lato', sans-serif;
+    background-color: mat-color($tms-theme-primary);
+    margin-left: 15px;
+    width: 120px;
+}
+.noTasksButton {
+    margin-top: 15px;
+    font-family: 'Lato', sans-serif;
+    background-color: mat-color($tms-theme-primary);
+}
+
+#emailExportHeading {
+    font-family: 'Dosis', sans-serif;
+}
+#downloadExportHeading {
+    font-family: 'Dosis', sans-serif;
 }

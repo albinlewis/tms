@@ -1,18 +1,18 @@
-<h1 mat-dialog-title>Settings</h1>
-<div mat-dialog-content>
-  <mat-form-field>
+<h1 id="formheading" mat-dialog-title>Settings</h1>
+<div id="dialog-container" mat-dialog-content>
+  <mat-form-field class="formfield">
     <input matInput [(ngModel)]="data.dbtoken" placeholder="Database Token">
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="formfield">
     <input matInput [(ngModel)]="data.username" placeholder="Username">
   </mat-form-field>
   <br>
-  <mat-form-field>
+  <mat-form-field class="formfield">
     <input matInput [(ngModel)]="data.email" placeholder="E-mail Address">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="{'dbtoken': data.dbtoken, 'username':data.username, 'email':data.email}" cdkFocusInitial>Apply</button>
-  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button id="mat-button-apply" mat-button [mat-dialog-close]="{'dbtoken': data.dbtoken, 'username':data.username, 'email':data.email}" cdkFocusInitial>Apply</button>
+  <button id="mat-button-cancel" mat-button (click)="onNoClick()">Cancel</button>
 </div>

@@ -42,6 +42,7 @@ export class DatabaseSelectorComponent {
 @Component({
   selector: 'database-dialog',
   templateUrl: 'database-dialog.html',
+  styleUrls: ['database-dialog.scss']
 })
 export class DatabaseDialog {
   constructor(

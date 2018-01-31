@@ -19,9 +19,10 @@ Nach der Installation sind folgende commands im Terminal möglich:
 |-------|------|----|
 |npm run dev-frontend|runs the angular app in dev mode|on localhost:4200 (hot-reload) [development-mode]|
 |npm run dev-backend|runs the node backend in dev mode|(restarts on changes - powered by nodemon)|
-|npm start|builds and runs the electron app|production mode|
-|npm test|runs the Karma test-suite|frontend tests|
+|npm run dev|runs the whole app locally in development mode|combination of decoupled commands|
 |npm run mocha|runs the Mocha-Chai test-suite|backend tests|
+|npm start|builds and runs the electron app|production mode|
+|~~npm test~~|~~runs the Karma test-suite~~|currently not used|
 |~~npm run e2e~~|~~runs end-to-end tests~~|currently not used|
 
 ### development-mode

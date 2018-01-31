@@ -1,4 +1,4 @@
-<div (keyup.enter)="updatefullTask(task, 'task')" (blur)="updatefullTask(task, 'task')" >
+<div (keyup.enter)="updatefullTask(task, 'task')" (blur)="updatefullTask(task, 'task')">
   <mat-card>
     <!-- <mat-card-header> -->
     <mat-card-content>
@@ -25,9 +25,9 @@
           <br>
           <div class="status">
             <mat-form-field class="status">
-              <mat-select placeholder="{{task.done}}" (blur)="updatefullTask(task, 'status')" [(ngModel)]="task.done">
-                <mat-option *ngIf="task.done === true" value="Done"></mat-option>
-                <mat-option *ngIf="task.done === false" value="ToDo"></mat-option>
+              <mat-select placeholder="status" (blur)="updatefullTask(task, 'status')" [(ngModel)]="task.done">
+                <mat-option *ngIf="task.done === true">Done</mat-option>
+                <mat-option *ngIf="task.done === false">ToDo</mat-option>
                 <mat-option *ngFor="let s of status" [value]="s.value">
                   {{s.view}}
                 </mat-option>
@@ -36,7 +36,7 @@
           </div>
           <div class="category">
             <mat-form-field class="category">
-              <mat-select placeholder="{{task.category}}" [(ngModel)]="task.category" (blur)="updatefullTask(task, 'category')">
+              <mat-select placeholder="category" [(ngModel)]="task.category" (blur)="updatefullTask(task, 'category')">
                 <mat-option>{{task.category}}</mat-option>
                 <mat-option *ngFor="let t of category" [value]="t.value">
                   {{t.view}}
@@ -45,27 +45,29 @@
             </mat-form-field>
           </div>
         </div>
-        <mat-card-content >
+        <mat-card-content>
           <!-- <mat-list >
             <mat-list-item *ngFor="let note of task.notes;">{{note}}</mat-list-item>
 
           </mat-list> -->
           <div class="scroll">
+            <div>
+              <label *ngIf="task.notes.length === null || task.notes.length === 0">You have no notes maaannnn, do <b>something!!!</b></label>
+            </div>
             <!-- scrollable view -->
-            <ul>
-              <li *ngFor="let note of task.notes;">{{note}}</li>
-            </ul>
+            <mat-list>
+              <mat-list-item *ngFor="let note of task.notes;">{{note}}</mat-list-item>
+            </mat-list>
           </div>
         </mat-card-content>
 
-
         <div class="bottom-left">
-          <mat-input-container>
+          <mat-input-container class="disabled">
             <input matInput disabled type="text" placeholder="Created at:" value="{{task.createdAt | date: 'medium'}}">
           </mat-input-container>
         </div>
         <div class="bottom-right">
-          <mat-input-container>
+          <mat-input-container class="disabled">
             <input matInput disabled type="text" placeholder="Updated at:" value="{{task.updatedAt | date: 'medium'}}">
           </mat-input-container>
         </div>
@@ -79,7 +81,7 @@
     <mat-card-actions>
       <button mat-raised-button (click)="updatefullTask(task, message.value)">update</button>
       <!-- update on enter or not focuse -->
-      <label id="info">or press Enter to update to DB  ..still there for testing</label>
+      <label id="info">or press Enter to update to DB ..still there for testing</label>
     </mat-card-actions>
 
   </mat-card>

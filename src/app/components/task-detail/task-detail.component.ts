@@ -38,6 +38,9 @@ export class TaskDetailComponent implements OnInit {
 
   updatefullTask(task: Task, message: string) {
     task.updatedAt = new Date();
+    if (task.category === 'Daily') {
+      task.interval.hasInterval = true;
+    }
     this.snackBar.open(message, 'Updated!!!', {
       duration: 4000,
     });

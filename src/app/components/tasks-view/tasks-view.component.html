@@ -1,50 +1,23 @@
 
-<!-- <div class="create" (keyup.enter)="onAddTask(task)">    
-  <mat-card>
-      <form>
-        <mat-form-field class="input-widht">
-          <input matInput [(ngModel)]="task.title" placeholder="Title" [formControl]="NameFormControl" required>
-          <mat-error *ngIf="NameFormControl.invalid">
-            Name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </form>
-      <mat-input-container class="input-widht">
-        <input type="text" matInput [(ngModel)]="task.description" placeholder="Description" >
-      </mat-input-container>
-      <mat-card-actions>
-        <button mat-raised-button  (click)="onAddTask(task)">add</button>
-        <mat-slide-toggle (click)="filterDoneTasks(tasks) && !status" #edit><label>{{!edit.checked ? "Show All Taks" : "Show not Done Tasks"}}</label></mat-slide-toggle>
-      </mat-card-actions>
-  </mat-card>
-</div>
-<br> -->
-
-
-<!-- <mat-grid-list cols="2" class="container"> -->
-<!-- <mat-grid-tile class="tasklist" flex> -->
 <div class="container">
-
-  <!-- <div class="colOne" *ngFor="let task of tasks"  [class.selected]="task === selectedTask" >
-
-              <task [task]= "task"  (click)="onselect(task)" (delete)="onDeleteTask(task)" ></task>
-
-            </div> -->
   <div class="colOne">
 
     <div>
       <mat-card>
-        <button class="addButton" (click)="addDialogTask()" mat-raised-button> Add Task</button>
-        <!-- on click open tooltip and input that will be added to list -->
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="showToDo()">To-Do</button>
-          <button mat-menu-item (click)="showDone()">Done</button>
-          <button mat-menu-item (click)="showDaily()">Daily</button>
-          <button mat-menu-item (click)="showFavorite()">Favorite</button>
-          <button mat-menu-item (click)="showNotAssigned()">Not Assigned</button>
-          <button mat-menu-item (click)="showTAll()">All</button>
-        </mat-menu>
+        <div class="firstRow">
+          <button class="addButton" (click)="addDialogTask()" mat-raised-button> Add Task</button>
+          <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="showTAll()">All</button>
+            <button mat-menu-item (click)="showDaily()">Daily</button>
+            <button mat-menu-item (click)="showDone()">Done</button>
+            <button mat-menu-item (click)="showFavorite()">Favorite</button>
+            <button mat-menu-item (click)="showNotAssigned()">Not Assigned</button>
+            <button mat-menu-item (click)="showToDo()">To-Do</button>
+          </mat-menu>
+        </div>        
+        <br>
+        <label>Current category: <b>{{showCategory}}</b></label>
       </mat-card>
     </div>
     <div *ngIf="showT === true">
@@ -56,8 +29,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-row>
-              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
@@ -71,8 +44,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-row>
-              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
@@ -86,8 +59,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-row>
-              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
@@ -101,8 +74,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-row>
-              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
@@ -116,23 +89,23 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-row>
-              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
     <div *ngIf="showAll === true">
       <mat-accordion>
-        <mat-expansion-panel *ngFor="let task of tasksAll">
+        <mat-expansion-panel *ngFor="let task of tasks">
           <mat-expansion-panel-header (click)="onselect(task)">
             <mat-panel-title>
               {{task.title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-action-row>
-              <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-              <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
           </mat-action-row>
         </mat-expansion-panel>
       </mat-accordion>

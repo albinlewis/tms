@@ -29,12 +29,13 @@ export class TasksViewComponent implements OnInit {
   openCollapse = false;
   status = false;
 
-  showT = true;
+  showT = false;
   showD = false;
   showDa = false;
   showF = false;
   showA = false;
   showAll = false;
+  showCategory: String;
 
   title: String;
   description: String;
@@ -45,6 +46,7 @@ export class TasksViewComponent implements OnInit {
   constructor(private taskDataService: TaskDataService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.updateArrays();  
     this.taskDataService.activeTask.subscribe((activeTask: Task) => {
       this.selectedTask = activeTask;
       if (activeTask) {
@@ -54,9 +56,9 @@ export class TasksViewComponent implements OnInit {
         this.notes = [];
       }
     });
-    this.updateArrays();
+    this.showTAll();
+     
   }
-
   onselect(task: Task): void {
     // this.selectedTask = task;
 
@@ -120,9 +122,31 @@ export class TasksViewComponent implements OnInit {
   updateArrays() {
     this.tasksToDo = this.tasks.filter(tasks => tasks.done === false);
     this.tasksDone = this.tasks.filter(tasks => tasks.done === true);
-    this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily');
+    this.tasksDaily = this.tasks.filter(tasks => {tasks.category === 'Daily' ;  tasks.interval.hasInterval = true});
     this.tasksFavorite = this.tasks.filter(tasks => tasks.category === 'Favorite');
     this.tasksNotAssigned = this.tasks.filter(tasks => tasks.category === "" || tasks.category === null);
+    //this.dailyTask(this.tasksToDo, this.tasksDaily);
+  }
+  dailyTask(tasksTodo: Array<Task>, tasksDaily: Array<Task> ){
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    console.log(yesterday);
+    var today = new Date();
+    today.setDate(today.getDate());
+    console.log(today);
+  
+      for (const task of tasksTodo) {
+        for (const taskD of tasksDaily) {
+          if (taskD.category === "Daily" && yesterday<today) {
+            tasksTodo.push(taskD);
+          }else{
+            console.log('Already in Todo')
+          }
+        }
+      }
+      this.tasksToDo = tasksTodo;
+      console.log(this.tasksToDo);  
+
   }
 
   onAddTask(task: Task) {
@@ -168,14 +192,37 @@ export class TasksViewComponent implements OnInit {
   }
 
   showToDo() {
-    this.tasksToDo = this.tasks.filter(tasks => tasks.done === false);
-    console.log(this.tasksToDo);
+
+    // var yesterday = new Date();
+    // yesterday.setDate(yesterday.getDate() - 1);
+    // console.log(yesterday);
+    // var today = new Date();
+    // today.setDate(today.getDate());
+    // console.log(today);
+
+    this.tasksToDo = this.tasks.filter(tasks => tasks.done === false)
+    this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily');
+
+    this.tasksToDo.forEach(task => {
+      this.tasksDaily.forEach(tasksD =>{
+        
+        var sameT= this.tasksToDo.includes(tasksD);
+        if( tasksD.category === 'Daily'&& sameT !== true && tasksD.interval.hasInterval === true) {
+          console.log(tasksD);
+          console.log(task);
+          this.tasksToDo.push(tasksD);   
+        }else{
+          console.log('Found, already in todo, not added');
+        }
+      });
+    });
+    console.log(this.tasksToDo);  
     this.showT = true;
     this.showD = false;
     this.showDa = false;
     this.showF = false;
     this.showAll = false;
-
+    this.showCategory = 'ToDo';
   }
 
   showDone() {
@@ -187,10 +234,16 @@ export class TasksViewComponent implements OnInit {
     this.showF = false;
     this.showA = false;
     this.showAll = false;
+    this.showCategory = 'Done';
+
   }
 
   showDaily() {
-    this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily');
+    this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily' );
+    this.tasksDaily.forEach(task =>{
+      task.interval.hasInterval = true;
+      this.onupdateTask(task);
+    })
     console.log(this.tasksDaily);
     this.showT = false;
     this.showD = false;
@@ -198,6 +251,8 @@ export class TasksViewComponent implements OnInit {
     this.showF = false;
     this.showA = false;
     this.showAll = false;
+    this.showCategory = 'Daily';
+
   }
 
   showFavorite() {
@@ -209,8 +264,10 @@ export class TasksViewComponent implements OnInit {
     this.showF = true;
     this.showA = false;
     this.showAll = false;
+    this.showCategory = 'Favorite';
+
   }
-  showNotAssigned() {
+   showNotAssigned() {
     this.tasksNotAssigned = this.tasks.filter(tasks => tasks.category === "" || tasks.category === null);
     console.log(this.tasksNotAssigned);
     this.showT = false;
@@ -219,17 +276,18 @@ export class TasksViewComponent implements OnInit {
     this.showF = false;
     this.showA = true;
     this.showAll = false;
+    this.showCategory = 'Not Assigned';
+
   }
   showTAll() {
-    this.tasksAll = this.tasks;
-    console.log(this.tasksAll);
+    //console.log(this.tasksAll);
     this.showT = false;
     this.showD = false;
     this.showDa = false;
     this.showF = false;
     this.showA = false;
     this.showAll = true;
-
+    this.showCategory = 'All';
   }
 
 }

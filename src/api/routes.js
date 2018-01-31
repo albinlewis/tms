@@ -15,4 +15,7 @@ module.exports = function (server) {
     const mail = require('./mail');
     server.post('/api/mails/send', jsonParser, mail.sendMail);
 
+    const download = require('./download');
+    server.post('/api/download', jsonParser, download.getData);
+
 }

@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { interval } from 'rxjs/observable/interval';
 
 
 
@@ -96,11 +97,26 @@ export class TasksViewComponent implements OnInit {
       this.description = result.description;
       this.category = result.category;
 
+      if (this.category === 'Daily') {
+        let newtask = new Task({
+          title: this.title,
+          description: this.description,
+          category: this.category,
+          createdAt: Date.now(),
+          interval: {
+            hasInterval : true
+          }
+        });
+      }
+
       let newtask = new Task({
         title: this.title,
         description: this.description,
         category: this.category,
-        createdAt: Date.now()
+        createdAt: Date.now(),
+        interval: {
+          hasInterval : false
+        }
       });
       console.log(newtask);
       if (newtask === null) {
@@ -122,10 +138,9 @@ export class TasksViewComponent implements OnInit {
   updateArrays() {
     this.tasksToDo = this.tasks.filter(tasks => tasks.done === false);
     this.tasksDone = this.tasks.filter(tasks => tasks.done === true);
-    this.tasksDaily = this.tasks.filter(tasks => {tasks.category === 'Daily' ;  tasks.interval.hasInterval = true});
+    this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily' );
     this.tasksFavorite = this.tasks.filter(tasks => tasks.category === 'Favorite');
     this.tasksNotAssigned = this.tasks.filter(tasks => tasks.category === "" || tasks.category === null);
-    //this.dailyTask(this.tasksToDo, this.tasksDaily);
   }
   dailyTask(tasksTodo: Array<Task>, tasksDaily: Array<Task> ){
     var yesterday = new Date();

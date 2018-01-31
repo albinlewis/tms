@@ -25,13 +25,14 @@ export class TaskExportComponent implements OnInit {
         { title: "Time Tracking Table", content: "table" }
     ];
     downloadOptions = [
-        { title: "Raw Data", content: "raw" },
+        { title: "Raw Data", content: "raw" }/*,
         { title: "ToDo-List", content: "list" },
         { title: "Daily-Standup Journal", content: "journal" },
         { title: "Time Tracking Table", content: "table" }
+        */
     ];
     formatOptions = [
-        { title: "HTML", content: "html" },
+        /*{ title: "HTML", content: "html" },*/
         { title: "JSON", content: "json" },
         { title: "CSV", content: "csv" },
     ];
@@ -49,8 +50,8 @@ export class TaskExportComponent implements OnInit {
         this.mailReceiver = '';
     }
 
-    ngOnInit() { 
-        this.taskDataService.mailReceiver.subscribe((mr)=> {
+    ngOnInit() {
+        this.taskDataService.mailReceiver.subscribe((mr) => {
             this.mailReceiver = mr;
             console.log(this.mailReceiver);
         })
@@ -74,12 +75,6 @@ export class TaskExportComponent implements OnInit {
                 break;
         }
         return data;
-    }
-    /**
-     * process task data to be download
-     */
-    public processDataDL(option, format) {
-        console.log(option + ' : ' + format);
     }
 
     public addHeaderAndFooter(content) {
@@ -147,16 +142,24 @@ export class TaskExportComponent implements OnInit {
     /**
      * starts download of data
      */
-    public downloadData(data) {
-        console.log({ message: 'not implemented yet.', content: data });
+    public downloadData() {
+        this.http.post('http://localhost:3333/api/download', {
+            file: this.selectedDownloadOption,
+            format: this.selectedDownloadFormat,
+            payload: this.tasks
+        }).subscribe(
+            res => {
+                console.log(res);
+            }, err => {
+                console.log("Error occured");
+            });
     }
 
     /**
      * frontend call for download button
      */
     public processDataAndDownload() {
-        let data = this.processDataDL(this.selectedDownloadOption, this.selectedDownloadFormat);
-        this.downloadData(data);
+        this.downloadData();
         console.log('download started');
     }
 

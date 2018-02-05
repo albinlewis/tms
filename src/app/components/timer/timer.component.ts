@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { TaskDataService } from '../../services/task-data-service';
 import { Task } from '../../models/task';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
     selector: 'timer',
@@ -17,8 +18,9 @@ export class TimerComponent implements OnInit {
     secondsDisplay: number = 0;
     sub: Subscription = new Subscription();
     oldTask: Task;
+    paused: Boolean = false;
 
-    constructor(private taskService: TaskDataService) { }
+    constructor(private taskService: TaskDataService, private pauseFeedback: MatSnackBar) { }
 
     ngOnInit() {
         this.taskService.activeTask.subscribe((activeTask: Task) => {
@@ -28,8 +30,9 @@ export class TimerComponent implements OnInit {
                 this.ticks = activeTask.time.valueOf();
                 this.startTimer();
                 this.oldTask = activeTask;
+                this.paused = false;
             }
-            else{
+            else {
                 this.taskService.timerState.next(this.ticks);
                 this.oldTask = null;
             }
@@ -90,10 +93,24 @@ export class TimerComponent implements OnInit {
         this.sub.unsubscribe();
     }
 
-    private pause() {
-        this.resume_ticks = this.ticks;
-        this.sub.unsubscribe();
+    private togglePause() {
+        if (!this.paused) {
+            this.paused = !this.paused;
+            this.resume_ticks = this.ticks;
+            this.sub.unsubscribe();
+            this.openSnackBar('Timer has been paused', "Tracking");
+        }
+        else{
+            this.paused = !this.paused;
+            this.startTimer();
+            this.openSnackBar('Timer has been resumed', "Tracking");
+        }
     }
 
+    openSnackBar(message: string, action: string) {
+        this.pauseFeedback.open(message, action, {
+          duration: 2000,
+        });
+      }
 
 }

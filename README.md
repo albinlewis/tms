@@ -6,7 +6,7 @@ Unser Ziel ist es eine bequem nutzbare, praktische und optisch ansprechende Time
 
 ## Setup
 
-Um das Projekt auszuführen werden NodeJS, die dependecnies, Electron und die Angular CLI benötigt.
+Um das Projekt auszuführen werden NodeJS, die Projekt-dependencies, Electron und die Angular CLI benötigt.
 
 ```shell
 > npm install @angular/cli -g
@@ -34,7 +34,6 @@ Nach der Installation sind folgende commands im Terminal möglich:
 ```
 
 Trennt Frontend und Backend in eigene Prozesse, und ermöglicht development mit hot-reload im Frontend und restart-on-change im Backend. 
-Backend code der den Server, und nicht seine API betrifft (Änderungen in server.js müssen für electron-build in main.js umgezogen werden). 
 
 ### production-mode
 
@@ -70,7 +69,33 @@ Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zug
 
 ## Frontend
 
-`// TODO`
+Die Electron App gliedert sich in vier verschiedene Views: 
+
+- Task-Management-View
+  - Hier werden Tasks erstellt, und in 4 wählbaren Kategorien angezeigt. 
+  - Außerdem können Tasks hier wieder auf 'ToDo' gesetzt, und die getrackte Zeit bei Bedarf zurückgesetzt werden (Dies bietet sich für tägliche bzw. wiederkehrende Tasks an)
+  - Auch alle anderen sinnvollen Änderungen an Tasks können hier vorgenommen werden.
+![Task-Management-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-01.png)
+
+- Tracking-View
+  - Hier können die offenen Tasks angeklickt, und so getrackt werden. 
+  - Während die Zeit genommen wird können hier für jede Task Notizen gemacht werden. 
+  - Außerdem können Tasks hier auf bearbeitet gesetzt werden.
+![Tracking-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-02.png)
+
+- Statistics-View
+  - In dieser View wird die bisher auf Tasks verwendete Zeit statistisch angezeigt.
+  - Es kann zwischen einer relativen (Tortendiagramm der verwendeten Zeit pro Tasks), absoluten (alle Tasks und ihre Zeite werden in einem Balkendiagramm aufgelistet), und einer Listen-Ansicht (Timetracking Liste, welche Task, Zeit und Status listet) gewählt werden.
+![Statistics-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-03.png)
+
+- Export-View
+  - In dieser View kann die komplette Task Liste exportiert werden. 
+  - Es wird dabei entweder die Verarbeitung zu einem von drei verschiedenen Dokumenten, und anschließender Versand dieser als E-Mail, oder der Download der Rohdaten als CSV oder JSON Datei angeboten.
+  - Die Dokumente und ihr Zweck:
+    - Daily Journal: Eine kurze Liste an bearbeiteten Tasks und den gemachten Notizen, für eine schnelle Übersicht in Daily-Meetings (Gedächtnisstütze)
+    - ToDo-List: Eine bündige Übersicht der offenen Tasks
+    - Timetracking-Table: Eine Listenansicht, wie im Statistics-View
+![Export-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-04.png)
 
 ## Backend
 

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Task } from '../../models/task';
 import { TaskDataService } from '../../services/task-data-service'
 
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+
 // import * as MailHeader from '../../templates/mail-header.html';
 // import * as MailFooter from '../../templates/mail-footer.html';
 
@@ -143,24 +145,19 @@ export class TaskExportComponent implements OnInit {
      * starts download of data
      */
     public downloadData() {
-        this.http.post('http://localhost:3333/api/download', {
-            file: this.selectedDownloadOption,
-            format: this.selectedDownloadFormat,
-            payload: this.tasks
-        }).subscribe(
-            res => {
-                console.log(res);
-            }, err => {
-                console.log("Error occured");
+        if (this.selectedDownloadFormat == 'csv') {
+            let csv = new Angular2Csv(this.tasks, 'task-data', {
+                fieldSeparator: ';'
             });
-    }
-
-    /**
-     * frontend call for download button
-     */
-    public processDataAndDownload() {
-        this.downloadData();
-        console.log('download started');
+        } else {
+            if (this.selectedDownloadFormat == 'json') {
+                let downloadHelper = document.createElement('a');
+                downloadHelper.setAttribute("href", "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.tasks)));
+                downloadHelper.setAttribute("download", "task-data.json");
+                downloadHelper.click();
+                downloadHelper.remove();
+            }
+        }
     }
 
     /**

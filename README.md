@@ -6,11 +6,12 @@ Unser Ziel ist es eine bequem nutzbare, praktische und optisch ansprechende Time
 
 ## Setup
 
-Um das Projekt auszuführen werden NodeJS, Electron und die Angular CLI benötigt. 
+Um das Projekt auszuführen werden NodeJS, die dependecnies, Electron und die Angular CLI benötigt.
 
 ```shell
 > npm install @angular/cli -g
 > npm install electron -g
+> npm install
 ```
 
 Nach der Installation sind folgende commands im Terminal möglich: 
@@ -35,6 +36,14 @@ Nach der Installation sind folgende commands im Terminal möglich:
 Trennt Frontend und Backend in eigene Prozesse, und ermöglicht development mit hot-reload im Frontend und restart-on-change im Backend. 
 Backend code der den Server, und nicht seine API betrifft (Änderungen in server.js müssen für electron-build in main.js umgezogen werden). 
 
+### production-mode
+
+```shell
+> npm start
+```
+
+Startet den Build-Prozess der Angular App, und startet diese anschließend mit Electron. Hierbei wird eine Instanz des REST-Servers innerhalb des Electron Prozesses gestartet, um alle Funktionalitäten der App in einem Prozess zu bündeln. 
+
 ## Tests
 
 ### Backend Tests
@@ -50,15 +59,7 @@ Sie umfasst das Erstellen, Anzeigen, Modifizieren und Löschen von Tasks.
 
 ### Frontend Tests
 
-Die beiliegende Karma Test-Suite kann mit dem command
-
-```shell
-> npm test
-```
-
-ausgeführt werden. 
-Aktuell umfasst diese nur die vordefinierten Standard-Tests.
--> TODO
+Aktuell nicht verfügbar.
 
 ## Verwendete Frameworks
 
@@ -78,7 +79,7 @@ Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstel
 
 ## License
 
-`// TODO - aktuell nicht open source, ggf. später MIT License o.ä.`
+`// TODO`
 
 ## Team / Organisation
 

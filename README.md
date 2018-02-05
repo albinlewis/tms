@@ -75,18 +75,18 @@ Die Electron App gliedert sich in vier verschiedene Views:
   - Hier werden Tasks erstellt, und in 4 wählbaren Kategorien angezeigt. 
   - Außerdem können Tasks hier wieder auf 'ToDo' gesetzt, und die getrackte Zeit bei Bedarf zurückgesetzt werden (Dies bietet sich für tägliche bzw. wiederkehrende Tasks an)
   - Auch alle anderen sinnvollen Änderungen an Tasks können hier vorgenommen werden.
-![Task-Management-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-01.png)
+![Task-Management-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-01.PNG)
 
 - Tracking-View
   - Hier können die offenen Tasks angeklickt, und so getrackt werden. 
   - Während die Zeit genommen wird können hier für jede Task Notizen gemacht werden. 
   - Außerdem können Tasks hier auf bearbeitet gesetzt werden.
-![Tracking-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-02.png)
+![Tracking-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-02.PNG)
 
 - Statistics-View
   - In dieser View wird die bisher auf Tasks verwendete Zeit statistisch angezeigt.
   - Es kann zwischen einer relativen (Tortendiagramm der verwendeten Zeit pro Tasks), absoluten (alle Tasks und ihre Zeite werden in einem Balkendiagramm aufgelistet), und einer Listen-Ansicht (Timetracking Liste, welche Task, Zeit und Status listet) gewählt werden.
-![Statistics-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-03.png)
+![Statistics-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-03.PNG)
 
 - Export-View
   - In dieser View kann die komplette Task Liste exportiert werden. 
@@ -95,7 +95,7 @@ Die Electron App gliedert sich in vier verschiedene Views:
     - Daily Journal: Eine kurze Liste an bearbeiteten Tasks und den gemachten Notizen, für eine schnelle Übersicht in Daily-Meetings (Gedächtnisstütze)
     - ToDo-List: Eine bündige Übersicht der offenen Tasks
     - Timetracking-Table: Eine Listenansicht, wie im Statistics-View
-![Export-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-04.png)
+![Export-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-04.PNG)
 
 ## Backend
 

@@ -3,8 +3,11 @@
         <h2 id="emailExportHeading">
             E-Mail Export
         </h2>
-        <p>Get your document emailed to your mail address.
-            <br> To change the mail address check the bottom right settings button.</p>
+
+        <p>Choose one of the options below, and press 'Send E-Mail' to have the selected document e-mailed to your address.
+            <br>
+            <br> To change your mail-address, click the Settings icon in the bottom-rigth corner of the screen.
+        </p>
         <mat-form-field>
             <mat-select placeholder="Content to be sent" [(ngModel)]="selectedMailOption">
                 <mat-option *ngFor="let option of mailOptions" [value]="option.content">
@@ -18,13 +21,16 @@
         <h2 id="downloadExportHeading">
             Download
         </h2>
-        <mat-form-field>
+        <p>
+            Choose a format and press 'Download' to start downloading your task-data.
+        </p>
+        <!-- <mat-form-field>
             <mat-select placeholder="Content to download" [(ngModel)]="selectedDownloadOption">
                 <mat-option *ngFor="let option of downloadOptions" [value]="option.content">
                     {{ option.title }}
                 </mat-option>
             </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field>
             <mat-select placeholder="Download format" [(ngModel)]="selectedDownloadFormat">
                 <mat-option *ngFor="let option of formatOptions" [value]="option.content">
@@ -32,6 +38,6 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-button class="downloadButton" (click)="processDataAndDownload()">Download</button>
+        <button mat-button class="downloadButton" (click)="downloadData()">Download</button>
     </div>
 </div>

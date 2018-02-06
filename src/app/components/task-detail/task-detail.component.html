@@ -19,8 +19,8 @@
             <!-- </mat-card-header> -->
             <!-- <mat-card-content> -->
             <mat-form-field hintLabel="Max 70 characters" class="description">
-              <input matInput matTextareaAutosize matAutosizeMinRows="1" maxlength="70" #description [(ngModel)]="task.description"
-                type="text" placeholder="Description" (blur)="updatefullTask(task, 'description')" [disabled]="lock">
+              <input matInput matTextareaAutosize matAutosizeMinRows="1" maxlength="70" #description [(ngModel)]="task.description" type="text"
+                placeholder="Description" (blur)="updatefullTask(task, 'description')" [disabled]="lock">
               <mat-hint align="end">{{description.value?.length || 0}}/70</mat-hint>
             </mat-form-field>
           </div>
@@ -38,8 +38,7 @@
           </div>
           <div class="category">
             <mat-form-field class="category">
-              <mat-select placeholder="category" [(ngModel)]="task.category" (blur)="updatefullTask(task, 'category')" [disabled]="lock">
-                <mat-option>{{task.category}}</mat-option>
+              <mat-select placeholder="category" [(ngModel)]="task.category" (ngModelChange)="updatefullTask(task, 'category')" [disabled]="lock">
                 <mat-option *ngFor="let t of category" [value]="t.value">
                   {{t.view}}
                 </mat-option>
@@ -63,19 +62,20 @@
 
         <div class="bottom-left">
           <mat-input-container class="disabled">
+            <input matInput disabled type="text" placeholder="Tracked Time:" value="{{formatTime(task.time)}} spent on this Task">
+          </mat-input-container>
+        </div>
+        <div class="bottom-left">
+          <mat-input-container class="disabled">
             <input matInput disabled type="text" placeholder="Created at:" value="{{task.createdAt | date: 'medium'}}">
           </mat-input-container>
         </div>
-        <div class="bottom-right">
+        <div class="bottom-left">
           <mat-input-container class="disabled">
             <input matInput disabled type="text" placeholder="Updated at:" value="{{task.updatedAt | date: 'medium'}}">
           </mat-input-container>
         </div>
-        <div class="bottom-left">
 
-          <span>{{formatTime(task.time)+ ' spent on this task'}}</span>
-
-        </div>
       </div>
     </mat-card-content>
   </mat-card>

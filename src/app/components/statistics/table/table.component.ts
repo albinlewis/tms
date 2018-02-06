@@ -65,7 +65,7 @@ export class TableComponent {
     }
   }
 
-  private formatTime(time) {
+  public formatTime(time) {
     const seconds = this.pad(time % 60);
     const minutes = this.pad((Math.floor(time / 60)) % 60);
     const hours = this.pad(Math.floor((time / 60) / 60));
@@ -89,7 +89,7 @@ export class TableComponent {
 
     return paddedtime;
   }
-  private pad(digit: any) {
+  public pad(digit: any) {
     return digit <= 9 ? '0' + digit : digit;
   }
 

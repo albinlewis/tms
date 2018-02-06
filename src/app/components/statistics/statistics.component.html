@@ -2,22 +2,22 @@
 
   <div class="colOne">
 
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let item of list">
-    <mat-expansion-panel-header (click)="onselect(item)">
-      <mat-panel-title>
-        {{item}}
-      </mat-panel-title>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let item of list">
+        <mat-expansion-panel-header (click)="onselect(item)">
+          <mat-panel-title>
+            {{item}}
+          </mat-panel-title>
 
-    </mat-expansion-panel-header>
+        </mat-expansion-panel-header>
 
-  </mat-expansion-panel>
-</mat-accordion>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 
   <div class="colTwo">
     <app-piechart *ngIf="pieselect()"></app-piechart>
-    <app-barchart *ngIf="barselect()" ></app-barchart>
+    <app-barchart *ngIf="barselect()"></app-barchart>
     <app-table *ngIf="tableselect()"></app-table>
 
   </div>

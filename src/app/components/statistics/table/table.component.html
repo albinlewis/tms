@@ -7,19 +7,19 @@
 
       <!-- Position Column -->
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Task </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="time">
-        <mat-header-cell *matHeaderCellDef> Duration</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.time | secondsToTime}}  </mat-cell>
+        <mat-header-cell *matHeaderCellDef> Tracked Time </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.time}}  </mat-cell>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="done">
-        <mat-header-cell *matHeaderCellDef> Done </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.done}}</mat-cell>
       </ng-container>
 

@@ -6,14 +6,13 @@
       <mat-card>
         <div class="firstRow">
           <button class="addButton" (click)="addDialogTask()" mat-raised-button> Add Task</button>
-          <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <button style="float:right;" mat-raised-button [matMenuTriggerFor]="menu">Category</button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="showTAll()">All</button>
-            <button mat-menu-item (click)="showDaily()">Daily</button>
+            <button mat-menu-item (click)="showToDo()">ToDo</button>
             <button mat-menu-item (click)="showDone()">Done</button>
+            <button mat-menu-item (click)="showDaily()">Daily</button>
             <button mat-menu-item (click)="showFavorite()">Favorite</button>
-            <button mat-menu-item (click)="showNotAssigned()">Not Assigned</button>
-            <button mat-menu-item (click)="showToDo()">To-Do</button>
           </mat-menu>
         </div>        
         <br>

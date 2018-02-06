@@ -7,9 +7,11 @@
         <div class="left">
           <div class="title">
             <mat-form-field hintLabel="Max 40 characters" class="title">
-              <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title" maxlength="40" #message (blur)="updatefullTask(task, 'title')">
+              <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title" maxlength="40" #message (blur)="updatefullTask(task, 'title')"
+                [disabled]="lock">
               <mat-hint align="end">{{message.value?.length || 0}}/40</mat-hint>
             </mat-form-field>
+            <label id="info" *ngIf="lock">Currently Tracking: Task can not be edited!</label>
           </div>
 
           <div class="description">
@@ -17,15 +19,15 @@
             <!-- </mat-card-header> -->
             <!-- <mat-card-content> -->
             <mat-form-field hintLabel="Max 70 characters" class="description">
-              <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="8" maxlength="70" #description [(ngModel)]="task.description"
-                type="text" placeholder="Description" (blur)="updatefullTask(task, 'description')"></textarea>
+              <input matInput matTextareaAutosize matAutosizeMinRows="1" maxlength="70" #description [(ngModel)]="task.description"
+                type="text" placeholder="Description" (blur)="updatefullTask(task, 'description')" [disabled]="lock">
               <mat-hint align="end">{{description.value?.length || 0}}/70</mat-hint>
             </mat-form-field>
           </div>
           <br>
           <div class="status">
             <mat-form-field class="status">
-              <mat-select placeholder="status" (blur)="updatefullTask(task, 'status')" [(ngModel)]="task.done">
+              <mat-select placeholder="status" (ngModelChange)="updateStatus()" [(ngModel)]="task.done" [disabled]="lock">
                 <!-- <mat-option *ngIf="task.done === true">Done</mat-option>
                 <mat-option *ngIf="task.done === false">ToDo</mat-option> -->
                 <mat-option *ngFor="let s of status" [value]="s.value">
@@ -36,7 +38,7 @@
           </div>
           <div class="category">
             <mat-form-field class="category">
-              <mat-select placeholder="category" [(ngModel)]="task.category" (blur)="updatefullTask(task, 'category')">
+              <mat-select placeholder="category" [(ngModel)]="task.category" (blur)="updatefullTask(task, 'category')" [disabled]="lock">
                 <mat-option>{{task.category}}</mat-option>
                 <mat-option *ngFor="let t of category" [value]="t.value">
                   {{t.view}}
@@ -51,13 +53,11 @@
 
           </mat-list> -->
           <div class="scroll">
-            <div>
-              <label *ngIf="task.notes.length === null || task.notes.length === 0">You have no notes maaannnn, do <b>something!!!</b></label>
-            </div>
+            <h2>Notes:</h2>
             <!-- scrollable view -->
-            <mat-list>
-              <mat-list-item *ngFor="let note of task.notes;">{{note}}</mat-list-item>
-            </mat-list>
+            <ul>
+              <li *ngFor="let note of task.notes;">{{note}}</li>
+            </ul>
           </div>
         </mat-card-content>
 
@@ -78,11 +78,5 @@
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="updatefullTask(task, message.value)">update</button>
-      <!-- update on enter or not focuse -->
-      <label id="info">or press Enter to update to DB ..still there for testing</label>
-    </mat-card-actions>
-
   </mat-card>
 </div>

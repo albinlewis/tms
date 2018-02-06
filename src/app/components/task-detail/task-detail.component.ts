@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../models/task';
 import { MatSnackBar } from '@angular/material';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { TaskDataService } from '../../services/task-data-service';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class TaskDetailComponent implements OnInit {
 
   today = Date.now();
   fixedTimezone = '2015-06-15T09:03:01+0900';
+  lock: Boolean = false;
 
   @Input()
   task: Task;
@@ -30,9 +32,19 @@ export class TaskDetailComponent implements OnInit {
     { value: 'Favorite', view: 'Favorite' }
   ];
 
-  constructor(public snackBar: MatSnackBar) { }
+  constructor(private taskService: TaskDataService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    var activeTask: Task = this.taskService.activeTask.getValue();
+    if (activeTask) {
+      if (this.task._id === activeTask._id) {
+        console.log("Lock activated");
+        this.lock = true;
+      }
+      else {
+        this.lock = false;
+      }
+    }
   }
 
   updatefullTask(task: Task, message: string) {
@@ -40,7 +52,7 @@ export class TaskDetailComponent implements OnInit {
     if (task.category === 'Daily') {
       task.interval.hasInterval = true;
     }
-    this.snackBar.open(message, 'Updated!!!', {
+    this.snackBar.open(message, 'Updated', {
       duration: 4000,
     });
     this.updateTask.emit(task);
@@ -75,5 +87,9 @@ export class TaskDetailComponent implements OnInit {
     return digit <= 9 ? '0' + digit : digit;
   }
 
-
+  updateStatus() {
+    var temp = this.task;
+    temp.done = !temp.done;
+    this.updateTask.emit(temp);
+  }
 }

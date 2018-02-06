@@ -35,14 +35,17 @@ mat-card {
 }
 
 .description {
+  margin-top: 0.25em;
   width: 250px;
 }
 
 .status {
+  margin-top: 0.25em;
   width: 250px;
 }
 
 .category {
+  margin-top: 0.25em;
   width: 250px;
 }
 
@@ -52,6 +55,7 @@ mat-list {
 }
 
 .scroll {
+  margin-top: -1.25em;
   height: 300px;
   //overflow: auto
 }

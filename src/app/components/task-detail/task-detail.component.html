@@ -26,8 +26,8 @@
           <div class="status">
             <mat-form-field class="status">
               <mat-select placeholder="status" (blur)="updatefullTask(task, 'status')" [(ngModel)]="task.done">
-                <mat-option *ngIf="task.done === true">Done</mat-option>
-                <mat-option *ngIf="task.done === false">ToDo</mat-option>
+                <!-- <mat-option *ngIf="task.done === true">Done</mat-option>
+                <mat-option *ngIf="task.done === false">ToDo</mat-option> -->
                 <mat-option *ngFor="let s of status" [value]="s.value">
                   {{s.view}}
                 </mat-option>

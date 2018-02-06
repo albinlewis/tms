@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../models/task';
 import { MatSnackBar } from '@angular/material';
-import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 
 @Component({
@@ -14,7 +14,6 @@ export class TaskDetailComponent implements OnInit {
   today = Date.now();
   fixedTimezone = '2015-06-15T09:03:01+0900';
 
-
   @Input()
   task: Task;
   panelOpenState: boolean;
@@ -23,12 +22,12 @@ export class TaskDetailComponent implements OnInit {
   updateTask: EventEmitter<Task> = new EventEmitter();
 
   status = [
-    { value: 'false', view: 'ToDo' },
-    { value: 'true', view: 'Done' }
+    { value: false, view: 'ToDo' },
+    { value: true, view: 'Done' }
   ];
   category = [
     { value: 'Daily', view: 'Daily' },
-    { value: 'Favorite', view: 'Favorite' } 
+    { value: 'Favorite', view: 'Favorite' }
   ];
 
   constructor(public snackBar: MatSnackBar) { }
@@ -47,7 +46,6 @@ export class TaskDetailComponent implements OnInit {
     this.updateTask.emit(task);
   }
 
-  
   public formatTime(time) {
     var seconds = this.pad(time % 60);
     var minutes = this.pad((Math.floor(time / 60)) % 60);

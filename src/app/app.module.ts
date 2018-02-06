@@ -19,7 +19,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {ApiService} from './services/api-service';
 import {TaskDataService} from './services/task-data-service';
-import {AddtaskComponent} from './components/addtask/addtask.component';
 import {TaskDetailPipe} from './components/task-detail/task-detail.pipe';
 import {DatabaseSelectorComponent, DatabaseDialog} from './components/database-selector/database-selector.component';
 import {NoTaskComponent} from './components/notasks/notasks.component';
@@ -39,7 +38,6 @@ import {UpdateService} from './services/UpdateService';
 
 @NgModule({
   declarations: [
-    AddtaskComponent,
     AppComponent,
     ProgressbarComponent,
     TaskgridComponent,

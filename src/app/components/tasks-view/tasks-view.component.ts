@@ -48,15 +48,15 @@ export class TasksViewComponent implements OnInit {
 
   ngOnInit() {
     this.updateArrays();
-    this.taskDataService.activeTask.subscribe((activeTask: Task) => {
-      this.selectedTask = activeTask;
-      if (activeTask) {
-        this.notes = activeTask.notes;
-        this.tasktitle = activeTask.title;
-      } else {
-        this.notes = [];
-      }
-    });
+    // this.taskDataService.activeTask.subscribe((activeTask: Task) => {
+    //   this.selectedTask = activeTask;
+    //   if (activeTask) {
+    //     this.notes = activeTask.notes;
+    //     this.tasktitle = activeTask.title;
+    //   } else {
+    //     this.notes = [];
+    //   }
+    // });
     this.showTAll();
 
   }
@@ -160,7 +160,7 @@ export class TasksViewComponent implements OnInit {
       }
     }
     this.tasksToDo = tasksTodo;
-    console.log(this.tasksToDo);
+    // console.log(this.tasksToDo);
 
   }
 

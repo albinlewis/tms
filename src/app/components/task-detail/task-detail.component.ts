@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Task } from '../../models/task';
 import { MatSnackBar } from '@angular/material';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
@@ -10,7 +10,7 @@ import { TaskDataService } from '../../services/task-data-service';
   templateUrl: './task-detail.component.html',
   styleUrls: ['./task-detail.component.scss']
 })
-export class TaskDetailComponent implements OnInit {
+export class TaskDetailComponent implements OnInit, OnChanges {
 
   today = Date.now();
   fixedTimezone = '2015-06-15T09:03:01+0900';
@@ -35,15 +35,24 @@ export class TaskDetailComponent implements OnInit {
   constructor(private taskService: TaskDataService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    var activeTask: Task = this.taskService.activeTask.getValue();
-    if (activeTask) {
-      if (this.task._id === activeTask._id) {
-        console.log("Lock activated");
-        this.lock = true;
+    this.taskService.activeTask.subscribe((change) => {
+      if (change) {
+        if (this.task._id === change._id) {
+          this.lock = true;
+        }
+        else {
+          this.lock = false;
+        }
       }
-      else {
-        this.lock = false;
-      }
+    })
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.task.currentValue.active) {
+      this.lock = true;
+    }
+    else {
+      this.lock = false;
     }
   }
 

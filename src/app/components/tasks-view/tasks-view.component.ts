@@ -41,7 +41,7 @@ export class TasksViewComponent implements OnInit {
   description: String;
   category: String;
 
-
+  lockedTaskID: String = null;
   constructor(private taskDataService: TaskDataService, public dialog: MatDialog, public snackBar: MatSnackBar, private u: UpdateService) {
   }
 
@@ -57,11 +57,19 @@ export class TasksViewComponent implements OnInit {
     //   }
     // });
     this.showTAll();
-
+    this.taskDataService.activeTask.subscribe((change) => {
+      if (change) {
+        this.lockedTaskID = change._id;
+      }
+    })
   }
 
   onselect(task: Task): void {
     // this.selectedTask = task;
+
+    if (this.taskDataService.activeTask.getValue()) {
+      this.lockedTaskID = this.taskDataService.activeTask.getValue()._id;
+    }
 
     if (this.selectedTask === task && this.openCollapse === true) {
       this.openCollapse = false;

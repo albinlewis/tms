@@ -6,7 +6,8 @@ Unser Ziel ist es eine bequem nutzbare, praktische und optisch ansprechende Time
 
 ## Setup
 
-Um das Projekt auszuführen werden NodeJS, die Projekt-dependencies, Electron und die Angular CLI benötigt.
+Um das Projekt auszuführen werden NodeJS, die Projekt-dependencies, (Electron) und die Angular CLI benötigt.
+**Anmerkung:** Electron ist nur eine der Möglichkeiten die App zu nutzen, und die Installation von Electron somit optional.
 
 ```shell
 > npm install @angular/cli -g
@@ -14,13 +15,18 @@ Um das Projekt auszuführen werden NodeJS, die Projekt-dependencies, Electron un
 > npm install
 ```
 
+### Verwendung der App
+
 Um die App zu nutzen empfehlen wir anschließend die App zu builden, und das Setup auszuführen, um sie dann entweder mit electron oder im Browser zu starten.
+Das Starten an sich übernimmt dabei der Setup-Prozess (welcher durch npm start initiiert wird).
 Die hierzu benötigten Befehle sind:
 
 ```shell
 > npm run build
 > npm start
 ```
+
+### Entwickler-Info
 
 Nach der Installation sind folgende commands im Terminal verfügbar:
 
@@ -39,12 +45,12 @@ Nach der Installation sind folgende commands im Terminal verfügbar:
 |~~npm run karma~~|runs karma test suite|currently not available|
 |~~npm run e2e~~|runs e2e test suite|currently not available|
 
-### development-mode
+#### development-mode
 
 Die komplette app kann mit dem Befehl `npm run dev` im development mode ausgeführt werden.
 Die einzelnen Befehle `npm run dev-frontend` und `npm run dev-backend` trennen Frontend und Backend in eigene Prozesse.
 
-### production-mode
+#### production-mode
 
 Um die App zu nutzen muss sie erst gebuildet werden.
 Dies kann über `npm run build` oder `ng build --prod` getan werden.
@@ -76,9 +82,12 @@ Aktuell nicht verfügbar.
 ## Verwendete Frameworks
 
 ![alt text](https://cdn.auth0.com/blog/angular2-electron/angular2-electron-logo.png "Angular + Electron")
-Wir haben uns für eine Kombination von Angular und Electron entschieden,
-um das Projekt als Desktop Anwendung zu realisieren. Unser Backend umfasst eine
-Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zugreift.
+
+Wir haben uns zu Beginn des Projektes für eine Kombination von Angular und Electron entschieden, um das Projekt als Desktop Anwendung zu realisieren.
+Unser Backend umfasst eine Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zugreift.
+
+Im Laufe des Projektes fanden wir mehr Gefallen daran, die App lokal über einen Node Prozess zu hosten, und im Browser zu verwenden.
+Dies hat sich auch in unseren Praxistests als komfortabler erwiesen, und ist daher die empfohlene Nutzungsweise.
 
 ## Frontend
 
@@ -131,8 +140,8 @@ Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstel
 |----|---------|
 |Armstrong-Arndt, Jamie John|747594|
 |Belling, Maximilian|748078|
-|Stümpfl, Maximilian|740147|
 |Kouatcho, Albin|743685|
+|Stümpfl, Maximilian|740147|
 
 ### Organisation
 

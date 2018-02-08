@@ -5,6 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "ng build --prod && electron .",
+    "browser": "node src/server.js",
+    "build-browser": "ng build --prod && node src/server.js",
     "test": "ng test",
     "mocha": "mocha src/api/tests/task.js --exit",
     "dev": "start npm run dev-backend && start npm run dev-frontend",

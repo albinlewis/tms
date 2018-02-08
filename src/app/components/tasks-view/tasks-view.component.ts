@@ -205,7 +205,7 @@ export class TasksViewComponent implements OnInit {
         .subscribe(t => {
           task.notes.length = 0;
         });
-    this.snackBar.open(task.title, 'Notes Reset to zero ', {
+    this.snackBar.open(task.title, 'Notes cleared ', {
       duration: 4000,
     });
   }
@@ -215,7 +215,7 @@ export class TasksViewComponent implements OnInit {
       .subscribe(t => {
         task.time = 0;
       });
-    this.snackBar.open(task.title, 'Time Reset to 0', {
+    this.snackBar.open(task.title, 'Time reset to 0', {
       duration: 4000,
     });
   }

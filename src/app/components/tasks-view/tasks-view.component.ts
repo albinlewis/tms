@@ -62,6 +62,9 @@ export class TasksViewComponent implements OnInit {
       if (change) {
         this.lockedTaskID = change._id;
       }
+      else{
+        this.lockedTaskID = null;
+      }
     })
   }
 

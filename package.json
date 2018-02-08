@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "main.js",
   "scripts": {
-    "start": "echo \"ToDo\"",
+    "start": "node setup.js",
     "build": "ng build --prod", 
     "browser": "node src/server.js",
     "browser-build": "ng build --prod && node src/server.js",

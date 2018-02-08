@@ -14,11 +14,19 @@ Um das Projekt auszuführen werden NodeJS, die Projekt-dependencies, Electron un
 > npm install
 ```
 
-Nach der Installation sind folgende commands im Terminal möglich: 
+Um die App zu nutzen empfehlen wir anschließend die App zu builden, und das Setup auszuführen, um sie dann entweder mit electron oder im Browser zu starten.
+Die hierzu benötigten Befehle sind:
+
+```shell
+> npm run build
+> npm start
+```
+
+Nach der Installation sind folgende commands im Terminal verfügbar:
 
 |Command|Action|Info|
 |---|---|---|
-|npm start||starts the app with a little setup|
+|npm start|starts the app with a little setup|perform AFTER build|
 |npm run build|builds the app for either platform|production-mode|
 |npm run electron|runs the latest local build with electron|production-mode|
 |npm run browser|runs the latest local build in the browser|production-mode|
@@ -33,26 +41,22 @@ Nach der Installation sind folgende commands im Terminal möglich:
 
 ### development-mode
 
-```shell
-> npm run dev-backend
-> npm run dev-frontend
-```
-
-Trennt Frontend und Backend in eigene Prozesse, und ermöglicht development mit hot-reload im Frontend und restart-on-change im Backend. 
+Die komplette app kann mit dem Befehl `npm run dev` im development mode ausgeführt werden.
+Die einzelnen Befehle `npm run dev-frontend` und `npm run dev-backend` trennen Frontend und Backend in eigene Prozesse.
 
 ### production-mode
 
-```shell
-> npm start
-```
-
-Startet den Build-Prozess der Angular App, und startet diese anschließend mit Electron. Hierbei wird eine Instanz des REST-Servers innerhalb des Electron Prozesses gestartet, um alle Funktionalitäten der App in einem Prozess zu bündeln. 
+Um die App zu nutzen muss sie erst gebuildet werden.
+Dies kann über `npm run build` oder `ng build --prod` getan werden.
+Nach dem erfolgreichen builden der App kann sie mit electron oder lokal im browser gestartet werden.
+Hierfür können die Befehle `npm run electron` oder `npm run browser` genutzt werden.
+Des Weiteren kann der Build und Start der App auch in einem Befehl erfolgen; durch `npm run electron-build` oder `npm run browser-build`.
 
 ## Tests
 
 ### Backend Tests
 
-Die beiliegende Mocha Test-Suite kann mit dem command 
+Die beiliegende Mocha Test-Suite kann mit dem command
 
 ```shell
 > npm run mocha
@@ -65,6 +69,10 @@ Sie umfasst das Erstellen, Anzeigen, Modifizieren und Löschen von Tasks.
 
 Aktuell nicht verfügbar.
 
+### E2E Tests
+
+Aktuell nicht verfügbar.
+
 ## Verwendete Frameworks
 
 ![alt text](https://cdn.auth0.com/blog/angular2-electron/angular2-electron-logo.png "Angular + Electron")
@@ -74,23 +82,26 @@ Node Express REST-API, welche mittels des packages mongoose auf eine mongoDB zug
 
 ## Frontend
 
-Die Electron App gliedert sich in vier verschiedene Views: 
+Die Electron App gliedert sich in vier verschiedene Views:
 
 - Task-Management-View
-  - Hier werden Tasks erstellt, und in 4 wählbaren Kategorien angezeigt. 
+  - Hier werden Tasks erstellt, und in 4 wählbaren Kategorien angezeigt.
   - Außerdem können Tasks hier wieder auf 'ToDo' gesetzt, und die getrackte Zeit bei Bedarf zurückgesetzt werden (Dies bietet sich für tägliche bzw. wiederkehrende Tasks an)
   - Auch alle anderen sinnvollen Änderungen an Tasks können hier vorgenommen werden.
+
 ![Task-Management-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-01.PNG)
 
 - Tracking-View
-  - Hier können die offenen Tasks angeklickt, und so getrackt werden. 
-  - Während die Zeit genommen wird können hier für jede Task Notizen gemacht werden. 
+  - Hier können die offenen Tasks angeklickt, und so getrackt werden.
+  - Während die Zeit genommen wird können hier für jede Task Notizen gemacht werden.
   - Außerdem können Tasks hier auf bearbeitet gesetzt werden.
+
 ![Tracking-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-02.PNG)
 
 - Statistics-View
   - In dieser View wird die bisher auf Tasks verwendete Zeit statistisch angezeigt.
   - Es kann zwischen einer relativen (Tortendiagramm der verwendeten Zeit pro Tasks), absoluten (alle Tasks und ihre Zeite werden in einem Balkendiagramm aufgelistet), und einer Listen-Ansicht (Timetracking Liste, welche Task, Zeit und Status listet) gewählt werden.
+
 ![Statistics-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-03.PNG)
 
 - Export-View
@@ -100,6 +111,7 @@ Die Electron App gliedert sich in vier verschiedene Views:
     - Daily Journal: Eine kurze Liste an bearbeiteten Tasks und den gemachten Notizen, für eine schnelle Übersicht in Daily-Meetings (Gedächtnisstütze)
     - ToDo-List: Eine bündige Übersicht der offenen Tasks
     - Timetracking-Table: Eine Listenansicht, wie im Statistics-View
+
 ![Export-View](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/doc/app-screens/tms-04.PNG)
 
 ## Backend
@@ -120,7 +132,7 @@ Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstel
 |Armstrong-Arndt, Jamie John|747594|
 |Belling, Maximilian|748078|
 |Stümpfl, Maximilian|740147|
-|.. , Albin|..|
+|Kouatcho, Albin|743685|
 
 ### Organisation
 

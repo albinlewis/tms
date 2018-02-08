@@ -27,10 +27,14 @@
               {{task.title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-action-row>
-            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
-          </mat-action-row>
+          <mat-card-actions>
+            <label *ngIf="task._id === lockedTaskID" id="info">Tracked Task can not be edited or removed!</label>
+            <div class="actionbuttons">
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onNoteReset(task)">Notes Reset</button>
+            </div>
+          </mat-card-actions>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -42,10 +46,14 @@
               {{task.title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-action-row>
-            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
-          </mat-action-row>
+          <mat-card-actions>
+            <label *ngIf="task._id === lockedTaskID" id="info">Tracked Task can not be edited or removed!</label>
+            <div class="actionbuttons">
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onNoteReset(task)">Notes Reset</button>
+            </div>
+          </mat-card-actions>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -57,10 +65,14 @@
               {{task.title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-action-row>
-            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
-          </mat-action-row>
+          <mat-card-actions>
+            <label *ngIf="task._id === lockedTaskID" id="info">Tracked Task can not be edited or removed!</label>
+            <div class="actionbuttons">
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onNoteReset(task)">Notes Reset</button>
+            </div>
+          </mat-card-actions>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -72,10 +84,14 @@
               {{task.title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-action-row>
-            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
-          </mat-action-row>
+          <mat-card-actions>
+            <label *ngIf="task._id === lockedTaskID" id="info">Tracked Task can not be edited or removed!</label>
+            <div class="actionbuttons">
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onNoteReset(task)">Notes Reset</button>
+            </div>
+          </mat-card-actions>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -87,10 +103,14 @@
               {{task.title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <mat-action-row>
-            <button mat-raised-button (click)="onDeleteTask(task)">Delete</button>
-            <button mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
-          </mat-action-row>
+          <mat-card-actions>
+            <label *ngIf="task._id === lockedTaskID" id="info">Tracked Task can not be edited or removed!</label>
+            <div class="actionbuttons">
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onDeleteTask(task)">Delete</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onNoteReset(task)">Notes Reset</button>
+            </div>
+          </mat-card-actions>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
@@ -103,12 +123,14 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-card-actions>
-            <label *ngIf="task._id === lockedTaskID" id="info">Active tracked Task can not be edited or removed!</label>
+            <label *ngIf="task._id === lockedTaskID" id="info">Tracked Task can not be edited or removed!</label>
             <div class="actionbuttons">
               <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onDeleteTask(task)">Delete</button>
               <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onTimeReset(task)">Time Reset</button>
+              <button [disabled]="task._id === lockedTaskID" mat-raised-button (click)="onNoteReset(task)">Notes Reset</button>
             </div>
           </mat-card-actions>
+
         </mat-expansion-panel>
       </mat-accordion>
     </div>

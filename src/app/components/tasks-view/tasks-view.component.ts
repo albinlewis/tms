@@ -61,6 +61,9 @@ export class TasksViewComponent implements OnInit {
       if (change) {
         this.lockedTaskID = change._id;
       }
+      else{
+        this.lockedTaskID = null;
+      }
     })
   }
 
@@ -100,7 +103,7 @@ export class TasksViewComponent implements OnInit {
     });
 
     await dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
       this.title = result.title;
       this.description = result.description;
       this.category = result.category;
@@ -126,7 +129,7 @@ export class TasksViewComponent implements OnInit {
           hasInterval: false
         }
       });
-      console.log(newtask);
+      //console.log(newtask);
       if (newtask === null) {
         this.snackBar.open('Task', 'Error!!!', {
           duration: 4000,
@@ -155,17 +158,17 @@ export class TasksViewComponent implements OnInit {
   dailyTask(tasksTodo: Array<Task>, tasksDaily: Array<Task>) {
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
-    console.log(yesterday);
+    //console.log(yesterday);
     var today = new Date();
     today.setDate(today.getDate());
-    console.log(today);
+    //console.log(today);
 
     for (const task of tasksTodo) {
       for (const taskD of tasksDaily) {
         if (taskD.category === 'Daily' && yesterday < today) {
           tasksTodo.push(taskD);
         } else {
-          console.log('Already in Todo');
+          //console.log('Already in Todo')
         }
       }
     }
@@ -197,6 +200,15 @@ export class TasksViewComponent implements OnInit {
     });
   }
 
+  onNoteReset(task){
+    this.taskDataService.updateTask(task)
+        .subscribe(t => {
+          task.notes.length = 0;
+        });
+    this.snackBar.open(task.title, 'Notes Reset to zero ', {
+      duration: 4000,
+    });
+  }
 
   onTimeReset(task) {
     this.taskDataService.updateTask(task)
@@ -234,11 +246,11 @@ export class TasksViewComponent implements OnInit {
 
         var sameT = this.tasksToDo.includes(tasksD);
         if (tasksD.category === 'Daily' && sameT !== true && tasksD.interval.hasInterval === true) {
-          console.log(tasksD);
-          console.log(task);
+         // console.log(tasksD);
+         // console.log(task);
           this.tasksToDo.push(tasksD);
         } else {
-          console.log('Found, already in todo, not added');
+         // console.log('Found, already in todo, not added');
         }
       });
     });
@@ -253,7 +265,7 @@ export class TasksViewComponent implements OnInit {
 
   showDone() {
     this.tasksDone = this.tasks.filter(tasks => tasks.done === true);
-    console.log(this.tasksDone);
+    //console.log(this.tasksDone);
     this.showT = false;
     this.showD = true;
     this.showDa = false;
@@ -270,7 +282,7 @@ export class TasksViewComponent implements OnInit {
       task.interval.hasInterval = true;
       this.onupdateTask(task);
     });
-    console.log(this.tasksDaily);
+    //console.log(this.tasksDaily);
     this.showT = false;
     this.showD = false;
     this.showDa = true;
@@ -283,7 +295,7 @@ export class TasksViewComponent implements OnInit {
 
   showFavorite() {
     this.tasksFavorite = this.tasks.filter(tasks => tasks.category === 'Favorite');
-    console.log(this.tasksFavorite);
+    //console.log(this.tasksFavorite);
     this.showT = false;
     this.showD = false;
     this.showDa = false;

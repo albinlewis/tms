@@ -131,7 +131,7 @@ export class TasksViewComponent implements OnInit {
       });
       //console.log(newtask);
       if (newtask === null) {
-        this.snackBar.open('Task', 'Error!!!', {
+        this.snackBar.open('Task', 'Error', {
           duration: 4000,
         });
       }

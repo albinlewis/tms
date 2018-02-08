@@ -5,7 +5,7 @@
         <div class="left">
           <div class="title">
             <mat-form-field hintLabel="Max 40 characters" class="title">
-              <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title" maxlength="40" #message (blur)="updatefullTask(task, 'title')"
+              <input matInput [(ngModel)]="task.title" type="text" id="title" placeholder="Title" maxlength="40" #message (blur)="updatefullTask(task, 'Title changed')"
                 [disabled]="lock">
               <mat-hint align="end">{{message.value?.length || 0}}/40</mat-hint>
             </mat-form-field>
@@ -14,7 +14,7 @@
           <div class="description">
             <mat-form-field hintLabel="Max 70 characters" class="description">
               <input matInput matTextareaAutosize matAutosizeMinRows="1" maxlength="70" #description [(ngModel)]="task.description" type="text"
-                placeholder="Description" (blur)="updatefullTask(task, 'description')" [disabled]="lock">
+                placeholder="Description" (blur)="updatefullTask(task, 'Description changed')" [disabled]="lock">
               <mat-hint align="end">{{description.value?.length || 0}}/70</mat-hint>
             </mat-form-field>
           </div>
@@ -30,7 +30,7 @@
           </div>
           <div class="category">
             <mat-form-field class="category">
-              <mat-select placeholder="category" [(ngModel)]="task.category" (ngModelChange)="updatefullTask(task, 'category')" [disabled]="lock">
+              <mat-select placeholder="category" [(ngModel)]="task.category" (ngModelChange)="updatefullTask(task, 'Category changed')" [disabled]="lock">
                 <mat-option *ngFor="let t of category" [value]="t.value">
                   {{t.view}}
                 </mat-option>

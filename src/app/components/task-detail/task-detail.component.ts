@@ -44,6 +44,9 @@ export class TaskDetailComponent implements OnInit, OnChanges {
           this.lock = false;
         }
       }
+      else{
+        this.lock = false;
+      }
     })
   }
 

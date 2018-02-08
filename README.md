@@ -17,14 +17,19 @@ Um das Projekt auszuführen werden NodeJS, die Projekt-dependencies, Electron un
 Nach der Installation sind folgende commands im Terminal möglich: 
 
 |Command|Action|Info|
-|-------|------|----|
-|npm run dev-frontend|runs the angular app in dev mode|on localhost:4200 (hot-reload) [development-mode]|
-|npm run dev-backend|runs the node backend in dev mode|(restarts on changes - powered by nodemon)|
-|npm run dev|runs the whole app locally in development mode|combination of decoupled commands|
-|npm run mocha|runs the Mocha-Chai test-suite|backend tests|
-|npm start|builds and runs the electron app|production mode|
-|~~npm test~~|~~runs the Karma test-suite~~|currently not used|
-|~~npm run e2e~~|~~runs end-to-end tests~~|currently not used|
+|---|---|---|
+|npm start||starts the app with a little setup|
+|npm run build|builds the app for either platform|production-mode|
+|npm run electron|runs the latest local build with electron|production-mode|
+|npm run browser|runs the latest local build in the browser|production-mode|
+|npm run browser-build|builds and runs the app in the browser|production-mode|
+|npm run electron-build|builds and runs the app in electron|production-mode|
+|npm run dev|runs the app in development mode with hot-reload|dev-mode of the complete app|
+|npm run dev-frontend|runs the frontend in development mode with hot-reload|dev-mode of frontend|
+|npm run dev-backend|runs the backend in development mode with hot-reload|dev-mode of backend|
+|npm run mocha|runs the mocha-chai test-suite|backend tests|
+|~~npm run karma~~|runs karma test suite|currently not available|
+|~~npm run e2e~~|runs e2e test suite|currently not available|
 
 ### development-mode
 

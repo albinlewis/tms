@@ -20,10 +20,10 @@
   <!-- Step 3 -->
   <mat-step stepControl="thirdFormGroup">
     <ng-template matStepLabel>Statistics</ng-template>
-    <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
+    <div *ngIf="tasks.length == 0" id="noTasksTemplate">
       <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
-    <div *ngIf="filterDoneTasks(tasks).length > 0">
+    <div *ngIf="tasks.length > 0">
      <app-statistics ></app-statistics>
 
     </div>
@@ -31,10 +31,10 @@
   <!-- step 4 -->
   <mat-step stepControl="fourthFormGroup">
     <ng-template matStepLabel>Export</ng-template>
-    <div *ngIf="filterDoneTasks(tasks).length == 0" id="noTasksTemplate">
+    <div *ngIf="tasks.length == 0" id="noTasksTemplate">
       <no-tasks [stepper]="stepper" [tasks]="tasks"></no-tasks>
     </div>
-    <div *ngIf="filterDoneTasks(tasks).length > 0">
+    <div *ngIf="tasks.length > 0">
       <task-export class="export" [tasks]="tasks"></task-export>
     </div>
   </mat-step>

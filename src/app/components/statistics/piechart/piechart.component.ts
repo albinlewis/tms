@@ -25,14 +25,18 @@ export class PiechartComponent {
         this.tasks.forEach(el => {
           this.totalTime += Number(el.time);
         });
-        //console.log(this.tasks);
+
         this.display();
       });
     this.u.tasksUpdated
       .subscribe((tasks) => {
         this.tasks = tasks;
+        this.totalTime = 0;
         this.pieChartData = [];
         this.display();
+        this.tasks.forEach(el => {
+          this.totalTime += Number(el.time);
+        });
 
       });
   }

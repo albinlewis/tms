@@ -1,12 +1,11 @@
-import { TaskDataService } from './../../services/task-data-service';
-import { Task } from './../../models/task';
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
-import { FormControl, Validators } from '@angular/forms';
-import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { interval } from 'rxjs/observable/interval';
-
-
+import {TaskDataService} from './../../services/task-data-service';
+import {Task} from './../../models/task';
+import {Component, OnInit, Input, Inject} from '@angular/core';
+import {MatSnackBar} from '@angular/material';
+import {FormControl, Validators} from '@angular/forms';
+import {MatDialog, MatDialogConfig, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {interval} from 'rxjs/observable/interval';
+import {UpdateService} from '../../services/UpdateService';
 
 
 @Component({
@@ -21,7 +20,7 @@ export class TasksViewComponent implements OnInit {
   tasksDaily: Task[];
   tasksFavorite: Task[];
   tasksNotAssigned: Task[];
-  tasksAll: Task[]
+  tasksAll: Task[];
 
   notes: String[];
   task: Task = new Task();
@@ -43,8 +42,8 @@ export class TasksViewComponent implements OnInit {
   category: String;
 
 
-
-  constructor(private taskDataService: TaskDataService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(private taskDataService: TaskDataService, public dialog: MatDialog, public snackBar: MatSnackBar, private u: UpdateService) {
+  }
 
   ngOnInit() {
     this.updateArrays();
@@ -60,6 +59,7 @@ export class TasksViewComponent implements OnInit {
     this.showTAll();
 
   }
+
   onselect(task: Task): void {
     // this.selectedTask = task;
 
@@ -88,7 +88,7 @@ export class TasksViewComponent implements OnInit {
     let dialogRef = await this.dialog.open(AddDialog, {
       height: '300px',
       width: '540px',
-      data: { title: this.title, description: this.description, category: this.category }
+      data: {title: this.title, description: this.description, category: this.category}
     });
 
     await dialogRef.afterClosed().subscribe(result => {
@@ -123,7 +123,8 @@ export class TasksViewComponent implements OnInit {
         this.snackBar.open('Task', 'Error!!!', {
           duration: 4000,
         });
-      } if (newtask.title !== '') {
+      }
+      if (newtask.title !== '') {
         this.snackBar.open(String(newtask.title), 'Created', {
           duration: 4000,
         });
@@ -140,8 +141,9 @@ export class TasksViewComponent implements OnInit {
     this.tasksDone = this.tasks.filter(tasks => tasks.done === true);
     this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily');
     this.tasksFavorite = this.tasks.filter(tasks => tasks.category === 'Favorite');
-    this.tasksNotAssigned = this.tasks.filter(tasks => tasks.category === "" || tasks.category === null);
+    this.tasksNotAssigned = this.tasks.filter(tasks => tasks.category === '' || tasks.category === null);
   }
+
   dailyTask(tasksTodo: Array<Task>, tasksDaily: Array<Task>) {
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
@@ -152,10 +154,10 @@ export class TasksViewComponent implements OnInit {
 
     for (const task of tasksTodo) {
       for (const taskD of tasksDaily) {
-        if (taskD.category === "Daily" && yesterday < today) {
+        if (taskD.category === 'Daily' && yesterday < today) {
           tasksTodo.push(taskD);
         } else {
-          console.log('Already in Todo')
+          console.log('Already in Todo');
         }
       }
     }
@@ -168,18 +170,24 @@ export class TasksViewComponent implements OnInit {
     this.taskDataService.addTask(task)
       .subscribe((t) => {
         this.tasks.push(t);
+        this.u.tasksUpdated.emit(this.tasks);
       });
     // this.task = new Task();
+
   }
+
   onDeleteTask(task) {
-    this.taskDataService.deleteTask(task._id).subscribe(() => { });
+    this.taskDataService.deleteTask(task._id).subscribe(() => {
+      this.u.tasksUpdated.emit(this.tasks);
+    });
     this.openCollapse = false;
-    this.tasks.splice(this.tasks.findIndex(function (element) { return element === task }), 1);
+    this.tasks.splice(this.tasks.findIndex(function (element) {
+      return element === task;
+    }), 1);
     this.snackBar.open(task.title, 'Deleted', {
       duration: 4000,
     });
   }
-
 
 
   onTimeReset(task) {
@@ -197,6 +205,8 @@ export class TasksViewComponent implements OnInit {
       .subscribe(t => {
         task = t;
       });
+
+    this.u.tasksUpdated.emit(this.tasks);
   }
 
   getTasks() {
@@ -208,7 +218,7 @@ export class TasksViewComponent implements OnInit {
 
   showToDo() {
 
-    this.tasksToDo = this.tasks.filter(tasks => tasks.done === false)
+    this.tasksToDo = this.tasks.filter(tasks => tasks.done === false);
     this.tasksDaily = this.tasks.filter(tasks => tasks.category === 'Daily');
 
     this.tasksToDo.forEach(task => {
@@ -251,7 +261,7 @@ export class TasksViewComponent implements OnInit {
     this.tasksDaily.forEach(task => {
       task.interval.hasInterval = true;
       this.onupdateTask(task);
-    })
+    });
     console.log(this.tasksDaily);
     this.showT = false;
     this.showD = false;
@@ -264,7 +274,7 @@ export class TasksViewComponent implements OnInit {
   }
 
   showFavorite() {
-    this.tasksFavorite = this.tasks.filter(tasks => tasks.category === "Favorite");
+    this.tasksFavorite = this.tasks.filter(tasks => tasks.category === 'Favorite');
     console.log(this.tasksFavorite);
     this.showT = false;
     this.showD = false;
@@ -300,19 +310,18 @@ export class AddDialog {
     Validators.required,
   ]);
   category = [
-    { value: 'Daily', view: 'Daily' },
-    { value: 'Favorite', view: 'Favorite' }
+    {value: 'Daily', view: 'Daily'},
+    {value: 'Favorite', view: 'Favorite'}
   ];
   status = [
-    { value: 'false', view: 'ToDo' },
-    { value: 'true', view: 'Done' }
+    {value: 'false', view: 'ToDo'},
+    {value: 'true', view: 'Done'}
   ];
 
-  constructor(
-    public dialogRef: MatDialogRef<AddDialog>,
-    private taskDataService: TaskDataService,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  constructor(public dialogRef: MatDialogRef<AddDialog>,
+              private taskDataService: TaskDataService,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
+  }
 
 
   onNoClick(): void {

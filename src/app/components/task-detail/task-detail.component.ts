@@ -54,6 +54,7 @@ export class TaskDetailComponent implements OnInit, OnChanges {
     else {
       this.lock = false;
     }
+
   }
 
   updatefullTask(task: Task, message: string) {
@@ -65,6 +66,7 @@ export class TaskDetailComponent implements OnInit, OnChanges {
       duration: 4000,
     });
     this.updateTask.emit(task);
+
   }
 
   public formatTime(time) {

@@ -29,9 +29,9 @@ export class PiechartComponent {
         this.display();
       });
     this.u.tasksUpdated
-      .subscribe((task) => {
+      .subscribe((tasks) => {
+        this.tasks = tasks;
         this.pieChartData = [];
-        this.tasks = task;
         this.display();
 
       });
@@ -52,9 +52,24 @@ export class PiechartComponent {
       piechartslabels.push(eachObj.title);
       this.pieChartData.push(parseFloat((Number(eachObj.time) / 60).toFixed(2)));
     }
-    this.pieChartLabels = piechartslabels;
+    setTimeout(() => {
+      this.pieChartLabels = piechartslabels;
+    }, 50);
+    console.log(this.pieChartLabels);
   }
 
+  display2() {
+    const piechartslabels: String[] = [];
+    for (const eachObj of this.tasks) {
+      piechartslabels.push(eachObj.title);
+      this.pieChartData.push(parseFloat((Number(eachObj.time) / 60).toFixed(2)));
+    }
+
+    setTimeout(() => {
+      this.pieChartLabels = piechartslabels;
+    }, 50);
+    console.log(this.pieChartLabels);
+  }
   public formatTime(time) {
     const seconds = this.pad(time % 60);
     const minutes = this.pad((Math.floor(time / 60)) % 60);

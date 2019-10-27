@@ -136,8 +136,8 @@ Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstel
 
 ### Contributors
 
-|Name|Matr.-Nr.|
-|----|---------|
+|Name|
+|----|
 |Armstrong-Arndt, Jamie John|747594|
 |Belling, Maximilian|748078|
 |Kouatcho, Albin|743685|

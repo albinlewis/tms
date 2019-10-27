@@ -1,1 +1,14 @@
-{"app":{"port":3333},"window":{"width":1400,"height":900},"user":{"name":null,"mLab":null},"testDB":"mongodb://fwe_tms_test:fwe_tms_test@ds157500.mlab.com:57500/fwe_tms_test"}
+{
+  "app": {
+    "port": 3333
+  },
+  "window": {
+    "width": 1400,
+    "height": 900
+  },
+  "user": {
+    "name": null,
+    "mLab": null
+  },
+  "testDB": "mongodb://fwe_tms_test:fwe_tms_test2@ds131373.mlab.com:31373/fwe_tms_test"
+}

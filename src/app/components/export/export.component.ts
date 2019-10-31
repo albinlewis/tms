@@ -131,7 +131,7 @@ export class TaskExportComponent implements OnInit {
      * sends mail
      */
     public sendMail(data) {
-        this.http.post('http://localhost:3333/api/mails/send', {
+        this.http.post(API_URL +'/api/mails/send', {
             mailReceiver: this.mailReceiver,
             mailSubject: "TMS - Export",
             mailContent: this.addHeaderAndFooter(data)

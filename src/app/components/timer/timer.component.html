@@ -1,7 +1,0 @@
-<span>{{hoursDisplay ? hoursDisplay : '00'}}:{{(minutesDisplay) && (minutesDisplay <= 59) ? minutesDisplay : '00'}}:{{(secondsDisplay) && (secondsDisplay <= 59) ? secondsDisplay : '00'}}</span>
-<button mat-icon-button color="primary" *ngIf="paused" (click)="togglePause()">
-    <i class="material-icons">play_circle_outline</i>
-</button>
-<button mat-icon-button color="primary" *ngIf="!paused" (click)="togglePause()">
-    <i class="material-icons">pause_circle_outline</i>
-</button>

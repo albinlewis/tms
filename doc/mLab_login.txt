@@ -1,3 +1,0 @@
-Account:  FWE_TMS
-Username: FWE_TMS_admin
-Password: FWE_TMS_admin1

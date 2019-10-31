@@ -4,9 +4,11 @@ import { Task } from '../../models/task';
 import { TaskDataService } from '../../services/task-data-service'
 
 import { Angular2Csv } from 'angular2-csv/Angular2-csv';
+import {environment} from '../../../environments/environment';
 
 // import * as MailHeader from '../../templates/mail-header.html';
 // import * as MailFooter from '../../templates/mail-footer.html';
+const API_URL = environment.apiUrl;
 
 @Component({
     selector: 'task-export',

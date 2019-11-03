@@ -148,4 +148,4 @@ Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstel
 - wöchentliche Sprints (Retrospektive + neue Planung Mittwochs in der Veranstaltung)
 - VoIP-Meetings und Screen-Casts mittels Discord + Blizz
 - Sonstige Projekt Kommunikation per WhatsApp-Gruppe
-- Repository auf GitLab, Branch-Management nach [GitHub-flow](https://guides.github.com/introduction/flow/)
+- Repository auf Github, Branch-Management nach [GitHub-flow](https://guides.github.com/introduction/flow/)

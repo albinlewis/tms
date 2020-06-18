@@ -126,8 +126,7 @@ Die Electron App gliedert sich in vier verschiedene Views:
 
 ## Backend
 
-Die Dokumentation der Task-API kann im repository unter [/src/api/readme.md](https://gitlab.fbi.h-da.de/istmabell/tms/blob/master/src/api/readme.md) eingesehen werden.
-Sie wurde anhand dieses [Beispiels](https://gist.github.com/iros/3426278) erstellt.
+
 
 ## License
 
